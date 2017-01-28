@@ -42,6 +42,13 @@ export default class TextInput extends PureComponent {
 		}
 	}
 	
+	componentDidMount() {
+		if(this.props.selectText) {
+			console.log("SELECTING");
+			this.itemInput.select();
+		}
+	}
+	
 	render() {
 		return (
 			<input className="edit"
@@ -49,7 +56,7 @@ export default class TextInput extends PureComponent {
 				value={this.state.value}
 				onChange={this.handleOnChange}
 				type="text"
-				ref={c => (this.props.selectText && c && c.select(), this.itemInput = c)}
+				ref={c => (console.log("REF"), this.itemInput = c)}
 				onKeyDown={this.handleKeyDown}
 				onBlur={()=>this.cancelEditing()}
 			/>
