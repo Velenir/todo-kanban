@@ -1,0 +1,897 @@
+{
+  "html-webpack-plugin for \"index.html\"": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/pug-runtime/index.js": "coDY",
+          "external \"fs\"": 0,
+          "node_modules/pug-loader/stringify.loader.js!node_modules/html-webpack-template-pug/mixins.pug": "B3Hk",
+          "node_modules/pug-loader/index.js!node_modules/html-webpack-template-pug/layout.pug": "zt4+"
+        },
+        "usedIds": {
+          "0": 0,
+          "coDY": "coDY",
+          "B3Hk": "B3Hk",
+          "zt4+": "zt4+"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    },
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/pug-runtime/index.js": "coDY",
+          "external \"fs\"": 0,
+          "node_modules/pug-loader/stringify.loader.js!node_modules/html-webpack-template-pug/mixins.pug": "B3Hk",
+          "node_modules/pug-loader/index.js!node_modules/html-webpack-template-pug/layout.pug": "zt4+"
+        },
+        "usedIds": {
+          "0": 0,
+          "coDY": "coDY",
+          "B3Hk": "B3Hk",
+          "zt4+": "zt4+"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    },
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/pug-runtime/index.js": "coDY",
+          "external \"fs\"": 0,
+          "node_modules/pug-loader/stringify.loader.js!node_modules/html-webpack-template-pug/mixins.pug": "B3Hk",
+          "node_modules/pug-loader/index.js!node_modules/html-webpack-template-pug/layout.pug": "zt4+"
+        },
+        "usedIds": {
+          "0": 0,
+          "coDY": "coDY",
+          "B3Hk": "B3Hk",
+          "zt4+": "zt4+"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    },
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/pug-runtime/index.js": "coDY",
+          "external \"fs\"": 0,
+          "node_modules/pug-loader/stringify.loader.js!node_modules/html-webpack-template-pug/mixins.pug": "B3Hk",
+          "node_modules/pug-loader/index.js!node_modules/html-webpack-template-pug/layout.pug": "zt4+"
+        },
+        "usedIds": {
+          "0": 0,
+          "coDY": "coDY",
+          "B3Hk": "B3Hk",
+          "zt4+": "zt4+"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    },
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/pug-runtime/index.js": "coDY",
+          "external \"fs\"": 0,
+          "node_modules/pug-loader/stringify.loader.js!node_modules/html-webpack-template-pug/mixins.pug": "B3Hk",
+          "node_modules/pug-loader/index.js!node_modules/html-webpack-template-pug/layout.pug": "zt4+"
+        },
+        "usedIds": {
+          "0": 0,
+          "coDY": "coDY",
+          "B3Hk": "B3Hk",
+          "zt4+": "zt4+"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    },
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/pug-runtime/index.js": "coDY",
+          "external \"fs\"": 0,
+          "node_modules/pug-loader/stringify.loader.js!node_modules/html-webpack-template-pug/mixins.pug": "B3Hk",
+          "node_modules/pug-loader/index.js!node_modules/html-webpack-template-pug/layout.pug": "zt4+"
+        },
+        "usedIds": {
+          "0": 0,
+          "coDY": "coDY",
+          "B3Hk": "B3Hk",
+          "zt4+": "zt4+"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    },
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/pug-runtime/index.js": "coDY",
+          "external \"fs\"": 0,
+          "node_modules/pug-loader/stringify.loader.js!node_modules/html-webpack-template-pug/mixins.pug": "B3Hk",
+          "node_modules/pug-loader/index.js!node_modules/html-webpack-template-pug/layout.pug": "zt4+"
+        },
+        "usedIds": {
+          "0": 0,
+          "coDY": "coDY",
+          "B3Hk": "B3Hk",
+          "zt4+": "zt4+"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    },
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/pug-runtime/index.js": "coDY",
+          "external \"fs\"": 0,
+          "node_modules/pug-loader/stringify.loader.js!node_modules/html-webpack-template-pug/mixins.pug": "B3Hk",
+          "node_modules/pug-loader/index.js!node_modules/html-webpack-template-pug/layout.pug": "zt4+"
+        },
+        "usedIds": {
+          "0": 0,
+          "coDY": "coDY",
+          "B3Hk": "B3Hk",
+          "zt4+": "zt4+"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    },
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/pug-runtime/index.js": "coDY",
+          "external \"fs\"": 0,
+          "node_modules/pug-loader/stringify.loader.js!node_modules/html-webpack-template-pug/mixins.pug": "B3Hk",
+          "node_modules/pug-loader/index.js!node_modules/html-webpack-template-pug/layout.pug": "zt4+"
+        },
+        "usedIds": {
+          "0": 0,
+          "coDY": "coDY",
+          "B3Hk": "B3Hk",
+          "zt4+": "zt4+"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    },
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/pug-runtime/index.js": "coDY",
+          "external \"fs\"": 0,
+          "node_modules/pug-loader/stringify.loader.js!node_modules/html-webpack-template-pug/mixins.pug": "B3Hk",
+          "node_modules/pug-loader/index.js!node_modules/html-webpack-template-pug/layout.pug": "zt4+"
+        },
+        "usedIds": {
+          "0": 0,
+          "coDY": "coDY",
+          "B3Hk": "B3Hk",
+          "zt4+": "zt4+"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    },
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/pug-runtime/index.js": "coDY",
+          "external \"fs\"": 0,
+          "node_modules/pug-loader/stringify.loader.js!node_modules/html-webpack-template-pug/mixins.pug": "B3Hk",
+          "node_modules/pug-loader/index.js!node_modules/html-webpack-template-pug/layout.pug": "zt4+"
+        },
+        "usedIds": {
+          "0": 0,
+          "coDY": "coDY",
+          "B3Hk": "B3Hk",
+          "zt4+": "zt4+"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    },
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/pug-runtime/index.js": "coDY",
+          "external \"fs\"": 0,
+          "node_modules/pug-loader/stringify.loader.js!node_modules/html-webpack-template-pug/mixins.pug": "B3Hk",
+          "node_modules/pug-loader/index.js!node_modules/html-webpack-template-pug/layout.pug": "zt4+"
+        },
+        "usedIds": {
+          "0": 0,
+          "coDY": "coDY",
+          "B3Hk": "B3Hk",
+          "zt4+": "zt4+"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    }
+  ],
+  "modules": {
+    "byIdentifier": {
+      "node_modules/fbjs/lib/invariant.js": "cxPT",
+      "multi react react-dom redux react-redux immutable classnames todomvc-app-css": 0,
+      "node_modules/react-dom/lib/reactProdInvariant.js": "gIDI",
+      "node_modules/object-assign/index.js": "BEQ0",
+      "node_modules/react-dom/lib/ReactDOMComponentTree.js": "if0G",
+      "node_modules/fbjs/lib/ExecutionEnvironment.js": "czSA",
+      "node_modules/fbjs/lib/emptyFunction.js": "e6+Q",
+      "node_modules/react-dom/lib/ReactInstrumentation.js": "Veu9",
+      "node_modules/react-dom/lib/ReactUpdates.js": "vg0m",
+      "node_modules/react-dom/lib/SyntheticEvent.js": "ZhCu",
+      "node_modules/react/lib/ReactCurrentOwner.js": "kvXm",
+      "node_modules/react-dom/lib/PooledClass.js": "IjcK",
+      "node_modules/react-dom/lib/DOMLazyTree.js": "hMln",
+      "node_modules/react-dom/lib/DOMProperty.js": "y2pp",
+      "node_modules/react-dom/lib/ReactReconciler.js": "xWyi",
+      "node_modules/react/lib/React.js": "G1ow",
+      "node_modules/react/lib/ReactElement.js": "W2D2",
+      "node_modules/react/lib/reactProdInvariant.js": "ar93",
+      "node_modules/fbjs/lib/emptyObject.js": "TJez",
+      "node_modules/react-dom/lib/EventPluginHub.js": "PESh",
+      "node_modules/react-dom/lib/EventPropagators.js": "Kt1l",
+      "node_modules/react-dom/lib/ReactInstanceMap.js": "yeCS",
+      "node_modules/react-dom/lib/SyntheticUIEvent.js": "Ch7n",
+      "node_modules/react/react.js": "U7vG",
+      "node_modules/react-dom/lib/ReactBrowserEventEmitter.js": "AU5s",
+      "node_modules/react-dom/lib/SyntheticMouseEvent.js": "MygW",
+      "node_modules/react-dom/lib/Transaction.js": "kbwd",
+      "node_modules/react-dom/lib/escapeTextContentForBrowser.js": "2HUo",
+      "node_modules/react-dom/lib/setInnerHTML.js": "Li0w",
+      "node_modules/fbjs/lib/shallowEqual.js": "sgb3",
+      "node_modules/lodash-es/isPlainObject.js": "sMP3",
+      "node_modules/react-dom/lib/DOMChildrenOperations.js": "rbSI",
+      "node_modules/react-dom/lib/DOMNamespaces.js": "PCSp",
+      "node_modules/react-dom/lib/EventPluginRegistry.js": "inoO",
+      "node_modules/react-dom/lib/EventPluginUtils.js": "VoX8",
+      "node_modules/react-dom/lib/KeyEscapeUtils.js": "pv5m",
+      "node_modules/react-dom/lib/LinkedValueUtils.js": "Zzr+",
+      "node_modules/react-dom/lib/ReactComponentEnvironment.js": "QVRU",
+      "node_modules/react-dom/lib/ReactErrorUtils.js": "iHWm",
+      "node_modules/react-dom/lib/ReactUpdateQueue.js": "lZ3b",
+      "node_modules/react-dom/lib/createMicrosoftUnsafeLocalFunction.js": "SbeA",
+      "node_modules/react-dom/lib/getEventCharCode.js": "+cCx",
+      "node_modules/react-dom/lib/getEventModifierState.js": "FdT2",
+      "node_modules/react-dom/lib/getEventTarget.js": "4hnb",
+      "node_modules/react-dom/lib/isEventSupported.js": "44cQ",
+      "node_modules/react-dom/lib/shouldUpdateReactComponent.js": "MWDd",
+      "node_modules/react-dom/lib/validateDOMNesting.js": "SBlo",
+      "node_modules/react-redux/es/utils/warning.js": "byaS",
+      "node_modules/react/lib/ReactComponent.js": "Le75",
+      "node_modules/react/lib/ReactNoopUpdateQueue.js": "CO2B",
+      "node_modules/redux/es/index.js": "2KeS",
+      "node_modules/fbjs/lib/EventListener.js": "o+pC",
+      "node_modules/fbjs/lib/focusNode.js": "JTgD",
+      "node_modules/fbjs/lib/getActiveElement.js": "9U7y",
+      "node_modules/lodash-es/_Symbol.js": "EZG+",
+      "node_modules/process/browser.js": "W2nU",
+      "node_modules/react-dom/lib/CSSProperty.js": "+ktn",
+      "node_modules/react-dom/lib/CallbackQueue.js": "er+d",
+      "node_modules/react-dom/lib/DOMPropertyOperations.js": "zt3U",
+      "node_modules/react-dom/lib/ReactDOMComponentFlags.js": "51en",
+      "node_modules/react-dom/lib/ReactDOMSelect.js": "ShAC",
+      "node_modules/react-dom/lib/ReactEmptyComponent.js": "fPVY",
+      "node_modules/react-dom/lib/ReactFeatureFlags.js": "TWT6",
+      "node_modules/react-dom/lib/ReactHostComponent.js": "4HPq",
+      "node_modules/react-dom/lib/ReactInputSelection.js": "mZQ9",
+      "node_modules/react-dom/lib/ReactMount.js": "DMKF",
+      "node_modules/react-dom/lib/ReactNodeTypes.js": "/762",
+      "node_modules/react-dom/lib/ViewportMetrics.js": "pwFr",
+      "node_modules/react-dom/lib/accumulateInto.js": "+VAZ",
+      "node_modules/react-dom/lib/forEachAccumulated.js": "KFm+",
+      "node_modules/react-dom/lib/getHostComponentFromComposite.js": "dKDt",
+      "node_modules/react-dom/lib/getTextContentAccessor.js": "0AML",
+      "node_modules/react-dom/lib/instantiateReactComponent.js": "5nY2",
+      "node_modules/react-dom/lib/isTextInputElement.js": "aVE4",
+      "node_modules/react-dom/lib/setTextContent.js": "/bNP",
+      "node_modules/react-dom/lib/traverseAllChildren.js": "Xt9f",
+      "node_modules/react-redux/es/components/connectAdvanced.js": "SAW1",
+      "node_modules/react-redux/es/connect/wrapMapToProps.js": "U33l",
+      "node_modules/react-redux/es/utils/Subscription.js": "MCT5",
+      "node_modules/react-redux/es/utils/storeShape.js": "+X8o",
+      "node_modules/react-redux/es/utils/verifyPlainObject.js": "Htzn",
+      "node_modules/react/lib/ReactComponentTreeHook.js": "5LTE",
+      "node_modules/react/lib/ReactElementSymbol.js": "KKHy",
+      "node_modules/react/lib/ReactPropTypeLocationNames.js": "ueVO",
+      "node_modules/react/lib/canDefineProperty.js": "RFlT",
+      "node_modules/react/lib/getIteratorFn.js": "8iJM",
+      "node_modules/redux/es/compose.js": "lMc7",
+      "node_modules/redux/es/createStore.js": "ZBO9",
+      "node_modules/redux/es/utils/warning.js": "DEeB",
+      "node_modules/webpack/buildin/global.js": "DuR2",
+      "node_modules/classnames/index.js": "HW6M",
+      "node_modules/immutable/dist/immutable.js": "BYKG",
+      "node_modules/react-dom/index.js": "O27J",
+      "node_modules/react-redux/es/index.js": "RH2O",
+      "node_modules/fbjs/lib/camelize.js": "D+Oo",
+      "node_modules/fbjs/lib/camelizeStyleName.js": "/lfX",
+      "node_modules/fbjs/lib/containsNode.js": "2B9T",
+      "node_modules/fbjs/lib/createArrayFromMixed.js": "E6DY",
+      "node_modules/fbjs/lib/createNodesFromMarkup.js": "wLwR",
+      "node_modules/fbjs/lib/getMarkupWrap.js": "ZGRu",
+      "node_modules/fbjs/lib/getUnboundedScrollPosition.js": "znuk",
+      "node_modules/fbjs/lib/hyphenate.js": "APD3",
+      "node_modules/fbjs/lib/hyphenateStyleName.js": "mL1Z",
+      "node_modules/fbjs/lib/isNode.js": "f2RQ",
+      "node_modules/fbjs/lib/warning.js": "YyeZ",
+      "node_modules/fbjs/lib/memoizeStringOnly.js": "Jl+d",
+      "node_modules/hoist-non-react-statics/index.js": "hYij",
+      "node_modules/invariant/browser.js": "crWv",
+      "node_modules/lodash-es/_baseGetTag.js": "wqbf",
+      "node_modules/lodash-es/_freeGlobal.js": "nSxQ",
+      "node_modules/lodash-es/_getPrototype.js": "J/I/",
+      "node_modules/lodash-es/_getRawTag.js": "LF1K",
+      "node_modules/lodash-es/_objectToString.js": "X0mE",
+      "node_modules/lodash-es/_overArg.js": "28Po",
+      "node_modules/lodash-es/_root.js": "WlpS",
+      "node_modules/lodash-es/isObjectLike.js": "YByk",
+      "node_modules/react-dom/lib/ARIADOMPropertyConfig.js": "5XOy",
+      "node_modules/react-dom/lib/AutoFocusUtils.js": "plzC",
+      "node_modules/react-dom/lib/BeforeInputEventPlugin.js": "d+JT",
+      "node_modules/react-dom/lib/CSSPropertyOperations.js": "RVQV",
+      "node_modules/react-dom/lib/ChangeEventPlugin.js": "Fd0m",
+      "node_modules/react-dom/lib/Danger.js": "YJUA",
+      "node_modules/react-dom/lib/DefaultEventPluginOrder.js": "Jcur",
+      "node_modules/react-dom/lib/EnterLeaveEventPlugin.js": "thcD",
+      "node_modules/react-dom/lib/FallbackCompositionState.js": "Jk1L",
+      "node_modules/react-dom/lib/HTMLDOMPropertyConfig.js": "csjt",
+      "node_modules/react-dom/lib/ReactChildReconciler.js": "yGo3",
+      "node_modules/react-dom/lib/ReactComponentBrowserEnvironment.js": "EHDa",
+      "node_modules/react-dom/lib/ReactCompositeComponent.js": "Bj+8",
+      "node_modules/react-dom/lib/ReactDOM.js": "yote",
+      "node_modules/react-dom/lib/ReactDOMComponent.js": "kio1",
+      "node_modules/react-dom/lib/ReactDOMContainerInfo.js": "H24R",
+      "node_modules/react-dom/lib/ReactDOMEmptyComponent.js": "wFuS",
+      "node_modules/react-dom/lib/ReactDOMFeatureFlags.js": "sUfN",
+      "node_modules/react-dom/lib/ReactDOMIDOperations.js": "LNJV",
+      "node_modules/react-dom/lib/ReactDOMInput.js": "1WsN",
+      "node_modules/react-dom/lib/ReactDOMOption.js": "FQvv",
+      "node_modules/react-dom/lib/ReactDOMSelection.js": "ehig",
+      "node_modules/react-dom/lib/ReactDOMTextComponent.js": "LR//",
+      "node_modules/react-dom/lib/ReactDOMTextarea.js": "c1IZ",
+      "node_modules/react-dom/lib/ReactDOMTreeTraversal.js": "cUIy",
+      "node_modules/react-dom/lib/ReactDefaultBatchingStrategy.js": "vdcO",
+      "node_modules/react-dom/lib/ReactDefaultInjection.js": "ag9w",
+      "node_modules/react-dom/lib/ReactElementSymbol.js": "8ZYT",
+      "node_modules/react-dom/lib/ReactEventEmitterMixin.js": "mHDS",
+      "node_modules/react-dom/lib/ReactEventListener.js": "5KoS",
+      "node_modules/react-dom/lib/ReactInjection.js": "HKgI",
+      "node_modules/react-dom/lib/ReactMarkupChecksum.js": "SzO/",
+      "node_modules/react-dom/lib/ReactMultiChild.js": "4fju",
+      "node_modules/react-dom/lib/ReactOwner.js": "S4Fj",
+      "node_modules/react-dom/lib/ReactPropTypesSecret.js": "yfjF",
+      "node_modules/react-dom/lib/ReactReconcileTransaction.js": "LTYS",
+      "node_modules/react-dom/lib/ReactRef.js": "Q15r",
+      "node_modules/react-dom/lib/ReactServerRenderingTransaction.js": "P4HO",
+      "node_modules/react-dom/lib/ReactServerUpdateQueue.js": "O15z",
+      "node_modules/react-dom/lib/ReactVersion.js": "Ars9",
+      "node_modules/react-dom/lib/SVGDOMPropertyConfig.js": "EP9N",
+      "node_modules/react-dom/lib/SelectEventPlugin.js": "yy33",
+      "node_modules/react-dom/lib/SimpleEventPlugin.js": "Nc5M",
+      "node_modules/react-dom/lib/SyntheticAnimationEvent.js": "wbUH",
+      "node_modules/react-dom/lib/SyntheticClipboardEvent.js": "U5Eh",
+      "node_modules/react-dom/lib/SyntheticCompositionEvent.js": "wedt",
+      "node_modules/react-dom/lib/SyntheticDragEvent.js": "1f0M",
+      "node_modules/react-dom/lib/SyntheticFocusEvent.js": "MIAc",
+      "node_modules/react-dom/lib/SyntheticInputEvent.js": "IM0q",
+      "node_modules/react-dom/lib/SyntheticKeyboardEvent.js": "zQ3w",
+      "node_modules/react-dom/lib/SyntheticTouchEvent.js": "kE2j",
+      "node_modules/react-dom/lib/SyntheticTransitionEvent.js": "lmOh",
+      "node_modules/react-dom/lib/SyntheticWheelEvent.js": "Pi3e",
+      "node_modules/react-dom/lib/adler32.js": "iYQ6",
+      "node_modules/react-dom/lib/dangerousStyleValue.js": "n7kv",
+      "node_modules/react-dom/lib/findDOMNode.js": "9ahc",
+      "node_modules/react-dom/lib/flattenChildren.js": "f6Df",
+      "node_modules/react-dom/lib/getEventKey.js": "3oi4",
+      "node_modules/react-dom/lib/getIteratorFn.js": "w/Zh",
+      "node_modules/react-dom/lib/getNextDebugID.js": "hdgd",
+      "node_modules/react-dom/lib/getNodeForCharacterOffset.js": "Nk+5",
+      "node_modules/react-dom/lib/getVendorPrefixedEventName.js": "+KdC",
+      "node_modules/react-dom/lib/quoteAttributeValueForBrowser.js": "G524",
+      "node_modules/react-dom/lib/renderSubtreeIntoContainer.js": "W5vF",
+      "node_modules/react-redux/es/components/Provider.js": "PMgr",
+      "node_modules/react-redux/es/connect/connect.js": "yyvF",
+      "node_modules/react-redux/es/connect/mapDispatchToProps.js": "l5Tb",
+      "node_modules/react-redux/es/connect/mapStateToProps.js": "1iL5",
+      "node_modules/react-redux/es/connect/mergeProps.js": "QGoG",
+      "node_modules/react-redux/es/connect/selectorFactory.js": "VDa7",
+      "node_modules/react-redux/es/connect/verifySubselectors.js": "mqO+",
+      "node_modules/react-redux/es/utils/shallowEqual.js": "aQGf",
+      "node_modules/react/lib/KeyEscapeUtils.js": "pV5o",
+      "node_modules/react/lib/PooledClass.js": "9SWq",
+      "node_modules/react/lib/ReactChildren.js": "LTDs",
+      "node_modules/react/lib/ReactClass.js": "4has",
+      "node_modules/react/lib/ReactDOMFactories.js": "vUzd",
+      "node_modules/react/lib/ReactPropTypes.js": "S+kE",
+      "node_modules/react/lib/ReactPropTypesSecret.js": "G1fh",
+      "node_modules/react/lib/ReactPureComponent.js": "3imu",
+      "node_modules/react/lib/ReactVersion.js": "GjCS",
+      "node_modules/react/lib/onlyChild.js": "5WN7",
+      "node_modules/react/lib/traverseAllChildren.js": "MryT",
+      "node_modules/redux/es/applyMiddleware.js": "vgv3",
+      "node_modules/redux/es/bindActionCreators.js": "lCUn",
+      "node_modules/redux/es/combineReducers.js": "x52Y",
+      "node_modules/symbol-observable/index.js": "2MIV",
+      "node_modules/symbol-observable/lib/index.js": "bFAv",
+      "node_modules/symbol-observable/lib/ponyfill.js": "zzRL",
+      "node_modules/webpack/buildin/module.js": "3IRH",
+      "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/index.js": "2twT",
+      "node_modules/fbjs/lib/isTextNode.js": "uO0E",
+      "multi react react-dom redux react-redux immutable classnames": 1,
+      "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/reducers/index.js": "6RZU",
+      "node_modules/css-loader/index.js?importLoaders=1!node_modules/postcss-loader/index.js!node_modules/postcss-loader/index.js??postcss-lint!node_modules/todomvc-app-css/index.css": "6ny8",
+      "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/components/TodoList.jsx": "9V9R",
+      "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/actions/index.js": "EjY7",
+      "node_modules/css-loader/lib/css-base.js": "FZ+f",
+      "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/components/TextInput.jsx": "HETK",
+      "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/index.jsx": "KD2w",
+      "node_modules/extract-text-webpack-plugin/loader.js?{\"omit\":1,\"remove\":true}!node_modules/style-loader/index.js!node_modules/css-loader/index.js?importLoaders=1!node_modules/postcss-loader/index.js!node_modules/postcss-loader/index.js??postcss-lint!node_modules/todomvc-app-css/index.css": "KwzC",
+      "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/components/TodoHeader.jsx": "Y37l",
+      "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/components/TodoItem.jsx": "ZcM5",
+      "node_modules/style-loader/addStyles.js": "fjbf",
+      "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/components/TodoTools.jsx": "vLrk",
+      "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/containers/App.jsx": "x45e"
+    },
+    "usedIds": {
+      "0": 0,
+      "1": 1,
+      "cxPT": "cxPT",
+      "gIDI": "gIDI",
+      "BEQ0": "BEQ0",
+      "if0G": "if0G",
+      "czSA": "czSA",
+      "e6+Q": "e6+Q",
+      "Veu9": "Veu9",
+      "vg0m": "vg0m",
+      "ZhCu": "ZhCu",
+      "kvXm": "kvXm",
+      "IjcK": "IjcK",
+      "hMln": "hMln",
+      "y2pp": "y2pp",
+      "xWyi": "xWyi",
+      "G1ow": "G1ow",
+      "W2D2": "W2D2",
+      "ar93": "ar93",
+      "TJez": "TJez",
+      "PESh": "PESh",
+      "Kt1l": "Kt1l",
+      "yeCS": "yeCS",
+      "Ch7n": "Ch7n",
+      "U7vG": "U7vG",
+      "AU5s": "AU5s",
+      "MygW": "MygW",
+      "kbwd": "kbwd",
+      "2HUo": "2HUo",
+      "Li0w": "Li0w",
+      "sgb3": "sgb3",
+      "sMP3": "sMP3",
+      "rbSI": "rbSI",
+      "PCSp": "PCSp",
+      "inoO": "inoO",
+      "VoX8": "VoX8",
+      "pv5m": "pv5m",
+      "Zzr+": "Zzr+",
+      "QVRU": "QVRU",
+      "iHWm": "iHWm",
+      "lZ3b": "lZ3b",
+      "SbeA": "SbeA",
+      "+cCx": "+cCx",
+      "FdT2": "FdT2",
+      "4hnb": "4hnb",
+      "44cQ": "44cQ",
+      "MWDd": "MWDd",
+      "SBlo": "SBlo",
+      "byaS": "byaS",
+      "Le75": "Le75",
+      "CO2B": "CO2B",
+      "2KeS": "2KeS",
+      "o+pC": "o+pC",
+      "JTgD": "JTgD",
+      "9U7y": "9U7y",
+      "EZG+": "EZG+",
+      "W2nU": "W2nU",
+      "+ktn": "+ktn",
+      "er+d": "er+d",
+      "zt3U": "zt3U",
+      "51en": "51en",
+      "ShAC": "ShAC",
+      "fPVY": "fPVY",
+      "TWT6": "TWT6",
+      "4HPq": "4HPq",
+      "mZQ9": "mZQ9",
+      "DMKF": "DMKF",
+      "/762": "/762",
+      "pwFr": "pwFr",
+      "+VAZ": "+VAZ",
+      "KFm+": "KFm+",
+      "dKDt": "dKDt",
+      "0AML": "0AML",
+      "5nY2": "5nY2",
+      "aVE4": "aVE4",
+      "/bNP": "/bNP",
+      "Xt9f": "Xt9f",
+      "SAW1": "SAW1",
+      "U33l": "U33l",
+      "MCT5": "MCT5",
+      "+X8o": "+X8o",
+      "Htzn": "Htzn",
+      "5LTE": "5LTE",
+      "KKHy": "KKHy",
+      "ueVO": "ueVO",
+      "RFlT": "RFlT",
+      "8iJM": "8iJM",
+      "lMc7": "lMc7",
+      "ZBO9": "ZBO9",
+      "DEeB": "DEeB",
+      "DuR2": "DuR2",
+      "HW6M": "HW6M",
+      "BYKG": "BYKG",
+      "O27J": "O27J",
+      "RH2O": "RH2O",
+      "D+Oo": "D+Oo",
+      "/lfX": "/lfX",
+      "2B9T": "2B9T",
+      "E6DY": "E6DY",
+      "wLwR": "wLwR",
+      "ZGRu": "ZGRu",
+      "znuk": "znuk",
+      "APD3": "APD3",
+      "mL1Z": "mL1Z",
+      "f2RQ": "f2RQ",
+      "YyeZ": "YyeZ",
+      "Jl+d": "Jl+d",
+      "hYij": "hYij",
+      "crWv": "crWv",
+      "wqbf": "wqbf",
+      "nSxQ": "nSxQ",
+      "J/I/": "J/I/",
+      "LF1K": "LF1K",
+      "X0mE": "X0mE",
+      "28Po": "28Po",
+      "WlpS": "WlpS",
+      "YByk": "YByk",
+      "5XOy": "5XOy",
+      "plzC": "plzC",
+      "d+JT": "d+JT",
+      "RVQV": "RVQV",
+      "Fd0m": "Fd0m",
+      "YJUA": "YJUA",
+      "Jcur": "Jcur",
+      "thcD": "thcD",
+      "Jk1L": "Jk1L",
+      "csjt": "csjt",
+      "yGo3": "yGo3",
+      "EHDa": "EHDa",
+      "Bj+8": "Bj+8",
+      "yote": "yote",
+      "kio1": "kio1",
+      "H24R": "H24R",
+      "wFuS": "wFuS",
+      "sUfN": "sUfN",
+      "LNJV": "LNJV",
+      "1WsN": "1WsN",
+      "FQvv": "FQvv",
+      "ehig": "ehig",
+      "LR//": "LR//",
+      "c1IZ": "c1IZ",
+      "cUIy": "cUIy",
+      "vdcO": "vdcO",
+      "ag9w": "ag9w",
+      "8ZYT": "8ZYT",
+      "mHDS": "mHDS",
+      "5KoS": "5KoS",
+      "HKgI": "HKgI",
+      "SzO/": "SzO/",
+      "4fju": "4fju",
+      "S4Fj": "S4Fj",
+      "yfjF": "yfjF",
+      "LTYS": "LTYS",
+      "Q15r": "Q15r",
+      "P4HO": "P4HO",
+      "O15z": "O15z",
+      "Ars9": "Ars9",
+      "EP9N": "EP9N",
+      "yy33": "yy33",
+      "Nc5M": "Nc5M",
+      "wbUH": "wbUH",
+      "U5Eh": "U5Eh",
+      "wedt": "wedt",
+      "1f0M": "1f0M",
+      "MIAc": "MIAc",
+      "IM0q": "IM0q",
+      "zQ3w": "zQ3w",
+      "kE2j": "kE2j",
+      "lmOh": "lmOh",
+      "Pi3e": "Pi3e",
+      "iYQ6": "iYQ6",
+      "n7kv": "n7kv",
+      "9ahc": "9ahc",
+      "f6Df": "f6Df",
+      "3oi4": "3oi4",
+      "w/Zh": "w/Zh",
+      "hdgd": "hdgd",
+      "Nk+5": "Nk+5",
+      "+KdC": "+KdC",
+      "G524": "G524",
+      "W5vF": "W5vF",
+      "PMgr": "PMgr",
+      "yyvF": "yyvF",
+      "l5Tb": "l5Tb",
+      "1iL5": "1iL5",
+      "QGoG": "QGoG",
+      "VDa7": "VDa7",
+      "mqO+": "mqO+",
+      "aQGf": "aQGf",
+      "pV5o": "pV5o",
+      "9SWq": "9SWq",
+      "LTDs": "LTDs",
+      "4has": "4has",
+      "vUzd": "vUzd",
+      "S+kE": "S+kE",
+      "G1fh": "G1fh",
+      "3imu": "3imu",
+      "GjCS": "GjCS",
+      "5WN7": "5WN7",
+      "MryT": "MryT",
+      "vgv3": "vgv3",
+      "lCUn": "lCUn",
+      "x52Y": "x52Y",
+      "2MIV": "2MIV",
+      "bFAv": "bFAv",
+      "zzRL": "zzRL",
+      "3IRH": "3IRH",
+      "2twT": "2twT",
+      "uO0E": "uO0E",
+      "6RZU": "6RZU",
+      "6ny8": "6ny8",
+      "9V9R": "9V9R",
+      "EjY7": "EjY7",
+      "FZ+f": "FZ+f",
+      "HETK": "HETK",
+      "KD2w": "KD2w",
+      "KwzC": "KwzC",
+      "Y37l": "Y37l",
+      "ZcM5": "ZcM5",
+      "fjbf": "fjbf",
+      "vLrk": "vLrk",
+      "x45e": "x45e"
+    }
+  },
+  "chunks": {
+    "byName": {
+      "vendor": 0,
+      "app": 1,
+      "manifest": 2
+    },
+    "byBlocks": {},
+    "usedIds": {
+      "0": 0,
+      "1": 1,
+      "2": 2
+    }
+  },
+  "extract-text-webpack-plugin": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/css-loader/index.js?importLoaders=1!node_modules/postcss-loader/index.js!node_modules/postcss-loader/index.js??postcss-lint!node_modules/todomvc-app-css/index.css": "6ny8",
+          "node_modules/css-loader/lib/css-base.js": "FZ+f"
+        },
+        "usedIds": {
+          "6ny8": "6ny8",
+          "FZ+f": "FZ+f"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    },
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/css-loader/index.js?importLoaders=1!node_modules/postcss-loader/index.js!node_modules/postcss-loader/index.js??postcss-lint!node_modules/todomvc-app-css/index.css": "6ny8",
+          "node_modules/css-loader/lib/css-base.js": "FZ+f"
+        },
+        "usedIds": {
+          "6ny8": "6ny8",
+          "FZ+f": "FZ+f"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    },
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/css-loader/index.js?importLoaders=1!node_modules/postcss-loader/index.js!node_modules/postcss-loader/index.js??postcss-lint!node_modules/todomvc-app-css/index.css": "6ny8",
+          "node_modules/css-loader/lib/css-base.js": "FZ+f"
+        },
+        "usedIds": {
+          "6ny8": "6ny8",
+          "FZ+f": "FZ+f"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    },
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/css-loader/index.js?importLoaders=1!node_modules/postcss-loader/index.js!node_modules/postcss-loader/index.js??postcss-lint!node_modules/todomvc-app-css/index.css": "6ny8",
+          "node_modules/css-loader/lib/css-base.js": "FZ+f"
+        },
+        "usedIds": {
+          "6ny8": "6ny8",
+          "FZ+f": "FZ+f"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    },
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/css-loader/index.js?importLoaders=1!node_modules/postcss-loader/index.js!node_modules/postcss-loader/index.js??postcss-lint!node_modules/todomvc-app-css/index.css": "6ny8",
+          "node_modules/css-loader/lib/css-base.js": "FZ+f"
+        },
+        "usedIds": {
+          "6ny8": "6ny8",
+          "FZ+f": "FZ+f"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    },
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/css-loader/index.js?importLoaders=1!node_modules/postcss-loader/index.js!node_modules/postcss-loader/index.js??postcss-lint!node_modules/todomvc-app-css/index.css": "6ny8",
+          "node_modules/css-loader/lib/css-base.js": "FZ+f"
+        },
+        "usedIds": {
+          "6ny8": "6ny8",
+          "FZ+f": "FZ+f"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    },
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/css-loader/index.js?importLoaders=1!node_modules/postcss-loader/index.js!node_modules/postcss-loader/index.js??postcss-lint!node_modules/todomvc-app-css/index.css": "6ny8",
+          "node_modules/css-loader/lib/css-base.js": "FZ+f"
+        },
+        "usedIds": {
+          "6ny8": "6ny8",
+          "FZ+f": "FZ+f"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    },
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/css-loader/index.js?importLoaders=1!node_modules/postcss-loader/index.js!node_modules/postcss-loader/index.js??postcss-lint!node_modules/todomvc-app-css/index.css": "6ny8",
+          "node_modules/css-loader/lib/css-base.js": "FZ+f"
+        },
+        "usedIds": {
+          "6ny8": "6ny8",
+          "FZ+f": "FZ+f"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    }
+  ]
+}
