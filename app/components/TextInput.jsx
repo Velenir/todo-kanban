@@ -31,7 +31,7 @@ export default class TextInput extends PureComponent {
 		switch(e.key) {
 			case "Enter":
 				{
-					const {value} = this.state;
+					const value = this.state.value.trim();
 					// cancel on empty todo
 					if(value === "") return this.cancelEditing();
 					const {itemId, doneEditing} = this.props;
