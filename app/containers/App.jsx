@@ -6,16 +6,16 @@ import TodoHeader from '../components/TodoHeader';
 
 import * as actions from '../actions';
  
-const App = ({changeFilter, clearCompleted, addItem, ...rest}) => {
-	const activeItems = rest.todos ? rest.todos.filter(item => item.get("status") === "active").size : 0;
+const App = ({changeFilter, clearCompleted, addItem, todos, activeItems, filter, ...rest}) => {
+	
 	
 	return (
 		<div>
 			<section className="todoapp">
 				<TodoHeader addItem={addItem}/>
-				<TodoList {...rest} />
+				<TodoList todos={todos} {...rest} />
 				<TodoTools  changeFilter={changeFilter}
-					filter={rest.filter}
+					filter={filter}
 					nbActiveItems={activeItems}
 					clearCompleted={clearCompleted}
 				/>
@@ -24,10 +24,24 @@ const App = ({changeFilter, clearCompleted, addItem, ...rest}) => {
 	);
 };
 
-const mapStateToProps = (state) => ({
-	todos: state.get("todos"),
-	filter: state.get("filter")
-});
+function filterTodos(todos, filter) {
+	let activeItems = 0;
+		
+	if(filter !== "all") {
+		
+		todos = todos.filter(item => {
+			const status = item.get("status");
+			if(status === "active") ++activeItems;
+			return status === filter;
+		});
+	}	else {
+		activeItems = todos.filter(item => item.get("status") === "active").size;
+	}
+	
+	return {activeItems, todos, filter};
+}
+
+const mapStateToProps = (state) => filterTodos(state.get("todos"), state.get("filter"));
 
 // actions get wrapped in dispatch call
 export default connect(mapStateToProps, actions)(App);
