@@ -41,7 +41,7 @@ function filterTodos(todos, filter) {
 	return {activeItems, todos, filter};
 }
 
-const mapStateToProps = (state) => filterTodos(state.get("todos"), state.get("filter"));
+const mapStateToProps = ({todos, filter}) => filterTodos(todos, filter);
 
 // actions get wrapped in dispatch call
 export default connect(mapStateToProps, actions)(App);
