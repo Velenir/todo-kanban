@@ -1,10 +1,5 @@
 import React, {PureComponent} from 'react';
- 
-// const TextInput = () => (
-// 	<input className="edit" type="text" autoFocus={true}/>
-// );
 
-// export default TextInput;
 
 export default class TextInput extends PureComponent {
 	state = {
@@ -44,7 +39,6 @@ export default class TextInput extends PureComponent {
 	
 	componentDidMount() {
 		if(this.props.selectText) {
-			console.log("SELECTING");
 			this.itemInput.select();
 		}
 	}
@@ -56,9 +50,9 @@ export default class TextInput extends PureComponent {
 				value={this.state.value}
 				onChange={this.handleOnChange}
 				type="text"
-				ref={c => (console.log("REF"), this.itemInput = c)}
+				ref={c => this.itemInput = c}
 				onKeyDown={this.handleKeyDown}
-				onBlur={()=>this.cancelEditing()}
+				onBlur={this.cancelEditing}
 			/>
 		);
 	}
