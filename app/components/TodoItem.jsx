@@ -7,7 +7,7 @@ import TextInput from './TextInput';
 export default class TodoItem extends PureComponent {
 
 	render() {
-		const {id, text, isCompleted: completed, isEditing: editing, selectText, deleteItem, editItem, selectAndEditItem, toggleComplete, cancelEditing, doneEditing} = this.props;
+		const {id, text, isCompleted: completed, isEditing: editing, selectText, deleteItem, editItem, selectEditItem, toggleComplete, cancelEditing, doneEditing} = this.props;
 		
 		const itemClass = classnames("todo", {completed, editing});
 		
@@ -19,7 +19,7 @@ export default class TodoItem extends PureComponent {
 						onChange={() => toggleComplete(id)}
 					/>
 					<label htmlFor="todo" ref={c => this.text = c} onDoubleClick={() => editItem(id)}>
-						<span onDoubleClick={(e) => (e.stopPropagation(), selectAndEditItem(id))}>{text}</span>
+						<span onDoubleClick={(e) => (e.stopPropagation(), selectEditItem(id))}>{text}</span>
 					</label>
 					<button className="destroy" onClick={() => deleteItem(id)}></button>
 				</div>

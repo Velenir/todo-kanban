@@ -1,0 +1,9 @@
+export const TOGGLE_COMPLETE = Symbol.for("TOGGLE_COMPLETE");
+export const CHANGE_FILTER = Symbol.for("CHANGE_FILTER");
+export const EDIT_ITEM = Symbol.for("EDIT_ITEM");
+export const SELECT_EDIT_ITEM = Symbol.for("SELECT_EDIT_ITEM");
+export const CANCEL_EDITING = Symbol.for("CANCEL_EDITING");
+export const DONE_EDITING = Symbol.for("DONE_EDITING");
+export const CLEAR_COMPLETED = Symbol.for("CLEAR_COMPLETED");
+export const DELETE_ITEM = Symbol.for("DELETE_ITEM");
+export const ADD_ITEM = Symbol.for("ADD_ITEM");
