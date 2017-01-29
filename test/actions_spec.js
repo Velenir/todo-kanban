@@ -1,0 +1,51 @@
+import * as actionTypes from '../app/actions/actionTypes';
+import * as actions from '../app/actions';
+import {expect} from 'chai';
+
+describe('action creator', () => {
+	const results = {
+		default(type) {
+			return {
+				input: [1],
+				output: {type, itemId: 1}
+			};
+		},
+		changeFilter(type) {
+			return {
+				input: ["active"],
+				output: {type, filter: "active"}
+			};
+		},
+		doneEditing(type) {
+			return {
+				input: [1, "Todo text"],
+				output: {type, itemId: 1, newText: "Todo text"}
+			};
+		},
+		clearCompleted(type) {
+			return {
+				output: {type}
+			};
+		},
+		addItem(type) {
+			return {
+				input: ["Todo text"],
+				output: {type, text: "Todo text"}
+			};
+		},
+	};
+	
+	for(let actionName of Object.keys(actionTypes)) {
+		const fName = actionName.split("_").map((w, i) => i ? w[0].toUpperCase() + w.slice(1).toLowerCase() : w.toLowerCase()).join("");
+		const actionType = actionTypes[actionName];
+		const actionCreator = actions[fName];
+	
+		it(`${fName} should create ${actionName} action`, () => {
+			/*eslint import/namespace: [2, { allowComputed: true }]*/			
+			const getResults = results[fName] || results.default;
+			const {input = [], output} = getResults(actionType);
+	
+			expect(actionCreator(...input)).to.deep.equal(output);
+		});
+	}
+});
