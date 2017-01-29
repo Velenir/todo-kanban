@@ -1,4 +1,4 @@
-import {List, Map} from 'immutable';
+import {List} from 'immutable';
 import {
 	TOGGLE_COMPLETE,
 	EDIT_ITEM,
@@ -9,6 +9,9 @@ import {
 	DELETE_ITEM,
 	ADD_ITEM
 } from '../actions/actionTypes';
+import {TodoRecord} from '../helpers/immutableHelpers';
+
+import * as FILTER from './filterVars';
 
 
 function changeItemMap(action) {
@@ -17,7 +20,7 @@ function changeItemMap(action) {
 	switch (type) {
 		case TOGGLE_COMPLETE:
 			return item => item.get("id") === itemId ? item.update("status",
-				status => status === "active" ? "completed" : "active")
+				status => status === FILTER.ACTIVE ? FILTER.COMPLETED : FILTER.ACTIVE)
 			: item;
 		case EDIT_ITEM:
 			return item => item.get("id") === itemId ? item.merge({editing: true, selectText: false})
@@ -39,7 +42,7 @@ function changeItemMap(action) {
 function deleteItemCondition(action) {
 	switch (action.type) {
 		case CLEAR_COMPLETED:
-			return item => item.get("status") === "completed";
+			return item => item.get("status") === FILTER.COMPLETED;
 		case DELETE_ITEM:
 			return item => item.get("id") === action.itemId;
 		default:
@@ -50,7 +53,7 @@ function deleteItemCondition(action) {
 function createNewItem(state, action) {
 	const itemId = state.reduce((maxId, item) => Math.max(maxId, item.get("id")), 0) + 1;
 
-	return Map({id: itemId, text: action.text, status: "active"});
+	return new TodoRecord({id: itemId, text: action.text});
 }
 
 export default function (state = List(), action) {

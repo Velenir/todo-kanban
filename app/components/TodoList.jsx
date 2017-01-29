@@ -1,18 +1,19 @@
 import React, {PureComponent} from 'react';
 import TodoItem from './TodoItem';
+import * as FILTER from '../reducers/filterVars';
 
 
 export default class TodoList extends PureComponent {
 	getItems() {
 		const {todos, ...rest} = this.props;
 		return todos.map(item =>
-			<TodoItem key={item.get('id')}
+			<TodoItem key={item.id}
 				{...rest}
-				id={item.get("id")}
-				text={item.get('text')}
-				isCompleted={item.get('status') === 'completed'}
-				isEditing={item.get('editing')}
-				selectText={item.get("selectText")}
+				id={item.id}
+				text={item.text}
+				isCompleted={item.status === FILTER.COMPLETED}
+				isEditing={item.editing}
+				selectText={item.selectText}
 			/>
 		);
 	}

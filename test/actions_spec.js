@@ -1,6 +1,7 @@
 import * as actionTypes from '../app/actions/actionTypes';
 import * as actions from '../app/actions';
 import {expect} from 'chai';
+import * as FILTER from '../app/reducers/filterVars';
 
 describe('action creator', () => {
 	const results = {
@@ -12,8 +13,8 @@ describe('action creator', () => {
 		},
 		changeFilter(type) {
 			return {
-				input: ["active"],
-				output: {type, filter: "active"}
+				input: [FILTER.ACTIVE],
+				output: {type, filter: FILTER.ACTIVE}
 			};
 		},
 		doneEditing(type) {
@@ -41,7 +42,7 @@ describe('action creator', () => {
 		const actionCreator = actions[fName];
 	
 		it(`${fName} should create ${actionName} action`, () => {
-			/*eslint import/namespace: [2, { allowComputed: true }]*/			
+			/*eslint import/namespace: [2, { allowComputed: true }]*/
 			const getResults = results[fName] || results.default;
 			const {input = [], output} = getResults(actionType);
 	

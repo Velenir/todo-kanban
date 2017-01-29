@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import classnames from 'classnames';
+import * as FILTER from '../reducers/filterVars';
  
 export default class TodoTools extends PureComponent {
 	getAttributes(newFilter) {
@@ -20,17 +21,17 @@ export default class TodoTools extends PureComponent {
         </span>
         <ul className="filters">
           <li>
-            <a href="#" {...this.getAttributes("all")}>
+            <a href="#" {...this.getAttributes(FILTER.ALL)}>
               All
             </a>
           </li>
           <li>
-            <a href="#" {...this.getAttributes("active")}>
+            <a href="#" {...this.getAttributes(FILTER.ACTIVE)}>
               Active
             </a>
           </li>
           <li>
-            <a href="#" {...this.getAttributes("completed")}>
+            <a href="#" {...this.getAttributes(FILTER.COMPLETED)}>
               Completed
             </a>
           </li>
