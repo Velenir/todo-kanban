@@ -1,13 +1,10 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import TodoList from '../components/TodoList';
 import TodoTools from '../components/TodoTools';
 import TodoHeader from '../components/TodoHeader';
 
-import * as actions from '../actions';
-import {filterTodos} from '../helpers/immutableHelpers';
  
-const App = ({changeFilter, clearCompleted, addItem, todos, activeItems, filter, ...rest}) => {	
+const App = ({changeFilter, clearCompleted, addItem, todos, activeItems, filter, ...rest}) => {
 	return (
 		<div>
 			<section className="todoapp">
@@ -23,7 +20,4 @@ const App = ({changeFilter, clearCompleted, addItem, todos, activeItems, filter,
 	);
 };
 
-const mapStateToProps = ({todos, filter}) => filterTodos(todos, filter);
-
-// actions get wrapped in dispatch call
-export default connect(mapStateToProps, actions)(App);
+export default App;

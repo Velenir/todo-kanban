@@ -8,7 +8,7 @@ import {fromJS} from './helpers/immutableHelpers';
 
 import 'todomvc-app-css/index.css';
 
-import App from './containers/App';
+import App from './containers/AppContainer';
 
 const initialState = {
 	todos: fromJS([
