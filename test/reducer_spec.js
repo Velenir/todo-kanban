@@ -2,6 +2,17 @@ import {fromJS} from 'immutable';
 import {expect} from 'chai';
 
 import reducer from '../app/reducers';
+import {
+	toggleComplete,
+	changeFilter,
+	editItem,
+	selectEditItem,
+	cancelEditing,
+	doneEditing,
+	clearCompleted,
+	deleteItem,
+	addItem
+} from '../app/actions';
 
 describe('reducer', () => {
 	
@@ -13,10 +24,7 @@ describe('reducer', () => {
 				{id: 3, text: 'Immutable', status: 'completed'}
 			])
 		};
-		const action = {
-			type: 'TOGGLE_COMPLETE',
-			itemId: 1
-		};
+		const action = toggleComplete(1);
 		
 		const nextState = reducer(initialState, action);
 		
@@ -35,10 +43,7 @@ describe('reducer', () => {
 				{id: 3, text: 'Immutable', status: 'completed'}
 			])
 		};
-		const action = {
-			type: 'TOGGLE_COMPLETE',
-			itemId: 3
-		};
+		const action = toggleComplete(3);
 		
 		const nextState = reducer(initialState, action);
 		
@@ -53,10 +58,7 @@ describe('reducer', () => {
 		const initialState = {
 			filter: 'all'
 		};
-		const action = {
-			type: 'CHANGE_FILTER',
-			filter: 'active'
-		};
+		const action = changeFilter("active");
 		
 		const nextState = reducer(initialState, action);
 		
@@ -69,10 +71,7 @@ describe('reducer', () => {
 				{id: 1, text: 'React', status: 'active', editing: false}
 			])
 		};
-		const action = {
-			type: 'EDIT_ITEM',
-			itemId: 1
-		};
+		const action = editItem(1);
 		
 		const nextState = reducer(initialState, action);
 		
@@ -87,10 +86,7 @@ describe('reducer', () => {
 				{id: 1, text: 'React', status: 'active', editing: false}
 			])
 		};
-		const action = {
-			type: 'SELECT_EDIT_ITEM',
-			itemId: 1
-		};
+		const action = selectEditItem(1);
 		
 		const nextState = reducer(initialState, action);
 		
@@ -105,10 +101,7 @@ describe('reducer', () => {
 				{id: 1, text: 'React', status: 'active', editing: true}
 			])
 		};
-		const action = {
-			type: 'CANCEL_EDITING',
-			itemId: 1
-		};
+		const action = cancelEditing(1);
 		
 		const nextState = reducer(initialState, action);
 		expect(nextState).to.have.property("todos").that.equals(fromJS([
@@ -122,11 +115,7 @@ describe('reducer', () => {
 				{id: 1, text: 'React', status: 'active', editing: true}
 			])
 		};
-		const action = {
-			type: 'DONE_EDITING',
-			itemId: 1,
-			newText: 'Redux',
-		};
+		const action = doneEditing(1, "Redux");
 		
 		const nextState = reducer(initialState, action);
 		expect(nextState).to.have.property("todos").that.equals(fromJS([
@@ -141,9 +130,7 @@ describe('reducer', () => {
 				{id: 2, text: 'Redux', status: 'completed'}
 			])
 		};
-		const action = {
-			type: 'CLEAR_COMPLETED'
-		};
+		const action = clearCompleted();
 		
 		const nextState = reducer(initialState, action);
 		
@@ -158,10 +145,7 @@ describe('reducer', () => {
 				{id: 7, text: 'React', status: 'active'}
 			])
 		};
-		const action = {
-			type: 'ADD_ITEM',
-			text: 'Redux'
-		};
+		const action = addItem("Redux");
 		
 		const nextState = reducer(initialState, action);
 		
@@ -178,10 +162,7 @@ describe('reducer', () => {
 				{id: 2, text: 'Redux', status: 'completed'},
 			])
 		};
-		const action = {
-			type: 'DELETE_ITEM',
-			itemId: 2
-		};
+		const action = deleteItem(2);
 		
 		const nextState = reducer(initialState, action);
 		

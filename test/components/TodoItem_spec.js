@@ -107,10 +107,10 @@ describe('TodoItem', () => {
 		const editItem = () => text = 'Redux';
 		
 		let selected = false;
-		// mock selectAndEditItem function
-		const selectAndEditItem = () => selected = true;
+		// mock selectEditItem function
+		const selectEditItem = () => selected = true;
 		const component = renderIntoDocument(
-			<TodoItem text={text} editItem={editItem} selectAndEditItem={selectAndEditItem}/>
+			<TodoItem text={text} editItem={editItem} selectEditItem={selectEditItem}/>
 		);
 		
 		const span = scryRenderedDOMComponentsWithTag(component, 'span');
