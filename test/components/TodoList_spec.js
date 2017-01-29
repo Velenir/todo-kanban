@@ -3,6 +3,7 @@ import {renderIntoDocument, scryRenderedDOMComponentsWithTag} from 'react-addons
 import TodoList from '../../app/components/TodoList';
 import {expect} from 'chai';
 import {List, Map} from 'immutable';
+import {filterTodos} from '../../app/helpers/immutableHelpers';
 
 describe('TodoList', () => {
 	it('should render a list with only the active items if the fiter is active', () => {
@@ -12,9 +13,11 @@ describe('TodoList', () => {
       Map({id: 3, text: 'Immutable', status: 'completed'})
     ),
 			filter = 'active';
+			
+		const filteredTodos = filterTodos(todos,filter).todos;
 		
 		const component = renderIntoDocument(
-			<TodoList filter={filter} todos={todos} />
+			<TodoList todos={filteredTodos} />
 		);
 		
 		const items = scryRenderedDOMComponentsWithTag(component, "li");
@@ -31,8 +34,11 @@ describe('TodoList', () => {
 			Map({id: 3, text: 'Immutable', status: 'completed'})
 		),
 			filter = 'completed';
+			
+		const filteredTodos = filterTodos(todos,filter).todos;
+			
 		const component = renderIntoDocument(
-			<TodoList filter={filter} todos={todos} />
+			<TodoList todos={filteredTodos} />
 		);
 		const items = scryRenderedDOMComponentsWithTag(component, 'li');
 		
