@@ -1,4 +1,4 @@
-import {fromJS} from 'immutable';
+import {fromJS} from '../app/helpers/immutableHelpers';
 import {expect} from 'chai';
 
 import reducer from '../app/reducers';
