@@ -1,4 +1,4 @@
-import {List, Map} from 'immutable';
+import {List} from 'immutable';
 import {
 	TOGGLE_COMPLETE,
 	EDIT_ITEM,
@@ -9,6 +9,7 @@ import {
 	DELETE_ITEM,
 	ADD_ITEM
 } from '../actions/actionTypes';
+import {TodoRecord} from '../helpers/immutableHelpers';
 
 
 function changeItemMap(action) {
@@ -50,7 +51,7 @@ function deleteItemCondition(action) {
 function createNewItem(state, action) {
 	const itemId = state.reduce((maxId, item) => Math.max(maxId, item.get("id")), 0) + 1;
 
-	return Map({id: itemId, text: action.text, status: "active"});
+	return new TodoRecord({id: itemId, text: action.text});
 }
 
 export default function (state = List(), action) {
