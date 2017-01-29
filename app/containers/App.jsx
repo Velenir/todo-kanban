@@ -5,10 +5,9 @@ import TodoTools from '../components/TodoTools';
 import TodoHeader from '../components/TodoHeader';
 
 import * as actions from '../actions';
+import {filterTodos} from '../helpers/immutableHelpers';
  
-const App = ({changeFilter, clearCompleted, addItem, todos, activeItems, filter, ...rest}) => {
-	
-	
+const App = ({changeFilter, clearCompleted, addItem, todos, activeItems, filter, ...rest}) => {	
 	return (
 		<div>
 			<section className="todoapp">
@@ -23,23 +22,6 @@ const App = ({changeFilter, clearCompleted, addItem, todos, activeItems, filter,
 		</div>
 	);
 };
-
-function filterTodos(todos, filter) {
-	let activeItems = 0;
-		
-	if(filter !== "all") {
-		
-		todos = todos.filter(item => {
-			const status = item.get("status");
-			if(status === "active") ++activeItems;
-			return status === filter;
-		});
-	}	else {
-		activeItems = todos.filter(item => item.get("status") === "active").size;
-	}
-	
-	return {activeItems, todos, filter};
-}
 
 const mapStateToProps = ({todos, filter}) => filterTodos(todos, filter);
 
