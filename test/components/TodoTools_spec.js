@@ -1,6 +1,7 @@
 import React from 'react';
 import {renderIntoDocument, scryRenderedDOMComponentsWithTag, Simulate} from 'react-addons-test-utils';
 import TodoTools from '../../app/components/TodoTools';
+import * as FILTER from '../../app/reducers/filterVars';
 import {expect} from 'chai';
 
 describe('TodoTools', () => {
@@ -16,7 +17,7 @@ describe('TodoTools', () => {
 	});
 	
 	it('should highlight the active filter', () => {
-		const filter = 'active';
+		const filter = FILTER.ACTIVE;
 		const component = renderIntoDocument(
 			<TodoTools filter={filter} />
 		);

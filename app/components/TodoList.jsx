@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import TodoItem from './TodoItem';
+import * as FILTER from '../reducers/filterVars';
 
 
 export default class TodoList extends PureComponent {
@@ -10,7 +11,7 @@ export default class TodoList extends PureComponent {
 				{...rest}
 				id={item.id}
 				text={item.text}
-				isCompleted={item.status === 'completed'}
+				isCompleted={item.status === FILTER.COMPLETED}
 				isEditing={item.editing}
 				selectText={item.selectText}
 			/>

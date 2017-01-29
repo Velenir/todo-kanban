@@ -11,6 +11,8 @@ import {
 } from '../actions/actionTypes';
 import {TodoRecord} from '../helpers/immutableHelpers';
 
+import * as FILTER from './filterVars';
+
 
 function changeItemMap(action) {
 	const {type, itemId} = action;
@@ -18,7 +20,7 @@ function changeItemMap(action) {
 	switch (type) {
 		case TOGGLE_COMPLETE:
 			return item => item.get("id") === itemId ? item.update("status",
-				status => status === "active" ? "completed" : "active")
+				status => status === FILTER.ACTIVE ? FILTER.COMPLETED : FILTER.ACTIVE)
 			: item;
 		case EDIT_ITEM:
 			return item => item.get("id") === itemId ? item.merge({editing: true, selectText: false})
@@ -40,7 +42,7 @@ function changeItemMap(action) {
 function deleteItemCondition(action) {
 	switch (action.type) {
 		case CLEAR_COMPLETED:
-			return item => item.get("status") === "completed";
+			return item => item.get("status") === FILTER.COMPLETED;
 		case DELETE_ITEM:
 			return item => item.get("id") === action.itemId;
 		default:
