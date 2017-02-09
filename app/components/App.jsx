@@ -3,6 +3,9 @@ import TodoList from '../components/TodoList';
 import TodoTools from '../components/TodoTools';
 import TodoHeader from '../components/TodoHeader';
 
+import {DragDropContext} from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+
  
 const App = ({changeFilter, clearCompleted, addItem, todos, activeItems, filter, ...rest}) => {
 	return (
@@ -20,4 +23,4 @@ const App = ({changeFilter, clearCompleted, addItem, todos, activeItems, filter,
 	);
 };
 
-export default App;
+export default DragDropContext(HTML5Backend)(App);

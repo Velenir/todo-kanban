@@ -1,18 +1,35 @@
 import React, {PureComponent} from 'react';
 import classnames from 'classnames';
 
+import {DragSource} from 'react-dnd';
+import * as ItemTypes from '../helpers/itemTypes';
+
 import TextInput from './TextInput';
 
 
-export default class TodoItem extends PureComponent {
+const todoItemSource = {
+	beginDrag({id}) {
+		return {id};
+	}
+};
+
+function collect(connect, monitor) {
+	return {
+		connectDragSource: connect.dragSource(),
+		isDragging: monitor.isDragging()
+	};
+}
+
+
+class TodoItem extends PureComponent {
 
 	render() {
-		const {id, text, isCompleted: completed, isEditing: editing, selectText, deleteItem, editItem, selectEditItem, toggleComplete, cancelEditing, doneEditing} = this.props;
+		const {id, text, isCompleted: completed, isEditing: editing, selectText, deleteItem, editItem, selectEditItem, toggleComplete, cancelEditing, doneEditing, connectDragSource, isDragging} = this.props;
 		
 		const itemClass = classnames("todo", {completed, editing});
 		
-		return (
-			<li className={itemClass}>
+		return connectDragSource(
+			<li className={itemClass} style={{opacity: isDragging ? 0.5 : 1}}>
 				<div className="view">
 					<input type="checkbox" className="toggle"
 						checked={completed}
@@ -32,3 +49,5 @@ export default class TodoItem extends PureComponent {
 		);
 	}
 }
+
+export default DragSource(ItemTypes.TODO_ITEM, todoItemSource, collect)(TodoItem);
