@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import TodoList from '../components/TodoList';
 import TodoTools from '../components/TodoTools';
 import TodoHeader from '../components/TodoHeader';
@@ -6,21 +6,31 @@ import TodoHeader from '../components/TodoHeader';
 import {DragDropContext} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
+import {findItemEntry} from '../helpers/immutableHelpers';
+
  
-const App = ({changeFilter, clearCompleted, addItem, todos, activeItems, filter, ...rest}) => {
-	return (
-		<div>
-			<section className="todoapp">
-				<TodoHeader addItem={addItem}/>
-				<TodoList todos={todos} {...rest} />
-				<TodoTools  changeFilter={changeFilter}
-					filter={filter}
-					nbActiveItems={activeItems}
-					clearCompleted={clearCompleted}
-				/>
-			</section>
-		</div>
-	);
-};
+class App extends Component {
+	findItem = (itemId) => {
+		return findItemEntry(this.props.todos, itemId);
+	}
+	
+	render() {
+		const {changeFilter, clearCompleted, addItem, todos, activeItems, filter, ...rest} = this.props;
+		
+		return (
+			<div>
+				<section className="todoapp">
+					<TodoHeader addItem={addItem}/>
+					<TodoList todos={todos} {...rest} findItem={this.findItem} />
+					<TodoTools  changeFilter={changeFilter}
+						filter={filter}
+						nbActiveItems={activeItems}
+						clearCompleted={clearCompleted}
+					/>
+				</section>
+			</div>
+		);
+	}
+}
 
 export default DragDropContext(HTML5Backend)(App);

@@ -7,7 +7,8 @@ import {
 	DONE_EDITING,
 	CLEAR_COMPLETED,
 	DELETE_ITEM,
-	ADD_ITEM
+	ADD_ITEM,
+	MOVE_ITEM
 } from '../actions/actionTypes';
 import {TodoRecord} from '../helpers/immutableHelpers';
 
@@ -56,6 +57,11 @@ function createNewItem(state, action) {
 	return new TodoRecord({id: itemId, text: action.text});
 }
 
+function moveItem(state, {itemEntry: [fromIndex, item], toIndex}) {
+	console.log("Moving", item.text, "from", fromIndex, "to", toIndex);
+	return state.delete(fromIndex).insert(toIndex, item);
+}
+
 export default function (state = List(), action) {
 	switch (action.type) {
 		case TOGGLE_COMPLETE:
@@ -69,6 +75,8 @@ export default function (state = List(), action) {
 			return state.filterNot(deleteItemCondition(action));
 		case ADD_ITEM:
 			return state.push(createNewItem(state, action));
+		case MOVE_ITEM:
+			return moveItem(state, action);
 		default:
 			return state;
 	}

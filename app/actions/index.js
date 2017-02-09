@@ -7,7 +7,8 @@ import {
 	DONE_EDITING,
 	CLEAR_COMPLETED,
 	DELETE_ITEM,
-	ADD_ITEM
+	ADD_ITEM,
+	MOVE_ITEM
 } from './actionTypes';
 
 export function toggleComplete(itemId) {
@@ -70,5 +71,13 @@ export function addItem(text) {
 	return {
 		type: ADD_ITEM,
 		text
+	};
+}
+
+export function moveItem(itemEntry, toIndex) {
+	return {
+		type: MOVE_ITEM,
+		itemEntry,
+		toIndex
 	};
 }
