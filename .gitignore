@@ -41,9 +41,6 @@ dump
 #ESLint cache file
 .eslintcache
 
-#Stylelint config file
-.stylelintrc
-
 #Pug-lint config file
 .pug-lintrc
 
