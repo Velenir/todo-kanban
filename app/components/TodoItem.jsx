@@ -15,6 +15,9 @@ const todoItemSource = {
 			id,
 			originalIndex: findItem(id)
 		};
+	},
+	canDrag({isEditing}) {
+		return !isEditing;
 	}
 };
 
