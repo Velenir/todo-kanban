@@ -57,6 +57,8 @@
     "classnames": "^2.2.5",
     "immutable": "^3.8.1",
     "react": "^15.4.2",
+    "react-dnd": "^2.2.3",
+    "react-dnd-html5-backend": "^2.2.3",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0",

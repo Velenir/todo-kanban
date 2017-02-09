@@ -66,7 +66,7 @@ module.exports = function(env) {
 			parts.extractBundles([
 				{
 					name: 'vendor',
-					entries: ['react', 'react-dom', 'redux', 'react-redux', 'immutable', 'classnames']
+					entries: ['react', 'react-dom', 'redux', 'react-redux', 'immutable', 'classnames', 'react-dnd', 'react-dnd-html5-backend']
 				},
 				{
 					name: 'manifest'
