@@ -275,6 +275,29 @@
           "0": 0
         }
       }
+    },
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/pug-runtime/index.js": "coDY",
+          "external \"fs\"": 0,
+          "node_modules/pug-loader/stringify.loader.js!node_modules/html-webpack-template-pug/mixins.pug": "B3Hk",
+          "node_modules/pug-loader/index.js!node_modules/html-webpack-template-pug/layout.pug": "zt4+"
+        },
+        "usedIds": {
+          "0": 0,
+          "coDY": "coDY",
+          "B3Hk": "B3Hk",
+          "zt4+": "zt4+"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
     }
   ],
   "modules": {
@@ -500,7 +523,14 @@
       "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/components/TodoItem.jsx": "ZcM5",
       "node_modules/style-loader/addStyles.js": "fjbf",
       "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/components/TodoTools.jsx": "vLrk",
-      "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/containers/App.jsx": "x45e"
+      "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/containers/App.jsx": "x45e",
+      "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/reducers/filterVars.js": "1XHQ",
+      "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/helpers/immutableHelpers.js": "9OeN",
+      "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/actions/actionTypes.js": "H0/e",
+      "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/reducers/todoReducer.js": "Jz0t",
+      "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/containers/AppContainer.jsx": "Kk7G",
+      "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/reducers/filterReducer.js": "NoA+",
+      "node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!node_modules/eslint-loader/index.js!app/components/App.jsx": "TMhL"
     },
     "usedIds": {
       "0": 0,
@@ -724,7 +754,14 @@
       "ZcM5": "ZcM5",
       "fjbf": "fjbf",
       "vLrk": "vLrk",
-      "x45e": "x45e"
+      "x45e": "x45e",
+      "1XHQ": "1XHQ",
+      "9OeN": "9OeN",
+      "H0/e": "H0/e",
+      "Jz0t": "Jz0t",
+      "Kk7G": "Kk7G",
+      "NoA+": "NoA+",
+      "TMhL": "TMhL"
     }
   },
   "chunks": {
@@ -741,6 +778,25 @@
     }
   },
   "extract-text-webpack-plugin": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/css-loader/index.js?importLoaders=1!node_modules/postcss-loader/index.js!node_modules/postcss-loader/index.js??postcss-lint!node_modules/todomvc-app-css/index.css": "6ny8",
+          "node_modules/css-loader/lib/css-base.js": "FZ+f"
+        },
+        "usedIds": {
+          "6ny8": "6ny8",
+          "FZ+f": "FZ+f"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    },
     {
       "modules": {
         "byIdentifier": {

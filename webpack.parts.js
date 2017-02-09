@@ -92,9 +92,9 @@ exports.extractCSS = function(paths) {
 					// Restrict extraction process to the given paths.
 					include: paths,
 					
-					loader: ExtractTextPlugin.extract({
-						fallbackLoader: 'style-loader',
-						loader: ['css-loader?importLoaders=1', 'postcss-loader']
+					use: ExtractTextPlugin.extract({
+						fallback: 'style-loader',
+						use: ['css-loader?importLoaders=1', 'postcss-loader']
 					})
 				},
 				// Extract SCSS during build
@@ -103,9 +103,9 @@ exports.extractCSS = function(paths) {
 					// Restrict extraction process to the given paths.
 					include: paths,
 					
-					loader: ExtractTextPlugin.extract({
-						fallbackLoader: 'style-loader',
-						loader: ['css-loader', 'postcss-loader', 'sass-loader']
+					use: ExtractTextPlugin.extract({
+						fallback: 'style-loader',
+						use: ['css-loader', 'postcss-loader', 'sass-loader']
 					})
 				}
 			]
@@ -128,7 +128,6 @@ exports.lintCSS = function(paths, options) {
 					loader: 'postcss-loader',
 					enforce: 'pre',
 					options: {
-						ident: 'postcss-lint',
 						plugins:
 						[
 							require('stylelint')(Object.assign({
