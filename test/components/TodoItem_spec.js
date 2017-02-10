@@ -1,9 +1,17 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {renderIntoDocument, scryRenderedDOMComponentsWithTag, Simulate} from 'react-addons-test-utils';
-import TodoItem from '../../app/components/TodoItem';
+import DragTodoItem from '../../app/components/TodoItem';
 import {expect} from 'chai';
 
 describe('TodoItem', () => {
+	// Wrap pre-DnD component with stubbed React DnD connector functions
+	class TodoItem extends Component {
+		render() {
+			// also pass refs through
+			return <DragTodoItem.DecoratedComponent connectDragSource={el => el} connectDropTarget={el => el} {...this.props} ref={c => this.text = c && c.text}/>;
+		}
+	}
+	
 	it('should render an item', () => {
 		const text = "React";
 		const component = renderIntoDocument(

@@ -1,11 +1,16 @@
 import React from 'react';
 import {renderIntoDocument, scryRenderedDOMComponentsWithTag} from 'react-addons-test-utils';
-import TodoList from '../../app/components/TodoList';
+import DropTodoList from '../../app/components/TodoList';
+import TestBackend from 'react-dnd-test-backend';
+import { DragDropContext } from 'react-dnd';
 import {expect} from 'chai';
 import {filterTodos, fromJS} from '../../app/helpers/immutableHelpers';
 import * as FILTER from '../../app/reducers/filterVars';
 
 describe('TodoList', () => {
+	// Wrap DnD component in context with test backend
+	const TodoList = DragDropContext(TestBackend)(DropTodoList);
+	
 	it('should render a list with only the active items if the fiter is active', () => {
 		const todos = fromJS([
       {id: 1, text: 'React', status: FILTER.ACTIVE},

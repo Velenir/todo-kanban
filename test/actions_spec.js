@@ -34,6 +34,12 @@ describe('action creator', () => {
 				output: {type, text: "Todo text"}
 			};
 		},
+		moveItem(type) {
+			return {
+				input: [[1, {id: 1, text: "Todo text"}], 2],
+				output: {type, itemEntry: [1, {id: 1, text: "Todo text"}], toIndex: 2}
+			};
+		}
 	};
 	
 	for(let actionName of Object.keys(actionTypes)) {
