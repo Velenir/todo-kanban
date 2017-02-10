@@ -66,7 +66,7 @@ class TodoItem extends PureComponent {
 		const itemClass = classnames("todo", {completed, editing});
 		
 		return connectDragSource(connectDropTarget(
-			<li className={itemClass} style={{opacity: isDragging ? 0.2 : 1}}>
+			<li className={itemClass} style={{opacity: isDragging ? 0.05 : 1}}>
 				<div className="view">
 					<input type="checkbox" className="toggle"
 						checked={completed}
