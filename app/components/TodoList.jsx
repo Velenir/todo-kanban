@@ -2,8 +2,20 @@ import React, {PureComponent} from 'react';
 import TodoItem from './TodoItem';
 import * as FILTER from '../reducers/filterVars';
 
+import {TODO_ITEM} from '../helpers/itemTypes';
+import {DropTarget} from 'react-dnd';
 
-export default class TodoList extends PureComponent {
+const todoListTarget = {
+	drop() {}
+};
+
+function collectTarget(connect) {
+	return {
+		connectDropTarget: connect.dropTarget()
+	};
+}
+
+class TodoList extends PureComponent {
 	getItems() {
 		const {todos, ...rest} = this.props;
 		return todos.map(item =>
@@ -19,7 +31,7 @@ export default class TodoList extends PureComponent {
 	}
 	
 	render() {
-		return (
+		return this.props.connectDropTarget(
 			<section className="main">
 				<ul className="todo-list">
 					{this.getItems()}
@@ -28,3 +40,5 @@ export default class TodoList extends PureComponent {
 		);
 	}
 }
+
+export default DropTarget(TODO_ITEM, todoListTarget, collectTarget)(TodoList);

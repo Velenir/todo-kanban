@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import classnames from 'classnames';
 
 import {DragSource, DropTarget} from 'react-dnd';
-import * as ItemTypes from '../helpers/itemTypes';
+import {TODO_ITEM} from '../helpers/itemTypes';
 import {compose} from 'redux';
 
 import TextInput from './TextInput';
@@ -13,11 +13,18 @@ const todoItemSource = {
 		console.log("BEGIN DRAG", id);
 		return {
 			id,
-			originalIndex: findItem(id)
+			originalIndex: findItem(id)[0]
 		};
 	},
 	canDrag({isEditing}) {
 		return !isEditing;
+	},
+	endDrag(props, monitor) {
+		console.log("DID DROP", monitor.didDrop());
+		if(!monitor.didDrop()) {
+			const {id, originalIndex} = monitor.getItem();
+			props.moveItem(props.findItem(id), originalIndex);
+		}
 	}
 };
 
@@ -81,6 +88,6 @@ class TodoItem extends PureComponent {
 }
 
 export default compose(
-	DragSource(ItemTypes.TODO_ITEM, todoItemSource, collectSource),
-	DropTarget(ItemTypes.TODO_ITEM, todoItemTarget, collectTarget)
+	DragSource(TODO_ITEM, todoItemSource, collectSource),
+	DropTarget(TODO_ITEM, todoItemTarget, collectTarget)
 )(TodoItem);
