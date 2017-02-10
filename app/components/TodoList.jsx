@@ -17,7 +17,7 @@ function collectTarget(connect) {
 
 class TodoList extends PureComponent {
 	getItems() {
-		const {todos, ...rest} = this.props;
+		const {todos, connectDropTarget, ...rest} = this.props;	//eslint-disable-line no-unused-vars
 		return todos.map(item =>
 			<TodoItem key={item.id}
 				{...rest}
