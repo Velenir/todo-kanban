@@ -6,14 +6,8 @@ import TodoHeader from '../components/TodoHeader';
 import {DragDropContext} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
-import {findItemEntry} from '../helpers/immutableHelpers';
-
  
 class App extends Component {
-	findItem = (itemId) => {
-		return findItemEntry(this.props.todos, itemId);
-	}
-	
 	render() {
 		const {changeFilter, clearCompleted, addItem, todos, activeItems, filter, ...rest} = this.props;
 		
@@ -21,7 +15,7 @@ class App extends Component {
 			<div>
 				<section className="todoapp">
 					<TodoHeader addItem={addItem}/>
-					<TodoList todos={todos} {...rest} findItem={this.findItem} />
+					<TodoList todos={todos} {...rest}/>
 					<TodoTools  changeFilter={changeFilter}
 						filter={filter}
 						nbActiveItems={activeItems}
