@@ -10,7 +10,6 @@ import TextInput from './TextInput';
 
 const todoItemSource = {
 	beginDrag({id, findItem}) {
-		console.log("BEGIN DRAG", id);
 		return {
 			id,
 			originalIndex: findItem(id)[0]
@@ -20,7 +19,6 @@ const todoItemSource = {
 		return !isEditing;
 	},
 	endDrag(props, monitor) {
-		console.log("DID DROP", monitor.didDrop());
 		if(!monitor.didDrop()) {
 			const {id, originalIndex} = monitor.getItem();
 			props.moveItem(props.findItem(id), originalIndex);
@@ -42,7 +40,6 @@ const todoItemTarget = {
 	hover(props, monitor) {
 		const {id: draggedId} = monitor.getItem();
 		const {id: overId} = props;
-		// console.log("HOVERING", draggedId, "over", overId);
 		
 		if(draggedId !== overId) {
 			const [overIndex] = props.findItem(overId);
