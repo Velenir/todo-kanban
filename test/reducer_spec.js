@@ -1,4 +1,4 @@
-import {fromJS} from '../app/helpers/immutableHelpers';
+import {fromJS, findItemEntry} from '../app/helpers/immutableHelpers';
 import {expect} from 'chai';
 
 import reducer from '../app/reducers';
@@ -11,7 +11,8 @@ import {
 	doneEditing,
 	clearCompleted,
 	deleteItem,
-	addItem
+	addItem,
+	moveItem
 } from '../app/actions';
 import * as FILTER from '../app/reducers/filterVars';
 
@@ -160,7 +161,7 @@ describe('reducer', () => {
 		const initialState = {
 			todos: fromJS([
 				{id: 1, text: 'React', status: FILTER.ACTIVE},
-				{id: 2, text: 'Redux', status: FILTER.COMPLETED},
+				{id: 2, text: 'Redux', status: FILTER.COMPLETED}
 			])
 		};
 		const action = deleteItem(2);
@@ -168,6 +169,23 @@ describe('reducer', () => {
 		const nextState = reducer(initialState, action);
 		
 		expect(nextState).to.have.property("todos").that.equals(fromJS([
+			{id: 1, text: 'React', status: FILTER.ACTIVE}
+		]));
+	});
+	
+	it('should handle MOVE_ITEM by moving the item to a new index', () => {
+		const initialState = {
+			todos: fromJS([
+				{id: 1, text: 'React', status: FILTER.ACTIVE},
+				{id: 2, text: 'Redux', status: FILTER.ACTIVE}
+			])
+		};
+		const action = moveItem(findItemEntry(initialState.todos, 2), 0);
+		
+		const nextState = reducer(initialState, action);
+		
+		expect(nextState).to.have.property("todos").that.equals(fromJS([
+			{id: 2, text: 'Redux', status: FILTER.ACTIVE},
 			{id: 1, text: 'React', status: FILTER.ACTIVE}
 		]));
 	});
