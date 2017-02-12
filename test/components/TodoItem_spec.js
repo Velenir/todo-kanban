@@ -1,16 +1,13 @@
-import React, {Component} from 'react';
-import {renderIntoDocument, scryRenderedDOMComponentsWithTag, Simulate} from 'react-addons-test-utils';
+import React from 'react';
+import {renderIntoDocument, scryRenderedDOMComponentsWithTag, findRenderedDOMComponentWithTag, findRenderedComponentWithType, Simulate} from 'react-addons-test-utils';
 import DragTodoItem from '../../app/components/TodoItem';
 import {expect} from 'chai';
+import TestBackend from 'react-dnd-test-backend';
+import { DragDropContext } from 'react-dnd';
 
 describe('TodoItem', () => {
-	// Wrap pre-DnD component with stubbed React DnD connector functions
-	class TodoItem extends Component {
-		render() {
-			// also pass refs through
-			return <DragTodoItem.DecoratedComponent connectDragSource={el => el} connectDropTarget={el => el} {...this.props} ref={c => this.text = c && c.text}/>;
-		}
-	}
+	// Wrap DnD component in context with test backend
+	const TodoItem = DragDropContext(TestBackend)(DragTodoItem);
 	
 	it('should render an item', () => {
 		const text = "React";
@@ -102,8 +99,8 @@ describe('TodoItem', () => {
 			<TodoItem text={text} editItem={editItem}/>
 		);
 		
-		const label = component.text;
-		Simulate.doubleClick(label);
+		const label = scryRenderedDOMComponentsWithTag(component, 'label');
+		Simulate.doubleClick(label[0]);
 		
 		expect(text).to.equal('Redux');
 	});
@@ -128,7 +125,7 @@ describe('TodoItem', () => {
 		expect(text).to.equal('React');
 	});
 	
-	it('should autofocus one of TextInput  when updated with props.isEditing = true', (done) => {
+	it('should autofocus one of TextInput when updated with props.isEditing = true', (done) => {
 		const text = 'React';
 		
 		class Com extends React.Component {
@@ -153,5 +150,59 @@ describe('TodoItem', () => {
 			expect(document.activeElement === input[1]).to.be.true;
 			done();
 		});
+	});
+	
+	it('should lower opacity when dragged', () => {
+		const text = 'React';
+		// Stub findItem and moveItem functions
+		const findItem = () => [];
+		const moveItem = () => {};
+		
+		const component = renderIntoDocument(
+			<TodoItem text={text} findItem={findItem} moveItem={moveItem}/>
+		);
+		
+		const backend = component.getManager().getBackend();
+
+		// Test that the opacity is 1
+		let li = findRenderedDOMComponentWithTag(component, 'li');
+		expect(li.style.opacity).to.equal("1");
+		
+		// Find the drag source ID and use it to simulate the dragging operation
+		const item = findRenderedComponentWithType(component, DragTodoItem);
+		backend.simulateBeginDrag([item.getHandlerId()]);
+		
+		// Verify that the li changed its opacity
+		expect(li.style.opacity).to.be.below(1);
+		
+		backend.simulateEndDrag();
+	});
+	
+	it('should not allow dragging while editing', () => {
+		// expect(() => backend.simulateDrop()).to.throw(Error);
+		const text = 'React';
+		// Stub findItem and moveItem functions
+		const findItem = () => [];
+		const moveItem = () => {};
+		
+		const component = renderIntoDocument(
+			<TodoItem text={text} findItem={findItem} moveItem={moveItem} isEditing/>
+		);
+		
+		const backend = component.getManager().getBackend();
+
+		// Test that the opacity is 1
+		let li = findRenderedDOMComponentWithTag(component, 'li');
+		expect(li.style.opacity).to.equal("1");
+		
+		// Find the drag source ID and use it to simulate the dragging operation
+		const item = findRenderedComponentWithType(component, DragTodoItem);
+		backend.simulateBeginDrag([item.getHandlerId()]);
+		
+		// throws if nothing is being dragged
+		expect(() => backend.simulateEndDrag()).to.throw();
+		
+		// Verify that the li didn't change its opacity
+		expect(li.style.opacity).to.equal("1");
 	});
 });
