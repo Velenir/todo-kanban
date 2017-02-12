@@ -69,7 +69,7 @@ class TodoItem extends PureComponent {
 						checked={completed}
 						onChange={() => toggleComplete(id)}
 					/>
-					<label htmlFor="todo" ref={c => this.text = c} onDoubleClick={() => editItem(id)}>
+					<label htmlFor="todo" onDoubleClick={() => editItem(id)}>
 						<span onDoubleClick={(e) => (e.stopPropagation(), selectEditItem(id))}>{text}</span>
 					</label>
 					<button className="destroy" onClick={() => deleteItem(id)}></button>

@@ -16,7 +16,6 @@ class TodoHeader extends PureComponent {
 				<h1>todos</h1>
 				<input className="new-todo"
 					autoFocus
-					ref={c => this.addTodoInput = c}
 					autoComplete="off"
 					placeholder="What needs to be done?"
 					onKeyPress={this.handleKeyPress}
