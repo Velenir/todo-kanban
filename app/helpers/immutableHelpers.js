@@ -14,7 +14,7 @@ export function filterTodos(todos, filter) {
 	}	else {
 		activeItems = todos.filter(item => item.get("status") === FILTER.ACTIVE).size;
 	}
-	
+	console.log("Filtered todos:", activeItems, todos, filter);
 	return {activeItems, todos, filter};
 }
 
