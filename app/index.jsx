@@ -23,7 +23,9 @@ const store = createStore(reducer, initialState, process.env.NODE_ENV !== 'produ
 	serialize: {
 		options: {
 			symbol: true
-		}
+		},
+		immutable: require('immutable'),
+		refs: [require('./helpers/immutableHelpers').TodoRecord]
 	}
 }) : undefined);
 
