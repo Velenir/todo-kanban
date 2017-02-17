@@ -1,7 +1,16 @@
 import {Record, Iterable, fromJS} from 'immutable';
 import * as FILTER from '../reducers/filterVars';
 
+const filteredCache = new WeakMap();
+
 export function filterTodos(todos, filter) {
+	const inCache = filteredCache.get(todos);
+	if(inCache && filter in inCache) {
+		console.log("Filtered from cache");
+		return inCache[filter];
+	}
+	
+	
 	let activeItems = 0;
 		
 	if(filter !== FILTER.ALL) {
@@ -15,7 +24,17 @@ export function filterTodos(todos, filter) {
 		activeItems = todos.filter(item => item.get("status") === FILTER.ACTIVE).size;
 	}
 	console.log("Filtered todos:", activeItems, todos, filter);
-	return {activeItems, todos, filter};
+	const filtered = {activeItems, todos, filter};
+	if(inCache) {
+		console.log("ADDING to already in cache");
+		inCache[filter] = filtered;
+		console.log(inCache);
+	} else {
+		console.log("ADDING to new in cache");
+		filteredCache.set(todos, {[filter]: filtered});
+	}
+	
+	return filtered;
 }
 
 
