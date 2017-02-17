@@ -11,73 +11,83 @@ import {
 	MOVE_ITEM
 } from './actionTypes';
 
-export function toggleComplete(itemId) {
+export function toggleComplete(listIndex, itemId) {
 	return {
 		type: TOGGLE_COMPLETE,
-		itemId
+		itemId,
+		listIndex
 	};
 }
 
-export function changeFilter(filter) {
+export function changeFilter(listIndex, filter) {
 	return {
 		type: CHANGE_FILTER,
-		filter
+		filter,
+		listIndex
 	};
 }
 
-export function editItem(itemId) {
+export function editItem(listIndex, itemId) {
 	return {
 		type: EDIT_ITEM,
-		itemId
+		itemId,
+		listIndex
 	};
 }
 
-export function selectEditItem(itemId) {
+export function selectEditItem(listIndex, itemId) {
 	return {
 		type: SELECT_EDIT_ITEM,
-		itemId
+		itemId,
+		listIndex
 	};
 }
 
-export function cancelEditing(itemId) {
+export function cancelEditing(listIndex, itemId) {
 	return {
 		type: CANCEL_EDITING,
-		itemId
+		itemId,
+		listIndex
 	};
 }
 
-export function doneEditing(itemId, newText) {
+export function doneEditing(listIndex, itemId, newText) {
 	return {
 		type: DONE_EDITING,
 		itemId,
-		newText
+		newText,
+		listIndex
 	};
 }
 
-export function clearCompleted() {
+export function clearCompleted(listIndex) {
 	return {
 		type: CLEAR_COMPLETED,
+		listIndex
 	};
 }
 
-export function deleteItem(itemId) {
+export function deleteItem(listIndex, itemId) {
 	return {
 		type: DELETE_ITEM,
-		itemId
+		itemId,
+		listIndex
 	};
 }
 
-export function addItem(text) {
+export function addItem(listIndex, text) {
 	return {
 		type: ADD_ITEM,
-		text
+		text,
+		listIndex
 	};
 }
 
-export function moveItem(itemEntry, toIndex) {
+export function moveItem(listIndex, itemEntry, toIndex) {
 	return {
 		type: MOVE_ITEM,
 		itemEntry,
-		toIndex
+		toIndex,
+		listIndex
 	};
 }
