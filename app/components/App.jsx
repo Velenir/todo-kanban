@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import TodoList from '../components/TodoList';
 import TodoTools from '../components/TodoTools';
 import TodoHeader from '../components/TodoHeader';
@@ -7,7 +7,7 @@ import {DragDropContext} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
  
-class App extends Component {
+class App extends PureComponent {
 	render() {
 		const {changeFilter, clearCompleted, addItem, todos, activeItems, filter, ...rest} = this.props;
 		
