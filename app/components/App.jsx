@@ -9,14 +9,15 @@ import HTML5Backend from 'react-dnd-html5-backend';
  
 class App extends PureComponent {
 	render() {
-		// eslint-disable-next-line no-unused-vars
-		const {changeFilter, clearCompleted, addItem, todos, activeItems, filter, listIndex, title, ...rest} = this.props;
+		const {changeFilter, changeTitle, clearCompleted, addItem, activeItems, filter, listIndex, title, ...rest} = this.props;
 		
 		return (
 			<div>
 				<section className="todoapp">
-					<TodoHeader addItem={addItem}/>
-					<TodoList todos={todos} {...rest}/>
+					<TodoHeader changeTitle={changeTitle} addItem={addItem}
+						title={title} listIndex={listIndex}
+					/>
+					<TodoList {...rest}/>
 					<TodoTools  changeFilter={changeFilter}
 						filter={filter}
 						nbActiveItems={activeItems}
