@@ -9,6 +9,19 @@ import App from '../components/App';
 // 	findItem: findItemEntry.bind(null, todos)
 // });
 
+const boundFindItem = new WeakMap();
+function bindNewFindItem(todos) {
+	const inCache = boundFindItem.get(todos);
+	if(inCache) {
+		console.log("findItems from cache");
+		return inCache;
+	}
+	
+	const bound = findItemEntry.bind(null, todos);
+	boundFindItem.set(todos, bound);
+	return bound;
+}
+
 const mapStateToProps = ({lists}, {listIndex}) => {
 	const list = lists.get(listIndex);
 	const todos = list.get("todos");
@@ -16,7 +29,8 @@ const mapStateToProps = ({lists}, {listIndex}) => {
 	const title = list.get("title");
 	return {
 		...filterTodos(todos, filter),
-		findItem: findItemEntry.bind(null, todos),
+		// findItem: findItemEntry.bind(null, todos),
+		findItem: bindNewFindItem(todos),
 		title
 	};
 };
