@@ -8,7 +8,7 @@
     "function-comma-space-after": null,
     "rule-nested-empty-line-before": null,
 		"no-eol-whitespace": [true, {ignore: ["empty-lines"]}],
-    "comment-empty-line-before": ["always", {"except": ["first-nested"], "ignore": ["between-comments", "stylelint-commands"]}]
+    "comment-empty-line-before": ["always", {"except": ["first-nested"], "ignore": ["after-comment", "stylelint-commands"]}]
   },
   "ignoreFiles": "./build/**/*"
 }
