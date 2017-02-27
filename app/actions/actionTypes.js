@@ -8,3 +8,4 @@ export const CLEAR_COMPLETED = Symbol.for("CLEAR_COMPLETED");
 export const DELETE_ITEM = Symbol.for("DELETE_ITEM");
 export const ADD_ITEM = Symbol.for("ADD_ITEM");
 export const MOVE_ITEM = Symbol.for("MOVE_ITEM");
+export const CHANGE_TITLE = Symbol.for("CHANGE_TITLE");
