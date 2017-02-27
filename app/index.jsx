@@ -8,6 +8,7 @@ import {fromJS} from './helpers/immutableHelpers';
 import {Map, List} from 'immutable';
 
 import 'todomvc-app-css/index.css';
+import './scss/style.scss';
 
 import Board from './containers/BoardContainer';
 

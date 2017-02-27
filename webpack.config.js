@@ -7,6 +7,10 @@ const parts = require('./webpack.parts');
 const PATHS = {
 	app: path.join(__dirname, 'app'),
 	build: path.join(__dirname, 'build'),
+	style: [
+		path.join(__dirname, 'node_modules', 'todomvc-app-css'),
+		path.join(__dirname, 'app', 'scss')
+	],
 	images: path.join(__dirname, 'app', 'images')
 };
 
@@ -74,7 +78,7 @@ module.exports = function(env) {
 			]),
 			parts.clean(PATHS.build),
 			parts.generateSourcemaps('source-map'),
-			parts.extractCSS(),
+			parts.extractCSS(PATHS.style),
 			parts.optimizeImages(PATHS.images)
 		]);
 	}
@@ -97,7 +101,7 @@ module.exports = function(env) {
 			emitWarning: true
 		}),
 		parts.generateSourcemaps('eval-source-map'),
-		parts.loadCSS(),
+		parts.loadCSS(PATHS.style),
 		parts.displayImages(PATHS.images),
 		parts.devServer({
 			// Customize host/port here if needed
