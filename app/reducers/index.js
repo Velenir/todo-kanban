@@ -3,6 +3,7 @@ import {combineReducers} from 'redux-immutable';
 
 import todos from './todoReducer';
 import filter from './filterReducer';
+import title from './titleReducer';
 import {List} from 'immutable';
 
 import {
@@ -15,13 +16,14 @@ import {
 	DELETE_ITEM,
 	ADD_ITEM,
 	MOVE_ITEM,
-	CHANGE_FILTER
+	CHANGE_FILTER,
+	CHANGE_TITLE
 } from '../actions/actionTypes';
 
 export const todoReducer = combineReducers({
 	todos,
 	filter,
-	title: (state = "") => state
+	title
 });
 
 // function combineImmutableReducers(reducerObject, getDefaultState = Map) {
@@ -59,6 +61,7 @@ export default function listsReducer(state = {lists: List()}, action) {
 		case ADD_ITEM:
 		case MOVE_ITEM:
 		case CHANGE_FILTER:
+		case CHANGE_TITLE:
 			return {
 				lists: state.lists.update(action.listIndex, list => todoReducer(list, action))
 			};
