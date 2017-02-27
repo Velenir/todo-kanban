@@ -3,7 +3,7 @@ import {combineReducers} from 'redux-immutable';
 
 import todos from './todoReducer';
 import filter from './filterReducer';
-import {List, Map} from 'immutable';
+import {List} from 'immutable';
 
 import {
 	TOGGLE_COMPLETE,
@@ -24,28 +24,28 @@ export const todoReducer = combineReducers({
 	title: (state = "") => state
 });
 
-function combineImmutableReducers(reducerObject, getDefaultState = Map) {
-	return function(state = getDefaultState(), action) {
-	// 	const toMerge = {};
-	// 	for (let key in reducerObject) {
-	// 		toMerge[key] = reducerObject[key](state.get(key), action);
-	// 	}
-	// 	return state.merge(Map(toMerge));
-	//
-		return state.withMutations(temp => {
-			for (let key in reducerObject) {
-				temp.set(key, reducerObject[key](state.get(key), action));
-			}
-			
-			return temp;
-		});
-	};
-}
+// function combineImmutableReducers(reducerObject, getDefaultState = Map) {
+// 	return function(state = getDefaultState(), action) {
+// 	// 	const toMerge = {};
+// 	// 	for (let key in reducerObject) {
+// 	// 		toMerge[key] = reducerObject[key](state.get(key), action);
+// 	// 	}
+// 	// 	return state.merge(Map(toMerge));
+// 	//
+// 		return state.withMutations(temp => {
+// 			for (let key in reducerObject) {
+// 				temp.set(key, reducerObject[key](state.get(key), action));
+// 			}
+//
+// 			return temp;
+// 		});
+// 	};
+// }
 
-const todoIm = combineImmutableReducers({
-	todos,
-	filter
-});
+// const todoIm = combineImmutableReducers({
+// 	todos,
+// 	filter
+// });
 
 export default function listsReducer(state = {lists: List()}, action) {
 	switch (action.type) {
