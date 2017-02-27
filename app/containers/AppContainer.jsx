@@ -26,6 +26,7 @@ const mapDispatchToProps = (dispatch, {listIndex}) => {
 	console.log("BINDING Actions to list", listIndex);
 	for (let key of Object.keys(actions)) {
 		const action = actions[key];	// eslint-disable-line import/namespace
+		// pass actions bound to specific listIndex, corresponding to each <App/> element
 		boundActions[key] = (...args) => dispatch(action.call(null, listIndex, ...args));
 	}
 	

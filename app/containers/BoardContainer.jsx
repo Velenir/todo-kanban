@@ -10,7 +10,6 @@ import Board from '../components/Board';
 // });
 
 const mapStateToProps = ({lists}) => ({
-	lists,
 	listsNumber: lists.size
 });
 

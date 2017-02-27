@@ -9,7 +9,8 @@ import HTML5Backend from 'react-dnd-html5-backend';
  
 class App extends PureComponent {
 	render() {
-		const {changeFilter, clearCompleted, addItem, todos, activeItems, filter, ...rest} = this.props;
+		// eslint-disable-next-line no-unused-vars
+		const {changeFilter, clearCompleted, addItem, todos, activeItems, filter, listIndex, title, ...rest} = this.props;
 		
 		return (
 			<div>
