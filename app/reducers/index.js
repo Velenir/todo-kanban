@@ -66,8 +66,6 @@ export default function listsReducer(state = {lists: List()}, action) {
 				lists: state.lists.update(action.listIndex, list => todoReducer(list, action))
 			};
 		default:
-			return {
-				lists: state.lists.map(list => todoReducer(list, action))
-			};
+			return state;
 	}
 }

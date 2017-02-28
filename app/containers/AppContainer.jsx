@@ -24,9 +24,9 @@ function bindNewFindItem(todos) {
 
 const mapStateToProps = ({lists}, {listIndex}) => {
 	const list = lists.get(listIndex);
-	const todos = list.get("todos");
-	const filter = list.get("filter");
-	const title = list.get("title");
+	const todos = list.todos;
+	const filter = list.filter;
+	const title = list.title;
 	return {
 		...filterTodos(todos, filter),
 		// findItem: findItemEntry.bind(null, todos),

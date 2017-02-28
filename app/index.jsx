@@ -4,8 +4,8 @@ import {render} from 'react-dom';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import reducer from './reducers';
-import {fromJS} from './helpers/immutableHelpers';
-import {Map, List} from 'immutable';
+import {fromJS, ListRecord} from './helpers/immutableHelpers';
+import {List} from 'immutable';
 
 import 'todomvc-app-css/index.css';
 import './scss/style.scss';
@@ -21,7 +21,7 @@ import Board from './containers/BoardContainer';
 // };
 const initialState = {
 	lists: List.of(
-		Map({
+		ListRecord({
 			title: "Technologies used",
 			todos: fromJS([
 				{id: 1, text: 'React'},
@@ -29,7 +29,7 @@ const initialState = {
 				{id: 3, text: 'Immutable'}
 			])
 		}),
-		Map({
+		ListRecord({
 			title: "New List",
 			todos: fromJS([
 				{id: 1, text: 'Item 1'},
