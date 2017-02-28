@@ -4,8 +4,8 @@ import {render} from 'react-dom';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import reducer from './reducers';
-import {fromJS, ListRecord} from './helpers/immutableHelpers';
-import {List} from 'immutable';
+import {fromJS, ListRecord, List} from './helpers/immutableHelpers';
+// import {List} from 'immutable';
 
 import 'todomvc-app-css/index.css';
 import './scss/style.scss';
@@ -52,7 +52,7 @@ const store = createStore(reducer, initialState, process.env.NODE_ENV !== 'produ
 	}
 }) : undefined);
 
-console.log("STORE", store.getState().lists.toJS());
+// console.log("STORE", store.getState().lists.toJS());
 
 
 render(

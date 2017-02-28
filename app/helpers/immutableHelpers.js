@@ -42,7 +42,7 @@ export const TodoRecord = Record({id: null, text: "", status: FILTER.ACTIVE, edi
 
 export const ListRecord = Record({title: "", todos: List(), filter: FILTER.ALL});
 
-
+let IndexAcessedList;
 if("Proxy" in window) {
 	const indexedProto = new Proxy(Object.prototype, {
 		get(target, property, receiver) {
@@ -57,7 +57,30 @@ if("Proxy" in window) {
 	});
 	
 	Object.setPrototypeOf(Iterable.prototype, indexedProto);
+	
+	IndexAcessedList = List;
+} else {
+	Object.defineProperties(Array.prototype, {
+		"update": {
+			value(index, cb) {
+				console.log("update", index);
+				this[index] = cb(this[index]);
+				return this;
+			}
+		},
+		"size": {
+			get() {
+				return this.length;
+			}
+		}
+	});
+	
+	IndexAcessedList = ar => ar;
+	
+	IndexAcessedList.of = Array.of.bind(Array);
 }
+
+export {IndexAcessedList as List};
 
 function fromJSWithRecords(obj, reviver = (k,v) => {
 	const isIndexed = Iterable.isIndexed(v);
