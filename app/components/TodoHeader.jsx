@@ -47,7 +47,8 @@ class TodoHeader extends PureComponent {
 			<header className="header">
 				<h3 contentEditable suppressContentEditableWarning
 					onKeyDown={this.handleTitleChange}
-					onBlur={this.handleTitleBlur}>
+					onBlur={this.handleTitleBlur}
+					data-placeholder="name this list">
 					{title}
 				</h3>
 				<input className="new-todo"
