@@ -23,7 +23,7 @@ function bindNewFindItem(todos) {
 }
 
 const mapStateToProps = ({lists}, {listIndex}) => {
-	const list = lists.get(listIndex);
+	const list = lists[listIndex];
 	const todos = list.todos;
 	const filter = list.filter;
 	const title = list.title;

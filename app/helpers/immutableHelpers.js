@@ -43,6 +43,22 @@ export const TodoRecord = Record({id: null, text: "", status: FILTER.ACTIVE, edi
 export const ListRecord = Record({title: "", todos: List(), filter: FILTER.ALL});
 
 
+if("Proxy" in window) {
+	const indexedProto = new Proxy(Object.prototype, {
+		get(target, property, receiver) {
+			if(typeof property === "string") {
+				// throws for Symbols
+				const index = +property;
+				if(Number.isInteger(index)) return receiver.get(index);
+			}
+			
+			return Reflect.get(target, property, receiver);
+		}
+	});
+	
+	Object.setPrototypeOf(Iterable.prototype, indexedProto);
+}
+
 function fromJSWithRecords(obj, reviver = (k,v) => {
 	const isIndexed = Iterable.isIndexed(v);
 	return isIndexed ? v.toList() : new TodoRecord(v.toMap());
