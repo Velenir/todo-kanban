@@ -47,6 +47,7 @@ if("Proxy" in window) {
 	const indexedProto = new Proxy(Object.prototype, {
 		get(target, property, receiver) {
 			if(typeof property === "string") {
+				if(property === "length") return receiver.size;
 				// throws for Symbols
 				const index = +property;
 				if(Number.isInteger(index)) return receiver.get(index);
@@ -60,18 +61,10 @@ if("Proxy" in window) {
 	
 	IndexAcessedList = List;
 } else {
-	Object.defineProperties(Array.prototype, {
-		"update": {
-			value(index, cb) {
-				console.log("update", index);
-				this[index] = cb(this[index]);
-				return this;
-			}
-		},
-		"size": {
-			get() {
-				return this.length;
-			}
+	Object.defineProperty(Array.prototype, "update", {
+		value(index, cb) {
+			this[index] = cb(this[index]);
+			return this;
 		}
 	});
 	
