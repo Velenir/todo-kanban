@@ -66,8 +66,9 @@ if("Proxy" in window) {
 		"update": {
 			value(index, cb) {
 				console.log("update", index);
-				this[index] = cb(this[index]);
-				return this;
+				const newAr = this.slice();
+				newAr[index] = cb(newAr[index]);
+				return newAr;
 			}
 		},
 		"push": {
