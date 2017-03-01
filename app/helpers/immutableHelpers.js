@@ -61,10 +61,21 @@ if("Proxy" in window) {
 	
 	IndexAcessedList = List;
 } else {
-	Object.defineProperty(Array.prototype, "update", {
-		value(index, cb) {
-			this[index] = cb(this[index]);
-			return this;
+	const originalPush = Array.prototype.push;
+	Object.defineProperties(Array.prototype, {
+		"update": {
+			value(index, cb) {
+				console.log("update", index);
+				this[index] = cb(this[index]);
+				return this;
+			}
+		},
+		"push": {
+			value() {
+				const newAr = this.slice();
+				originalPush.apply(newAr, arguments);
+				return newAr;
+			}
 		}
 	});
 	
