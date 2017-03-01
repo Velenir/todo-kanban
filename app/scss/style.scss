@@ -17,3 +17,21 @@
 		text-shadow: none;
 	}
 }
+
+.addapp {
+	margin: 60px 0 40px;
+
+	button {
+		width: 3rem;
+		height: 3rem;
+		font-size: 2em;
+		border-radius: 50%;
+		background-color: white;
+		box-shadow: 0 0 2px 2px rgba(160, 160, 160, 0.45);
+		transition: box-shadow .2s;
+
+		&:active {
+			box-shadow: 0 0 2px 2px rgba(160, 160, 160, 0.45), inset 0 0 8px rgba(0, 0, 0, 0.44);
+		}
+	}
+}

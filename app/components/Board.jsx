@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import AddApp from './AddApp';
 import App from '../containers/AppContainer';
 
 class Board extends Component {
@@ -11,8 +12,13 @@ class Board extends Component {
 		return (
 			<div>
 				{listApps}
+				<AddApp/>
 			</div>
 		);
+	}
+	
+	componentDidUpdate() {
+		console.warn("BOARD UPDATED");
 	}
 }
 
