@@ -1,20 +1,44 @@
-.todoapp h3 {
+.todoapp .titlespace {
 	position: absolute;
-	top: -2.3em;
-	width: 100%;
-	font-size: 2em;
-	font-weight: 100;
-	text-align: center;
-	color: #5e3838;
-	text-rendering: optimizeLegibility;
-	text-shadow: 1px 2px 3px grey;
-	padding-bottom: 7px;
-	box-shadow: 0 15px 9px -8px rgba(210, 199, 194, 0.55), 0 2px 2px rgba(156, 156, 156, 0.56);
+	top: -2rem;
+	$buttonWidth: 1.7rem;
+	$buttonGap: 5px;
 
-	&:empty::after {
-		content: attr(data-placeholder);
-		color: rgba(93, 99, 105, 0.44);
-		text-shadow: none;
+	width: calc(100% + #{$buttonWidth} + #{$buttonGap});
+
+	h3 {
+		margin: 0;
+		font-size: 2em;
+		font-weight: 100;
+		text-align: center;
+		color: #5e3838;
+		text-rendering: optimizeLegibility;
+		text-shadow: 1px 2px 3px grey;
+		padding-bottom: 7px;
+		box-shadow: 0 15px 9px -8px rgba(210, 199, 194, 0.55), 0 2px 2px rgba(156, 156, 156, 0.56);
+		width: calc(100% - #{$buttonWidth} - #{$buttonGap});
+		display: inline-block;
+
+		&:empty::after {
+			content: attr(data-placeholder);
+			color: rgba(93, 99, 105, 0.44);
+			text-shadow: none;
+		}
+	}
+
+	button {
+		width: $buttonWidth;
+		height: $buttonWidth * 0.94;
+		font-size: 1.5em;
+		box-shadow: 0 15px 9px -8px rgba(210, 199, 194, 0.55), 0 2px 2px rgba(156, 156, 156, 0.56), 0 0 2px rgba(156, 156, 156, 0.14);
+		margin-left: $buttonGap;
+		vertical-align: bottom;
+		border-radius: 15%;
+		transition: box-shadow .2s;
+
+		&:active {
+			box-shadow: 0 15px 9px -8px rgba(210, 199, 194, 0.55), 0 2px 2px rgba(156, 156, 156, 0.56), 0 0 2px rgba(156, 156, 156, 0.14), inset 0 0 2px rgba(0, 0, 0, 0.44);
+		}
 	}
 }
 

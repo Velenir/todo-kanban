@@ -45,12 +45,15 @@ class TodoHeader extends PureComponent {
 		const {title, listIndex} = this.props;
 		return (
 			<header className="header">
-				<h3 contentEditable suppressContentEditableWarning
-					onKeyDown={this.handleTitleChange}
-					onBlur={this.handleTitleBlur}
-					data-placeholder="name this list">
-					{title}
-				</h3>
+				<div className="titlespace">
+					<h3 contentEditable suppressContentEditableWarning
+						onKeyDown={this.handleTitleChange}
+						onBlur={this.handleTitleBlur}
+						data-placeholder="name this list">
+						{title}
+					</h3>
+					<button type="button">x</button>
+				</div>
 				<input className="new-todo"
 					autoFocus={listIndex === 0}
 					autoComplete="off"
