@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import AddApp from './AddApp';
 import App from '../containers/AppContainer';
 
+import {DragDropContext} from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+
 class Board extends Component {
 	render() {
 		const {listsNumber, addList} = this.props, listApps = [];
@@ -22,4 +25,4 @@ class Board extends Component {
 	}
 }
 
-export default Board;
+export default DragDropContext(HTML5Backend)(Board);

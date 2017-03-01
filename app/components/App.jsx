@@ -3,9 +3,6 @@ import TodoList from '../components/TodoList';
 import TodoTools from '../components/TodoTools';
 import TodoHeader from '../components/TodoHeader';
 
-import {DragDropContext} from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
-
  
 class App extends PureComponent {
 	render() {
@@ -43,4 +40,4 @@ class App extends PureComponent {
 	}
 }
 
-export default DragDropContext(HTML5Backend)(App);
+export default App;
