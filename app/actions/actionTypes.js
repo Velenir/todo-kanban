@@ -9,3 +9,4 @@ export const DELETE_ITEM = Symbol.for("DELETE_ITEM");
 export const ADD_ITEM = Symbol.for("ADD_ITEM");
 export const MOVE_ITEM = Symbol.for("MOVE_ITEM");
 export const CHANGE_TITLE = Symbol.for("CHANGE_TITLE");
+export const ADD_LIST = Symbol.for("ADD_LIST");

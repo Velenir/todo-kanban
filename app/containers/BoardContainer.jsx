@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+import {addList} from '../actions';
 // import * as actions from '../actions';
 // import {filterTodos, findItemEntry} from '../helpers/immutableHelpers';
 
@@ -14,4 +15,4 @@ const mapStateToProps = ({lists}) => ({
 });
 
 // actions get wrapped in dispatch call
-export default connect(mapStateToProps)(Board);
+export default connect(mapStateToProps, {addList})(Board);

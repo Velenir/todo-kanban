@@ -5,7 +5,7 @@ class AddApp extends Component {
 		return (
 			<div>
 				<section className="addapp">
-					<button type="button">+</button>
+					<button type="button" onClick={this.props.addList}>+</button>
 				</section>
 			</div>
 		);

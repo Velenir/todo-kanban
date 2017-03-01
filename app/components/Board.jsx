@@ -4,7 +4,7 @@ import App from '../containers/AppContainer';
 
 class Board extends Component {
 	render() {
-		const {listsNumber} = this.props, listApps = [];
+		const {listsNumber, addList} = this.props, listApps = [];
 		for (let i = 0; i < listsNumber; ++i) {
 			listApps.push(<App listIndex={i} key={i}/>);
 		}
@@ -12,7 +12,7 @@ class Board extends Component {
 		return (
 			<div>
 				{listApps}
-				<AddApp/>
+				<AddApp addList={addList}/>
 			</div>
 		);
 	}

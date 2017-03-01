@@ -9,7 +9,8 @@ import {
 	DELETE_ITEM,
 	ADD_ITEM,
 	MOVE_ITEM,
-	CHANGE_TITLE
+	CHANGE_TITLE,
+	ADD_LIST
 } from './actionTypes';
 
 export function toggleComplete(listIndex, itemId) {
@@ -98,5 +99,11 @@ export function changeTitle(listIndex, title) {
 		type: CHANGE_TITLE,
 		listIndex,
 		title
+	};
+}
+
+export function addList() {
+	return {
+		type: ADD_LIST
 	};
 }
