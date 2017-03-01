@@ -25,7 +25,8 @@ import {
 export const todoReducer = combineReducers({
 	todos,
 	filter,
-	title
+	title,
+	newlyAdded: () => false
 });
 
 // function combineImmutableReducers(reducerObject, getDefaultState = Map) {
