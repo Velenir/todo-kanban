@@ -1,5 +1,6 @@
 // import {combineReducers} from 'redux';
 import {combineReducers} from 'redux-immutable';
+import {ListRecord} from '../helpers/immutableHelpers';
 
 import todos from './todoReducer';
 import filter from './filterReducer';
@@ -17,7 +18,8 @@ import {
 	ADD_ITEM,
 	MOVE_ITEM,
 	CHANGE_FILTER,
-	CHANGE_TITLE
+	CHANGE_TITLE,
+	ADD_LIST
 } from '../actions/actionTypes';
 
 export const todoReducer = combineReducers({
@@ -64,6 +66,10 @@ export default function listsReducer(state = {lists: List()}, action) {
 		case CHANGE_TITLE:
 			return {
 				lists: state.lists.update(action.listIndex, list => todoReducer(list, action))
+			};
+		case ADD_LIST:
+			return {
+				lists: state.lists.push(new ListRecord())
 			};
 		default:
 			return state;
