@@ -19,7 +19,8 @@ import {
 	MOVE_ITEM,
 	CHANGE_FILTER,
 	CHANGE_TITLE,
-	ADD_LIST
+	ADD_LIST,
+	REMOVE_LIST
 } from '../actions/actionTypes';
 
 export const todoReducer = combineReducers({
@@ -71,6 +72,10 @@ export default function listsReducer(state = {lists: List()}, action) {
 		case ADD_LIST:
 			return {
 				lists: state.lists.push(new ListRecord({newlyAdded: true}))
+			};
+		case REMOVE_LIST:
+			return {
+				lists: state.lists.remove(action.listIndex)
 			};
 		default:
 			return state;

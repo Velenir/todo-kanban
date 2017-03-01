@@ -42,7 +42,7 @@ class TodoHeader extends PureComponent {
 	}
 	
 	render() {
-		const {title, listIndex} = this.props;
+		const {title, listIndex, removeList} = this.props;
 		return (
 			<header className="header">
 				<div className="titlespace">
@@ -52,7 +52,7 @@ class TodoHeader extends PureComponent {
 						data-placeholder="name this list">
 						{title}
 					</h3>
-					<button type="button">x</button>
+					<button type="button" onClick={removeList}>x</button>
 				</div>
 				<input className="new-todo"
 					autoFocus={listIndex === 0}
