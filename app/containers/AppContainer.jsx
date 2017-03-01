@@ -23,15 +23,14 @@ function bindNewFindItem(todos) {
 }
 
 const mapStateToProps = ({lists}, {listIndex}) => {
-	const list = lists[listIndex];
-	const todos = list.todos;
-	const filter = list.filter;
-	const title = list.title;
+	const {todos, filter, title, newlyAdded} = lists[listIndex];
+	
 	return {
 		...filterTodos(todos, filter),
 		// findItem: findItemEntry.bind(null, todos),
 		findItem: bindNewFindItem(todos),
-		title
+		title,
+		newlyAdded
 	};
 };
 
