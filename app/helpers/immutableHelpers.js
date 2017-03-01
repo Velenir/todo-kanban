@@ -76,6 +76,13 @@ if("Proxy" in window) {
 				originalPush.apply(newAr, arguments);
 				return newAr;
 			}
+		},
+		"remove": {
+			value(index) {
+				const newAr = this.slice();
+				newAr.splice(index, 1);
+				return newAr;
+			}
 		}
 	});
 	
