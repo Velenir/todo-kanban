@@ -6,6 +6,7 @@ import {TODO_ITEM} from '../helpers/itemTypes';
 import {DropTarget} from 'react-dnd';
 
 const todoListTarget = {
+	// just allow for drop
 	drop() {}
 };
 

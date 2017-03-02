@@ -53,8 +53,37 @@ export const todoReducer = combineReducers({
 // 	filter
 // });
 
+function moveItem(state, {listIndex, itemEntry: [fromIndex, item], toIndex, fromListIndex}) {
+	// return state.delete(fromIndex).insert(toIndex, item);
+	console.log("from", fromListIndex, fromIndex, ", to", listIndex, toIndex);
+	const fromList = state[fromListIndex].deleteIn(["todos", fromIndex]);
+	console.log("BEFORE:", state[fromListIndex].todos.size, "AFTER:", fromList.todos.size, state[fromListIndex].todos[fromIndex] === fromList.todos[fromIndex]);
+	console.log(state[fromListIndex].todos[fromIndex], fromList.todos[fromIndex]);
+	console.log("BEFORE:", state[fromListIndex].todos.toJS(), "AFTER:", fromList.todos.toJS());
+	// const toList = state[listIndex].todos.insert(toIndex, item);
+	const toList = state[listIndex].update("todos", todos => todos.insert(toIndex, item));
+	console.log("BEFORE:", state[listIndex].todos.size, "AFTER:", toList.todos.size);
+	console.log("BEFORE:", state[listIndex].todos.toJS(), "AFTER:", toList.todos.toJS());
+	// console.log(item);
+	const res = state.withMutations(temp =>
+		temp.set(fromListIndex, fromList).set(listIndex, toList)
+	);
+	console.log("RESULT:",res.toJS(), res===state);
+	return res;
+	return state.merge({[fromListIndex]: fromList, [listIndex]: toList});
+}
+
 export default function listsReducer(state = {lists: List()}, action) {
 	switch (action.type) {
+		case MOVE_ITEM:
+			console.log(action.fromListIndex, "->", action.listIndex);
+			if(action.listIndex !== action.fromListIndex) {
+				console.log("TO DIFFERENT LIST");
+				return {
+					lists: moveItem(state.lists, action)
+				};
+			}
+		// falls through
 		case TOGGLE_COMPLETE:
 		case EDIT_ITEM:
 		case SELECT_EDIT_ITEM:
@@ -63,7 +92,6 @@ export default function listsReducer(state = {lists: List()}, action) {
 		case CLEAR_COMPLETED:
 		case DELETE_ITEM:
 		case ADD_ITEM:
-		case MOVE_ITEM:
 		case CHANGE_FILTER:
 		case CHANGE_TITLE:
 			return {
