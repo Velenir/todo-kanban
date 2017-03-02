@@ -9,21 +9,17 @@ import TextInput from './TextInput';
 
 
 const todoItemSource = {
-	beginDrag({id, findItem, listIndex}) {
+	beginDrag({id, findItem}) {
 		return {
 			id,
-			originalIndex: findItem(id)[0],
-			originalListIndex: listIndex,
-			findOriginalItem: findItem
+			originalIndex: findItem(id)[0]
 		};
 	},
 	canDrag({isEditing}) {
 		return !isEditing;
 	},
 	endDrag(props, monitor) {
-		// if dropped not on DropTarget (neither on TodoItem nor on TodoList)
 		if(!monitor.didDrop()) {
-			// return to original place
 			const {id, originalIndex} = monitor.getItem();
 			props.moveItem(props.findItem(id), originalIndex);
 		}
@@ -42,21 +38,13 @@ const todoItemTarget = {
 		return false;
 	},
 	hover(props, monitor) {
-		const draggedItem = monitor.getItem();
-		const {id: draggedId, originalListIndex: fromListIndex, findOriginalItem} = draggedItem;
-		const {id: overId, listIndex} = props;
-		// console.log("source", fromListIndex, draggedId);
-		// console.log("hovering over", props.listIndex, props.id, props.text);
+		const {id: draggedId} = monitor.getItem();
+		const {id: overId} = props;
 		
-		// move only if not the same item
-		if(draggedId !== overId || fromListIndex !== listIndex) {
+		if(draggedId !== overId) {
 			const [overIndex] = props.findItem(overId);
-			const draggedEntry = findOriginalItem(draggedId);
-			Object.assign(draggedItem, {
-				findOriginalItem: props.findItem,
-				originalListIndex: listIndex
-			});
-			props.moveItem(draggedEntry, overIndex, fromListIndex);
+			const draggedEntry = props.findItem(draggedId);
+			props.moveItem(draggedEntry, overIndex);
 		}
 	}
 };

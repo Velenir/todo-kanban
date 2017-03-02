@@ -23,7 +23,7 @@ export function filterTodos(todos, filter) {
 	}	else {
 		activeItems = todos.filter(item => item.get("status") === FILTER.ACTIVE).size;
 	}
-	// console.log("Filtered todos:", activeItems, todos, filter);
+	console.log("Filtered todos:", activeItems, todos, filter);
 	const filtered = {activeItems, todos, filter};
 	if(inCache) {
 		console.log("ADDING to already in cache");

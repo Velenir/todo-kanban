@@ -58,7 +58,6 @@ function createNewItem(state, action) {
 }
 
 function moveItem(state, {itemEntry: [fromIndex, item], toIndex}) {
-	console.log("MOVING FROM", fromIndex, "TO", toIndex);
 	return state.delete(fromIndex).insert(toIndex, item);
 }
 

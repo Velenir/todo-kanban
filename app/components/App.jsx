@@ -16,7 +16,7 @@ class App extends PureComponent {
 						title={title} listIndex={listIndex}
 						removeList={removeList}
 					/>
-					<TodoList {...rest} listIndex={listIndex}/>
+					<TodoList {...rest}/>
 					<TodoTools  changeFilter={changeFilter}
 						filter={filter}
 						nbActiveItems={activeItems}

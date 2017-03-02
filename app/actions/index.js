@@ -86,14 +86,12 @@ export function addItem(listIndex, text) {
 	};
 }
 
-export function moveItem(listIndex, itemEntry, toIndex, fromListIndex = listIndex) {
-	console.log("\nMOVE_ITEM -- ", "fromListIndex", fromListIndex, ", itemEntry", itemEntry, ",toIndex", toIndex, ", toListIndex", listIndex);
+export function moveItem(listIndex, itemEntry, toIndex) {
 	return {
 		type: MOVE_ITEM,
 		itemEntry,
 		toIndex,
-		listIndex,
-		fromListIndex
+		listIndex
 	};
 }
 
