@@ -7,37 +7,55 @@ describe('action creator', () => {
 	const results = {
 		default(type) {
 			return {
-				input: [1],
-				output: {type, itemId: 1}
+				input: [0, 1],
+				output: {type, listIndex: 0, itemId: 1}
 			};
 		},
 		changeFilter(type) {
 			return {
-				input: [FILTER.ACTIVE],
-				output: {type, filter: FILTER.ACTIVE}
+				input: [0, FILTER.ACTIVE],
+				output: {type, listIndex: 0, filter: FILTER.ACTIVE}
 			};
 		},
 		doneEditing(type) {
 			return {
-				input: [1, "Todo text"],
-				output: {type, itemId: 1, newText: "Todo text"}
+				input: [0, 1, "Todo text"],
+				output: {type, listIndex: 0, itemId: 1, newText: "Todo text"}
 			};
 		},
 		clearCompleted(type) {
 			return {
-				output: {type}
+				input: [0],
+				output: {type, listIndex: 0}
 			};
 		},
 		addItem(type) {
 			return {
-				input: ["Todo text"],
-				output: {type, text: "Todo text"}
+				input: [0, "Todo text"],
+				output: {type, listIndex: 0, text: "Todo text"}
 			};
 		},
 		moveItem(type) {
 			return {
-				input: [[1, {id: 1, text: "Todo text"}], 2],
-				output: {type, itemEntry: [1, {id: 1, text: "Todo text"}], toIndex: 2}
+				input: [0, [1, {id: 1, text: "Todo text"}], 2],
+				output: {type, listIndex: 0, itemEntry: [1, {id: 1, text: "Todo text"}], toIndex: 2}
+			};
+		},
+		changeTitle(type) {
+			return {
+				input: [0, "New title"],
+				output: {type, listIndex: 0, title: "New title"}
+			};
+		},
+		addList(type) {
+			return {
+				output: {type}
+			};
+		},
+		removeList(type) {
+			return {
+				input: [0],
+				output: {type, listIndex: 0}
 			};
 		}
 	};
