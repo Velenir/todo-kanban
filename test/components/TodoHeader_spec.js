@@ -4,7 +4,7 @@ import TodoHeader from '../../app/components/TodoHeader';
 import {expect} from 'chai';
 
 describe('TodoHeader', () => {
-	it('calls a callback on submit', () => {
+	it('should call a callback on submit', () => {
 		let addedItem = '';
 		const addItem = (item) => addedItem = item;
 		const component = renderIntoDocument(
@@ -20,9 +20,9 @@ describe('TodoHeader', () => {
 		expect(input.value).to.equal('');
 	});
 	
-	it('should be autofocused when rendered', () => {
+	it('should be autofocused when rendered as a first sibling', () => {
 		const component = renderIntoDocument(
-			<TodoHeader/>
+			<TodoHeader listIndex={0}/>
 		);
 		
 		const input = findRenderedDOMComponentWithTag(component, 'input');
