@@ -13,6 +13,7 @@ import {
 import {TodoRecord} from '../helpers/immutableHelpers';
 
 import * as FILTER from './filterVars';
+import {v4 as uuid} from 'uuid';
 
 
 function changeItemMap(action) {
@@ -52,9 +53,7 @@ function deleteItemCondition(action) {
 }
 
 function createNewItem(state, action) {
-	const itemId = state.reduce((maxId, item) => Math.max(maxId, item.get("id")), 0) + 1;
-
-	return new TodoRecord({id: itemId, text: action.text});
+	return new TodoRecord({id: uuid(), text: action.text});
 }
 
 function moveItem(state, {itemEntry: [fromIndex, item], toIndex}) {

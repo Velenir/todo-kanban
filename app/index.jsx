@@ -7,6 +7,8 @@ import reducer from './reducers';
 import {fromJS, ListRecord, List} from './helpers/immutableHelpers';
 // import {List} from 'immutable';
 
+import {v4 as uuid} from 'uuid';
+
 import 'todomvc-app-css/index.css';
 import './scss/style.scss';
 
@@ -24,18 +26,18 @@ const initialState = {
 		ListRecord({
 			title: "Technologies used",
 			todos: fromJS([
-				{id: 1, text: 'React'},
-				{id: 2, text: 'Redux'},
-				{id: 3, text: 'Immutable'}
+				{id: uuid(), text: 'React'},
+				{id: uuid(), text: 'Redux'},
+				{id: uuid(), text: 'Immutable'}
 			])
 		}),
 		ListRecord({
 			title: "New List",
 			todos: fromJS([
-				{id: 1, text: 'Item 1'},
-				{id: 2, text: 'Item 2'},
-				{id: 3, text: 'Item 3'},
-				{id: 4, text: 'Item 4'}
+				{id: uuid(), text: 'Item 1'},
+				{id: uuid(), text: 'Item 2'},
+				{id: uuid(), text: 'Item 3'},
+				{id: uuid(), text: 'Item 4'}
 			])
 		})
 	)
