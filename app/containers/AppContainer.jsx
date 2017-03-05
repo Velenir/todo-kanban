@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import * as actions from '../actions';
-import {filterTodos, findItemEntry} from '../helpers/immutableHelpers';
+import {filterTodos} from '../helpers/immutableHelpers';
 
 import App from '../components/App';
 
@@ -9,18 +9,18 @@ import App from '../components/App';
 // 	findItem: findItemEntry.bind(null, todos)
 // });
 
-const boundFindItem = new WeakMap();
-function bindNewFindItem(todos) {
-	const inCache = boundFindItem.get(todos);
-	if(inCache) {
-		console.log("findItems from cache");
-		return inCache;
-	}
-	
-	const bound = findItemEntry.bind(null, todos);
-	boundFindItem.set(todos, bound);
-	return bound;
-}
+// const boundFindItem = new WeakMap();
+// function bindNewFindItem(todos) {
+// 	const inCache = boundFindItem.get(todos);
+// 	if(inCache) {
+// 		console.log("findItems from cache");
+// 		return inCache;
+// 	}
+//
+// 	const bound = findItemEntry.bind(null, todos);
+// 	boundFindItem.set(todos, bound);
+// 	return bound;
+// }
 
 const mapStateToProps = ({lists}, {listIndex}) => {
 	const {todos, filter, title, newlyAdded} = lists[listIndex];
@@ -28,13 +28,14 @@ const mapStateToProps = ({lists}, {listIndex}) => {
 	return {
 		...filterTodos(todos, filter),
 		// findItem: findItemEntry.bind(null, todos),
-		findItem: bindNewFindItem(todos),
+		// findItem: bindNewFindItem(todos),
 		title,
 		newlyAdded
 	};
 };
 
-const appActionKeys = Object.keys(actions).filter(a => a !== "addList");
+// all imported actions except for ADD_LIST and MOVE_ITEM
+const appActionKeys = Object.keys(actions).filter(a => a !== "addList" && a !== "moveItem");
 
 const mapDispatchToProps = (dispatch, {listIndex}) => {
 	const boundActions = {};
@@ -45,21 +46,25 @@ const mapDispatchToProps = (dispatch, {listIndex}) => {
 		boundActions[key] = (...args) => dispatch(action.call(null, listIndex, ...args));
 	}
 	
+	// pass MOVE_ITEM action without binding
+	const moveItem = actions["moveItem"];	// eslint-disable-line import/namespace
+	boundActions["moveItem"] = (...args) => dispatch(moveItem(...args));
+	
 	return boundActions;
 };
 
 const options = {
 	pure: true,
-	areStatePropsEqual(props, nextProps) {
-		for (let prop in props) {
-			if(prop !== "findItem" && props[prop] !== nextProps[prop]) {
-				console.log("not eq", prop);
-				return false;
-			}
-		}
-
-		return true;
-	}
+	// areStatePropsEqual(props, nextProps) {
+	// 	for (let prop in props) {
+	// 		if(prop !== "findItem" && props[prop] !== nextProps[prop]) {
+	// 			console.log("not eq", prop);
+	// 			return false;
+	// 		}
+	// 	}
+	//
+	// 	return true;
+	// }
 };
 
 // actions get wrapped in dispatch call

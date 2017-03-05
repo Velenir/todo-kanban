@@ -9,10 +9,11 @@ import TextInput from './TextInput';
 
 
 const todoItemSource = {
-	beginDrag({id, findItem}) {
+	beginDrag({id, itemPath}) {
 		return {
 			id,
-			originalIndex: findItem(id)[0]
+			originalItemPath: itemPath,
+			currentItemPath: itemPath
 		};
 	},
 	canDrag({isEditing}) {
@@ -20,8 +21,12 @@ const todoItemSource = {
 	},
 	endDrag(props, monitor) {
 		if(!monitor.didDrop()) {
-			const {id, originalIndex} = monitor.getItem();
-			props.moveItem(props.findItem(id), originalIndex);
+			const {originalItemPath, currentItemPath} = monitor.getItem();
+			
+			// don't dispatch actions when there is no movement from last location
+			if(originalItemPath[0] === currentItemPath[0] && originalItemPath[1] === currentItemPath[1]) return;
+			
+			props.moveItem(currentItemPath, originalItemPath);
 		}
 	}
 };
@@ -38,13 +43,19 @@ const todoItemTarget = {
 		return false;
 	},
 	hover(props, monitor) {
-		const {id: draggedId} = monitor.getItem();
-		const {id: overId} = props;
+		const draggingItem = monitor.getItem();
+		const {id: draggedId, currentItemPath: lastItemPath} = draggingItem;
+		const {id: overId, itemPath: overItemPath} = props;
+		
+		// console.log("now over", overItemPath);
 		
 		if(draggedId !== overId) {
-			const [overIndex] = props.findItem(overId);
-			const draggedEntry = props.findItem(draggedId);
-			props.moveItem(draggedEntry, overIndex);
+			// const [overIndex] = props.findItem(overId);
+			// const draggedEntry = props.findItem(draggedId);
+			draggingItem.currentItemPath = overItemPath;
+			// console.log("reassigned monitored to", monitor.getItem());
+			
+			props.moveItem(lastItemPath, overItemPath);
 		}
 	}
 };
@@ -81,6 +92,18 @@ class TodoItem extends PureComponent {
 				/>}
 			</li>
 		));
+	}
+	
+	componentDidUpdate(prevProps) {
+		const updatedProps = {};
+		for(let prop in prevProps) {
+			const prevProp = prevProps[prop];
+			const currentProp = this.props[prop];
+			if(prevProp !== currentProp) {
+				updatedProps[prop] = `${prevProp} -> ${currentProp}`;
+			}
+		}
+		console.log(`Item ${this.props.text} UPDATED with`, updatedProps);
 	}
 }
 

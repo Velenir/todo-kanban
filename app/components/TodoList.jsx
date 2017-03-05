@@ -17,8 +17,8 @@ function collectTarget(connect) {
 
 class TodoList extends PureComponent {
 	getItems() {
-		const {todos, connectDropTarget, ...rest} = this.props;	//eslint-disable-line no-unused-vars
-		return todos.map(item =>
+		const {todos, connectDropTarget, listIndex, ...rest} = this.props;	//eslint-disable-line no-unused-vars
+		return todos.map((item, i) =>
 			<TodoItem key={item.id}
 				{...rest}
 				id={item.id}
@@ -26,6 +26,7 @@ class TodoList extends PureComponent {
 				isCompleted={item.status === FILTER.COMPLETED}
 				isEditing={item.editing}
 				selectText={item.selectText}
+				itemPath={[listIndex, i]}
 			/>
 		);
 	}
@@ -38,6 +39,18 @@ class TodoList extends PureComponent {
 				</ul>
 			</section>
 		);
+	}
+	
+	componentDidUpdate(prevProps) {
+		const updatedProps = {};
+		for(let prop in prevProps) {
+			const prevProp = prevProps[prop];
+			const currentProp = this.props[prop];
+			if(prevProp !== currentProp) {
+				updatedProps[prop] = `${prevProp} -> ${currentProp}`;
+			}
+		}
+		console.log(`List ${this.props.listIndex} UPDATED with`, updatedProps);
 	}
 }
 
