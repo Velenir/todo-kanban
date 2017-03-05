@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import classnames from 'classnames';
 
 import {DragSource, DropTarget} from 'react-dnd';
@@ -6,6 +6,8 @@ import {TODO_ITEM} from '../helpers/itemTypes';
 import {compose} from 'redux';
 
 import TextInput from './TextInput';
+
+import sameExceptFor from '../helpers/propsSameExcept';
 
 
 const todoItemSource = {
@@ -66,7 +68,9 @@ function collectTarget(connect) {
 	};
 }
 
-class TodoItem extends PureComponent {
+const sameExceptForItemPath = sameExceptFor("itemPath");
+
+class TodoItem extends Component {
 
 	render() {
 		const {id, text, isCompleted: completed, isEditing: editing, selectText, deleteItem, editItem, selectEditItem, toggleComplete, cancelEditing, doneEditing, connectDragSource, isDragging, connectDropTarget} = this.props;
@@ -92,6 +96,10 @@ class TodoItem extends PureComponent {
 				/>}
 			</li>
 		));
+	}
+	
+	shouldComponentUpdate(nextProps) {
+		return !sameExceptForItemPath(nextProps, this.props);
 	}
 	
 	componentDidUpdate(prevProps) {
