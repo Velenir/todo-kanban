@@ -30,6 +30,9 @@ const todoItemSource = {
 			
 			props.moveItem(currentItemPath, originalItemPath);
 		}
+	},
+	isDragging({id}, monitor) {
+		return id === monitor.getItem().id;
 	}
 };
 
