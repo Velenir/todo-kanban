@@ -55,6 +55,8 @@ export const todoReducer = combineReducers({
 
 function moveItem(lists, {fromItemPath: [fromListIndex, fromItemIndex], toItemPath: [toListIndex, toItemIndex]}) {
 	let fromList = lists[fromListIndex];
+	// consider -0 === last element index
+	if(Object.is(fromItemIndex, -0)) fromItemIndex = fromList.todos.size - 1;
 	const item = fromList.todos.get(fromItemIndex);
 	
 	fromList = fromList.deleteIn(["todos", fromItemIndex]);
