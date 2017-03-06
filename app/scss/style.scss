@@ -45,6 +45,12 @@ $buttonShadow: $shadow, 0 0 2px rgba(156, 156, 156, 0.14);
 		&:active {
 			box-shadow: $buttonShadow, inset 0 0 2px rgba(0, 0, 0, 0.44);
 		}
+
+		display: none;
+
+		@at-root .todoapp:hover .titlespace button {
+			display: inline-block;
+		}
 	}
 }
 
