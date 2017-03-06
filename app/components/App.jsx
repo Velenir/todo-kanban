@@ -25,6 +25,8 @@ class App extends PureComponent {
 						listIndex={listIndex}
 						moveItem={moveItem}
 					/>
+					<div className="appcover"/>
+					<div className="todohandle"/>
 				</section>
 			</div>
 		);
