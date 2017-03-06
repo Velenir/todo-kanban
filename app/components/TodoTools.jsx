@@ -1,8 +1,36 @@
 import React, {PureComponent} from 'react';
 import classnames from 'classnames';
 import * as FILTER from '../reducers/filterVars';
+
+import {TODO_ITEM} from '../helpers/itemTypes';
+import {DropTarget} from 'react-dnd';
+
+const todoToolsTarget = {
+	canDrop() {
+		return false;
+	},
+	hover(props, monitor) {
+		// console.log("OVER TOOLS");
+		const {listIndex: currentListIndex} = props;
+		const draggingItem = monitor.getItem();
+		const {currentItemPath: lastItemPath} = draggingItem;
+		
+		// resize current list only when adding items from another list
+		if(lastItemPath[0] === currentListIndex) return;
+		console.log("ADDING To List", currentListIndex);
+		
+		props.moveItem(lastItemPath, draggingItem.currentItemPath = [currentListIndex, -0]);
+	}
+};
+
+function collectTarget(connect) {
+	return {
+		connectDropTarget: connect.dropTarget()
+	};
+}
  
-export default class TodoTools extends PureComponent {
+
+class TodoTools extends PureComponent {
 	getAttributes(newFilter) {
 		const {filter, changeFilter} = this.props;
 		return {
@@ -12,9 +40,9 @@ export default class TodoTools extends PureComponent {
 	}
 	
 	render() {
-		const {clearCompleted, nbActiveItems = 0} = this.props;
+		const {clearCompleted, nbActiveItems = 0, connectDropTarget} = this.props;
 		
-		return (
+		return connectDropTarget(
       <footer className="footer">
         <span className="todo-count">
           <strong>{nbActiveItems}</strong>
@@ -42,4 +70,18 @@ export default class TodoTools extends PureComponent {
       </footer>
 		);
 	}
+	
+	componentDidUpdate(prevProps) {
+		const updatedProps = {};
+		for(let prop in prevProps) {
+			const prevProp = prevProps[prop];
+			const currentProp = this.props[prop];
+			if(prevProp !== currentProp) {
+				updatedProps[prop] = `${String(prevProp)} -> ${String(currentProp)}`;
+			}
+		}
+		console.log(`Tools ${this.props.listIndex} UPDATED with`, updatedProps);
+	}
 }
+
+export default DropTarget(TODO_ITEM, todoToolsTarget, collectTarget)(TodoTools);

@@ -62,8 +62,8 @@ function moveItem(lists, {fromItemPath: [fromListIndex, fromItemIndex], toItemPa
 	const sameList = fromListIndex === toListIndex;
 	
 	let toList = sameList ? fromList : lists[toListIndex];
-	
-	toList = toList.update("todos", todos => todos.insert(toItemIndex, item));
+		
+	toList = toList.update("todos", todos => todos.insert(Object.is(toItemIndex, -0) ? todos.size : toItemIndex, item));
 	
 	if(sameList) {
 		return lists.set(toListIndex, toList);

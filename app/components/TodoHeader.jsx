@@ -1,5 +1,33 @@
 import React, {PureComponent} from 'react';
 
+import {TODO_ITEM} from '../helpers/itemTypes';
+import {DropTarget} from 'react-dnd';
+
+const todoHeaderTarget = {
+	canDrop() {
+		return false;
+	},
+	hover(props, monitor) {
+		// console.log("OVER HEADER");
+		const {listIndex: currentListIndex} = props;
+		const draggingItem = monitor.getItem();
+		const {currentItemPath: lastItemPath} = draggingItem;
+		
+		// resize current list only when adding items from another list
+		if(lastItemPath[0] === currentListIndex) return;
+		console.log("ADDING To List", currentListIndex);
+		
+		props.moveItem(lastItemPath, draggingItem.currentItemPath = [currentListIndex, 0]);
+	}
+};
+
+function collectTarget(connect) {
+	return {
+		connectDropTarget: connect.dropTarget()
+	};
+}
+
+
 class TodoHeader extends PureComponent {
 	handleKeyPress = (e) => {
 		if(e.key === "Enter" && e.target.value !== "") {
@@ -42,7 +70,7 @@ class TodoHeader extends PureComponent {
 	}
 	
 	render() {
-		const {title, listIndex, removeList} = this.props;
+		const {title, listIndex, removeList, connectDropTarget} = this.props;
 		return (
 			<header className="header">
 				<div className="titlespace">
@@ -54,15 +82,29 @@ class TodoHeader extends PureComponent {
 					</h3>
 					<button type="button" onClick={removeList}>x</button>
 				</div>
-				<input className="new-todo"
-					autoFocus={listIndex === 0}
-					autoComplete="off"
-					placeholder="What needs to be done?"
-					onKeyPress={this.handleKeyPress}
-				/>
+				{connectDropTarget(
+					<input className="new-todo"
+						autoFocus={listIndex === 0}
+						autoComplete="off"
+						placeholder="What needs to be done?"
+						onKeyPress={this.handleKeyPress}
+					/>
+				)}
 			</header>
 		);
 	}
+	
+	componentDidUpdate(prevProps) {
+		const updatedProps = {};
+		for(let prop in prevProps) {
+			const prevProp = prevProps[prop];
+			const currentProp = this.props[prop];
+			if(prevProp !== currentProp) {
+				updatedProps[prop] = `${prevProp} -> ${currentProp}`;
+			}
+		}
+		console.log(`Header ${this.props.title} UPDATED with`, updatedProps);
+	}
 }
 
-export default TodoHeader;
+export default DropTarget(TODO_ITEM, todoHeaderTarget, collectTarget)(TodoHeader);

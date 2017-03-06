@@ -7,20 +7,23 @@ import TodoHeader from '../components/TodoHeader';
 class App extends PureComponent {
 	render() {
 		// eslint-disable-next-line no-unused-vars
-		const {removeList, changeFilter, changeTitle, clearCompleted, addItem, activeItems, filter, listIndex, title, newlyAdded, ...rest} = this.props;
+		const {removeList, changeFilter, changeTitle, clearCompleted, addItem, moveItem, activeItems, filter, listIndex, title, newlyAdded, ...rest} = this.props;
 		
 		return (
 			<div ref={c => this.element = c}>
 				<section className="todoapp">
-					<TodoHeader changeTitle={changeTitle} addItem={addItem}
+					<TodoHeader changeTitle={changeTitle}
+						addItem={addItem} moveItem={moveItem}
 						title={title} listIndex={listIndex}
 						removeList={removeList}
 					/>
-					<TodoList {...rest} listIndex={listIndex}/>
+					<TodoList {...rest} moveItem={moveItem} listIndex={listIndex}/>
 					<TodoTools  changeFilter={changeFilter}
 						filter={filter}
 						nbActiveItems={activeItems}
 						clearCompleted={clearCompleted}
+						listIndex={listIndex}
+						moveItem={moveItem}
 					/>
 				</section>
 			</div>
