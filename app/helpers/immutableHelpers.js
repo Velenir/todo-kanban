@@ -15,10 +15,10 @@ export function filterTodos(todos, filter) {
 		
 	if(filter !== FILTER.ALL) {
 		
-		todos = todos.filter(item => {
+		todos = todos.map(item => {
 			const status = item.get("status");
 			if(status === FILTER.ACTIVE) ++activeItems;
-			return status === filter;
+			return status === filter ? item : null;
 		});
 	}	else {
 		activeItems = todos.filter(item => item.get("status") === FILTER.ACTIVE).size;
