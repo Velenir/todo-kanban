@@ -46,7 +46,9 @@ function collectTarget(connect) {
 class App extends PureComponent {
 	render() {
 		// eslint-disable-next-line no-unused-vars
-		const {removeList, changeFilter, changeTitle, clearCompleted, addItem, moveItem, activeItems, filter, listIndex, title, newlyAdded, connectDropTarget, connectDragSource, connectDragPreview, isDragging, ...rest} = this.props;
+		const {removeList, changeFilter, changeTitle, clearCompleted, addItem, moveItem, activeItems, filter, listIndex, title, newlyAdded, connectDropTarget, connectDragSource, connectDragPreview, isDragging, todos, ...rest} = this.props;
+		
+		const totalItems = todos.length;
 		
 		return connectDropTarget(connectDragPreview(
 			<div ref={c => this.element = c} style={{opacity: isDragging ? 0.3 : 1}} className="appwrapper">
@@ -56,14 +58,15 @@ class App extends PureComponent {
 						title={title} listIndex={listIndex}
 						removeList={removeList}
 					/>
-					<TodoList {...rest} moveItem={moveItem} listIndex={listIndex}/>
-					<TodoTools  changeFilter={changeFilter}
+					<TodoList {...rest} todos={todos} moveItem={moveItem} listIndex={listIndex}/>
+					{totalItems > 0 && <TodoTools changeFilter={changeFilter}
 						filter={filter}
 						nbActiveItems={activeItems}
+						nbCompletedItems={totalItems - activeItems}
 						clearCompleted={clearCompleted}
 						listIndex={listIndex}
 						moveItem={moveItem}
-					/>
+					/>}
 					<div className="appcover"/>
 					{connectDragSource(<div className="todohandle"/>)}
 				</section>
@@ -85,7 +88,7 @@ class App extends PureComponent {
 			const prevProp = prevProps[prop];
 			const currentProp = this.props[prop];
 			if(prevProp !== currentProp) {
-				updatedProps[prop] = `${prevProp} -> ${currentProp}`;
+				updatedProps[prop] = `${String(prevProp)} -> ${String(currentProp)}`;
 			}
 		}
 		console.log(`App ${this.props.listIndex} ${this.props.title} UPDATED with`, updatedProps);
