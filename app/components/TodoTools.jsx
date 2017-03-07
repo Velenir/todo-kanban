@@ -40,7 +40,7 @@ class TodoTools extends PureComponent {
 	}
 	
 	render() {
-		const {clearCompleted, nbActiveItems = 0, connectDropTarget} = this.props;
+		const {clearCompleted, nbActiveItems = 0, nbCompletedItems = 0, connectDropTarget} = this.props;
 		
 		return connectDropTarget(
       <footer className="footer">
@@ -64,9 +64,9 @@ class TodoTools extends PureComponent {
             </a>
           </li>
         </ul>
-        <button className="clear-completed" onClick={clearCompleted}>
+        {nbCompletedItems > 0 && <button className="clear-completed" onClick={clearCompleted}>
           Clear completed
-        </button>
+        </button>}
       </footer>
 		);
 	}
