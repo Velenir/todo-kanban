@@ -46,10 +46,10 @@ function collectTarget(connect) {
 class App extends PureComponent {
 	render() {
 		// eslint-disable-next-line no-unused-vars
-		const {removeList, changeFilter, changeTitle, clearCompleted, addItem, moveItem, activeItems, filter, listIndex, title, newlyAdded, connectDropTarget, connectDragSource, connectDragPreview, ...rest} = this.props;
+		const {removeList, changeFilter, changeTitle, clearCompleted, addItem, moveItem, activeItems, filter, listIndex, title, newlyAdded, connectDropTarget, connectDragSource, connectDragPreview, isDragging, ...rest} = this.props;
 		
 		return connectDropTarget(connectDragPreview(
-			<div ref={c => this.element = c}>
+			<div ref={c => this.element = c} style={{opacity: isDragging ? 0.3 : 1}}>
 				<section className="todoapp">
 					<TodoHeader changeTitle={changeTitle}
 						addItem={addItem} moveItem={moveItem}
@@ -94,5 +94,5 @@ class App extends PureComponent {
 
 export default compose(
 	DropTarget(APP, appTarget, collectTarget),
-	DragSource(APP, appSource, collectSource)	
+	DragSource(APP, appSource, collectSource)
 )(App);
