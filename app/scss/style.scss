@@ -1,3 +1,15 @@
+body {
+	min-width: initial;
+	max-width: initial;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.todoapp {
+	margin: 0;
+}
+
 $shadowTransition: box-shadow .2s;
 $buttonColor: #bf9a9a;
 $shadow: 0 15px 9px -8px rgba(210, 199, 194, 0.55), 0 2px 2px rgba(156, 156, 156, 0.56);
@@ -48,7 +60,7 @@ $buttonShadow: $shadow, 0 0 2px rgba(156, 156, 156, 0.14);
 
 		display: none;
 
-		@at-root .todoapp:hover .titlespace button {
+		@at-root .appwrapper:hover .titlespace button {
 			display: inline-block;
 		}
 	}
@@ -57,7 +69,7 @@ $buttonShadow: $shadow, 0 0 2px rgba(156, 156, 156, 0.14);
 .addapp {
 	$buttonShadow: 0 0 2px 2px rgba(160, 160, 160, 0.45);
 
-	margin: 60px 0 40px;
+	/* margin: 60px 0 40px; */
 
 	button {
 		width: 3rem;
@@ -101,7 +113,7 @@ $buttonShadow: $shadow, 0 0 2px rgba(156, 156, 156, 0.14);
 
 	display: none;
 
-	.todoapp:hover > & {
+	.appwrapper:hover & {
 		display: block;
 	}
 }
@@ -113,4 +125,14 @@ $buttonShadow: $shadow, 0 0 2px rgba(156, 156, 156, 0.14);
 	right: -2.1rem;
 	bottom: -1rem;
 	z-index: -1;
+}
+
+.appwrapper {
+	max-width: 550px;
+	min-width: 435px;
+	padding: 45px;
+
+	&:first-child {
+		margin-top: 25px;
+	}
 }
