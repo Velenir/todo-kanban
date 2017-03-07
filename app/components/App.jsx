@@ -53,6 +53,7 @@ class App extends PureComponent {
 		return connectDropTarget(connectDragPreview(
 			<div ref={c => this.element = c} style={{opacity: isDragging ? 0.3 : 1}} className="appwrapper">
 				<section className="todoapp">
+					{connectDragSource(<div className="todohandle"/>)}
 					<TodoHeader changeTitle={changeTitle}
 						addItem={addItem} moveItem={moveItem}
 						title={title} listIndex={listIndex}
@@ -67,8 +68,6 @@ class App extends PureComponent {
 						listIndex={listIndex}
 						moveItem={moveItem}
 					/>}
-					<div className="appcover"/>
-					{connectDragSource(<div className="todohandle"/>)}
 				</section>
 			</div>
 		));
