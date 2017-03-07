@@ -4,6 +4,7 @@ import * as FILTER from '../reducers/filterVars';
 const filteredCache = new WeakMap();
 
 export function filterTodos(todos, filter) {
+	console.log("FILTERING");
 	const inCache = filteredCache.get(todos);
 	if(inCache && filter in inCache) {
 		console.log("Filtered from cache");

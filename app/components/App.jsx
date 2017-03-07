@@ -11,11 +11,20 @@ import {compose} from 'redux';
 const appSource = {
 	beginDrag({listIndex}) {
 		return {
-			listIndex
+			currentListIndex: listIndex,
+			originalListIndex: listIndex
 		};
 	},
 	endDrag(props, monitor) {
-		
+		console.log("endDrag list", props.listIndex, props.title);
+		if(!monitor.didDrop()) {
+			const {currentListIndex, originalListIndex} = monitor.getItem();
+			
+			// don't dispatch actions when there is no movement from last location
+			if(currentListIndex === originalListIndex) return;
+			
+			props.moveList(currentListIndex);
+		}
 	}
 };
 
@@ -32,7 +41,17 @@ const appTarget = {
 		return false;
 	},
 	hover(props, monitor) {
+		const draggingItem = monitor.getItem();
+		const {currentListIndex} = draggingItem;
 		
+		const {listIndex: overListIndex} = props;
+		
+		if(currentListIndex !== overListIndex) {
+			// keep track of last location
+			draggingItem.currentListIndex = overListIndex;
+			
+			props.moveList(currentListIndex);
+		}
 	}
 };
 

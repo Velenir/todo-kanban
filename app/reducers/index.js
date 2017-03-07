@@ -20,7 +20,8 @@ import {
 	CHANGE_FILTER,
 	CHANGE_TITLE,
 	ADD_LIST,
-	REMOVE_LIST
+	REMOVE_LIST,
+	MOVE_LIST
 } from '../actions/actionTypes';
 
 export const todoReducer = combineReducers({
@@ -76,6 +77,11 @@ function moveItem(lists, {fromItemPath: [fromListIndex, fromItemIndex], toItemPa
 	);
 }
 
+function moveList(lists, {fromListIndex, toListIndex}) {
+	const list = lists[fromListIndex];
+	return lists.remove(fromListIndex).insert(toListIndex, list);
+}
+
 export default function listsReducer(state = {lists: List()}, action) {
 	switch (action.type) {
 		case TOGGLE_COMPLETE:
@@ -102,6 +108,10 @@ export default function listsReducer(state = {lists: List()}, action) {
 		case REMOVE_LIST:
 			return {
 				lists: state.lists.remove(action.listIndex)
+			};
+		case MOVE_LIST:
+			return {
+				lists: moveList(state.lists, action)
 			};
 		default:
 			return state;

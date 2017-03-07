@@ -11,7 +11,8 @@ import {
 	MOVE_ITEM,
 	CHANGE_TITLE,
 	ADD_LIST,
-	REMOVE_LIST
+	REMOVE_LIST,
+	MOVE_LIST
 } from './actionTypes';
 
 export function toggleComplete(listIndex, itemId) {
@@ -114,5 +115,14 @@ export function removeList(listIndex) {
 	return {
 		type: REMOVE_LIST,
 		listIndex
+	};
+}
+
+export function moveList(toListIndex, fromListIndex) {
+	console.log("MOVING LIST", fromListIndex, "to", toListIndex);
+	return {
+		type: MOVE_LIST,
+		fromListIndex,
+		toListIndex
 	};
 }

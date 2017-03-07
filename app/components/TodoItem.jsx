@@ -55,8 +55,7 @@ const todoItemTarget = {
 		// console.log("now over", overItemPath);
 		
 		if(draggedId !== overId) {
-			// const [overIndex] = props.findItem(overId);
-			// const draggedEntry = props.findItem(draggedId);
+			// keep track of last location
 			draggingItem.currentItemPath = overItemPath;
 			// console.log("reassigned monitored to", monitor.getItem());
 			
