@@ -40,6 +40,7 @@ $buttonShadow: $shadow, 0 0 2px rgba(156, 156, 156, 0.14);
 			content: attr(data-placeholder);
 			color: rgba(93, 99, 105, 0.44);
 			text-shadow: none;
+			cursor: text;
 		}
 	}
 
