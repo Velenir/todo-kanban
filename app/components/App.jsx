@@ -3,13 +3,52 @@ import TodoList from '../components/TodoList';
 import TodoTools from '../components/TodoTools';
 import TodoHeader from '../components/TodoHeader';
 
+import {DragSource, DropTarget} from 'react-dnd';
+import {APP} from '../helpers/itemTypes';
+import {compose} from 'redux';
+
+
+const appSource = {
+	beginDrag({listIndex}) {
+		return {
+			listIndex
+		};
+	},
+	endDrag(props, monitor) {
+		
+	}
+};
+
+function collectSource(connect, monitor) {
+	return {
+		connectDragSource: connect.dragSource(),
+		connectDragPreview: connect.dragPreview(),
+		isDragging: monitor.isDragging()
+	};
+}
+
+const appTarget = {
+	canDrop() {
+		return false;
+	},
+	hover(props, monitor) {
+		
+	}
+};
+
+function collectTarget(connect) {
+	return {
+		connectDropTarget: connect.dropTarget()
+	};
+}
+
  
 class App extends PureComponent {
 	render() {
 		// eslint-disable-next-line no-unused-vars
-		const {removeList, changeFilter, changeTitle, clearCompleted, addItem, moveItem, activeItems, filter, listIndex, title, newlyAdded, ...rest} = this.props;
+		const {removeList, changeFilter, changeTitle, clearCompleted, addItem, moveItem, activeItems, filter, listIndex, title, newlyAdded, connectDropTarget, connectDragSource, connectDragPreview, ...rest} = this.props;
 		
-		return (
+		return connectDropTarget(connectDragPreview(
 			<div ref={c => this.element = c}>
 				<section className="todoapp">
 					<TodoHeader changeTitle={changeTitle}
@@ -26,10 +65,10 @@ class App extends PureComponent {
 						moveItem={moveItem}
 					/>
 					<div className="appcover"/>
-					<div className="todohandle"/>
+					{connectDragSource(<div className="todohandle"/>)}
 				</section>
 			</div>
-		);
+		));
 	}
 	
 	componentDidMount() {
@@ -40,9 +79,20 @@ class App extends PureComponent {
 		});
 	}
 	
-	componentDidUpdate() {
-		console.log("APP", this.props.listIndex, this.props.title, "UPDATED");
+	componentDidUpdate(prevProps) {
+		const updatedProps = {};
+		for(let prop in prevProps) {
+			const prevProp = prevProps[prop];
+			const currentProp = this.props[prop];
+			if(prevProp !== currentProp) {
+				updatedProps[prop] = `${prevProp} -> ${currentProp}`;
+			}
+		}
+		console.log(`App ${this.props.listIndex} ${this.props.title} UPDATED with`, updatedProps);
 	}
 }
 
-export default App;
+export default compose(
+	DropTarget(APP, appTarget, collectTarget),
+	DragSource(APP, appSource, collectSource)	
+)(App);
