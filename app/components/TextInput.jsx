@@ -13,13 +13,13 @@ export default class TextInput extends PureComponent {
 	}
 	
 	cancelEditing = () => {
-		const {text, itemId, cancelEditing} = this.props;
+		const {text, itemId, listIndex, cancelEditing} = this.props;
 		
 		this.setState({
 			value: text
 		});
 		
-		cancelEditing(itemId);
+		cancelEditing(listIndex, itemId);
 	}
 	
 	handleKeyDown = (e) => {
@@ -29,8 +29,8 @@ export default class TextInput extends PureComponent {
 					const value = this.state.value.trim();
 					// cancel on empty todo
 					if(value === "") return this.cancelEditing();
-					const {itemId, doneEditing} = this.props;
-					return doneEditing(itemId, value);
+					const {itemId, listIndex, doneEditing} = this.props;
+					return doneEditing(listIndex, itemId, value);
 				}
 			case "Escape":
 				return this.cancelEditing();

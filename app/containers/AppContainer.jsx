@@ -35,27 +35,29 @@ const mapStateToProps = ({lists}, {listIndex}) => {
 };
 
 // all imported actions except for ADD_LIST and MOVE_ITEM
-const appActionKeys = Object.keys(actions).filter(a => a !== "addList" && a !== "moveItem");
-const cachedDispatchProps = {};
+// const appActionKeys = Object.keys(actions).filter(a => a !== "addList" && a !== "moveItem");
+// const cachedDispatchProps = {};
+//
+// const mapDispatchToProps = (dispatch, {listIndex}) => {
+// 	const fromCache = cachedDispatchProps[listIndex];
+// 	if(fromCache) return fromCache;
+//
+// 	const boundActions = {};
+// 	console.log("BINDING Actions to list", listIndex);
+// 	for (let key of appActionKeys) {
+// 		const action = actions[key];	// eslint-disable-line import/namespace
+// 		// pass actions bound to specific listIndex, corresponding to each <App/> element
+// 		boundActions[key] = (...args) => dispatch(action.call(null, listIndex, ...args));
+// 	}
+//
+// 	// pass MOVE_ITEM action without binding
+// 	const moveItem = actions["moveItem"];	// eslint-disable-line import/namespace
+// 	boundActions["moveItem"] = (...args) => dispatch(moveItem(...args));
+//
+// 	return cachedDispatchProps[listIndex] = boundActions;
+// };
 
-const mapDispatchToProps = (dispatch, {listIndex}) => {
-	const fromCache = cachedDispatchProps[listIndex];
-	if(fromCache) return fromCache;
-	
-	const boundActions = {};
-	console.log("BINDING Actions to list", listIndex);
-	for (let key of appActionKeys) {
-		const action = actions[key];	// eslint-disable-line import/namespace
-		// pass actions bound to specific listIndex, corresponding to each <App/> element
-		boundActions[key] = (...args) => dispatch(action.call(null, listIndex, ...args));
-	}
-	
-	// pass MOVE_ITEM action without binding
-	const moveItem = actions["moveItem"];	// eslint-disable-line import/namespace
-	boundActions["moveItem"] = (...args) => dispatch(moveItem(...args));
-	
-	return cachedDispatchProps[listIndex] = boundActions;
-};
+const appActionKeys = Object.assign({}, actions, {addList: undefined});
 
 const options = {
 	pure: true,
@@ -72,4 +74,4 @@ const options = {
 };
 
 // actions get wrapped in dispatch call
-export default connect(mapStateToProps, mapDispatchToProps, null, options)(App);
+export default connect(mapStateToProps, appActionKeys, null, options)(App);

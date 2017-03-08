@@ -22,8 +22,8 @@ const appSource = {
 			
 			// don't dispatch actions when there is no movement from last location
 			if(currentListIndex === originalListIndex) return;
-			
-			props.moveList(currentListIndex);
+			console.log("RETURNING");
+			props.moveList(currentListIndex, originalListIndex);
 		}
 	}
 };
@@ -50,7 +50,7 @@ const appTarget = {
 			// keep track of last location
 			draggingItem.currentListIndex = overListIndex;
 			
-			props.moveList(currentListIndex);
+			props.moveList(overListIndex, currentListIndex);
 		}
 	}
 };
@@ -65,7 +65,7 @@ function collectTarget(connect) {
 class App extends PureComponent {
 	render() {
 		// eslint-disable-next-line no-unused-vars
-		const {removeList, changeFilter, changeTitle, clearCompleted, addItem, moveItem, activeItems, filter, listIndex, title, newlyAdded, connectDropTarget, connectDragSource, connectDragPreview, isDragging, todos, ...rest} = this.props;
+		const {removeList, changeFilter, changeTitle, clearCompleted, addItem, moveItem, activeItems, filter, listIndex, title, newlyAdded, connectDropTarget, connectDragSource, connectDragPreview, isDragging, todos, id, ...rest} = this.props;
 		
 		const totalItems = todos.length;
 		

@@ -32,15 +32,15 @@ function collectTarget(connect) {
 
 class TodoTools extends PureComponent {
 	getAttributes(newFilter) {
-		const {filter, changeFilter} = this.props;
+		const {listIndex, filter, changeFilter} = this.props;
 		return {
 			className: classnames({selected : filter === newFilter}),
-			onClick: (e) => (e.preventDefault(), changeFilter(newFilter))
+			onClick: (e) => (e.preventDefault(), changeFilter(listIndex, newFilter))
 		};
 	}
 	
 	render() {
-		const {clearCompleted, nbActiveItems = 0, nbCompletedItems = 0, connectDropTarget} = this.props;
+		const {listIndex, clearCompleted, nbActiveItems = 0, nbCompletedItems = 0, connectDropTarget} = this.props;
 		
 		return connectDropTarget(
       <footer className="footer">
@@ -64,7 +64,7 @@ class TodoTools extends PureComponent {
             </a>
           </li>
         </ul>
-        {nbCompletedItems > 0 && <button className="clear-completed" onClick={clearCompleted}>
+        {nbCompletedItems > 0 && <button className="clear-completed" onClick={() => clearCompleted(listIndex)}>
           Clear completed
         </button>}
       </footer>

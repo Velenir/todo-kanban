@@ -75,7 +75,8 @@ const sameExceptForItemPath = sameExceptFor("itemPath");
 class TodoItem extends Component {
 
 	render() {
-		const {id, text, isCompleted: completed, isEditing: editing, selectText, deleteItem, editItem, selectEditItem, toggleComplete, cancelEditing, doneEditing, connectDragSource, isDragging, connectDropTarget} = this.props;
+		const {id, text, isCompleted: completed, isEditing: editing, selectText, deleteItem, editItem, selectEditItem, toggleComplete, cancelEditing, doneEditing, connectDragSource, isDragging, connectDropTarget, itemPath} = this.props;
+		const listIndex = itemPath[0];
 		
 		const itemClass = classnames("todo", {completed, editing});
 		
@@ -84,15 +85,15 @@ class TodoItem extends Component {
 				<div className="view">
 					<input type="checkbox" className="toggle"
 						checked={completed}
-						onChange={() => toggleComplete(id)}
+						onChange={() => toggleComplete(listIndex, id)}
 					/>
-					<label htmlFor="todo" onDoubleClick={() => editItem(id)}>
-						<span onDoubleClick={(e) => (e.stopPropagation(), selectEditItem(id))}>{text}</span>
+					<label htmlFor="todo" onDoubleClick={() => editItem(listIndex, id)}>
+						<span onDoubleClick={(e) => (e.stopPropagation(), selectEditItem(listIndex, id))}>{text}</span>
 					</label>
-					<button className="destroy" onClick={() => deleteItem(id)}></button>
+					<button className="destroy" onClick={() => deleteItem(listIndex, id)}></button>
 				</div>
 				{editing && <TextInput
-					text={text} itemId={id}
+					text={text} itemId={id} listIndex={listIndex}
 					cancelEditing={cancelEditing} doneEditing={doneEditing}
 					selectText={selectText}
 				/>}

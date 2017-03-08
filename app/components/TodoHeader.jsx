@@ -34,7 +34,9 @@ class TodoHeader extends PureComponent {
 			const text = e.target.value;
 			e.target.value = "";
 			
-			return this.props.addItem(text);
+			const {listIndex, addItem} = this.props;
+			
+			return addItem(listIndex, text);
 		}
 	}
 	
@@ -44,7 +46,10 @@ class TodoHeader extends PureComponent {
 			
 			console.log("TITLE#ENTER");
 			// save empty title when explicitly press Enter
-			if(e.target.textContent === "") this.props.changeTitle("");
+			if(e.target.textContent === "") {
+				const {listIndex, changeTitle} = this.props;
+				changeTitle(listIndex, "");
+			}
 			e.target.blur();
 		} else if(e.key === "Escape") {
 			e.preventDefault();
@@ -62,7 +67,8 @@ class TodoHeader extends PureComponent {
 		if(text === oldTitle) return;
 		// don't save empty title on blur
 		if(text !== "") {
-			this.props.changeTitle(text);
+			const {listIndex, changeTitle} = this.props;
+			changeTitle(listIndex, text);
 		} else {
 			// return display to previous title
 			e.target.textContent = oldTitle;
@@ -80,7 +86,7 @@ class TodoHeader extends PureComponent {
 						data-placeholder="name this list" tabIndex="0">
 						{title}
 					</h3>
-					<button type="button" onClick={removeList}>x</button>
+					<button type="button" onClick={() => removeList(listIndex)}>x</button>
 				</div>
 				{connectDropTarget(
 					<input className="new-todo"

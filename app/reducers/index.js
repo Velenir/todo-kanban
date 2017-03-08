@@ -103,7 +103,7 @@ export default function listsReducer(state = {lists: List()}, action) {
 			};
 		case ADD_LIST:
 			return {
-				lists: state.lists.push(new ListRecord({newlyAdded: true}))
+				lists: state.lists.push(new ListRecord({id: state.lists.length, newlyAdded: true}))
 			};
 		case REMOVE_LIST:
 			return {
