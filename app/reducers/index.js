@@ -24,6 +24,8 @@ import {
 	MOVE_LIST
 } from '../actions/actionTypes';
 
+import {v4 as uuid} from 'uuid';
+
 export const todoReducer = combineReducers({
 	todos,
 	filter,
@@ -104,7 +106,7 @@ export default function listsReducer(state = {lists: List()}, action) {
 			};
 		case ADD_LIST:
 			return {
-				lists: state.lists.push(new ListRecord({id: state.lists.length, newlyAdded: true}))
+				lists: state.lists.push(new ListRecord({id: uuid(), newlyAdded: true}))
 			};
 		case REMOVE_LIST:
 			return {

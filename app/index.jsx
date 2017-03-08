@@ -24,7 +24,7 @@ import Board from './containers/BoardContainer';
 const initialState = {
 	lists: List.of(
 		ListRecord({
-			id: 0,
+			id: uuid(),
 			title: "Technologies used",
 			todos: fromJS([
 				{id: uuid(), text: 'React'},
@@ -33,7 +33,7 @@ const initialState = {
 			])
 		}),
 		ListRecord({
-			id: 1,
+			id: uuid(),
 			title: "New List",
 			todos: fromJS([
 				{id: uuid(), text: 'Item 1'},
