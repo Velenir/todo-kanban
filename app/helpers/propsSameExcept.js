@@ -1,4 +1,4 @@
-export default function(...exceptProps) {
+export default function sameExceptFor(...exceptProps) {
 	let notException;
 	if(exceptProps.length === 0) {
 		return function(nextProps, prevProps) {
@@ -40,3 +40,6 @@ export default function(...exceptProps) {
 		return true;
 	};
 }
+
+
+export const sameExceptForListIndex = sameExceptFor("listIndex");

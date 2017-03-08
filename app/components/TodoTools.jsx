@@ -5,6 +5,8 @@ import * as FILTER from '../reducers/filterVars';
 import {TODO_ITEM} from '../helpers/itemTypes';
 import {DropTarget} from 'react-dnd';
 
+import {sameExceptForListIndex} from '../helpers/propsSameExcept';
+
 const todoToolsTarget = {
 	canDrop() {
 		return false;
@@ -32,15 +34,15 @@ function collectTarget(connect) {
 
 class TodoTools extends PureComponent {
 	getAttributes(newFilter) {
-		const {listIndex, filter, changeFilter} = this.props;
+		const {filter, changeFilter} = this.props;
 		return {
 			className: classnames({selected : filter === newFilter}),
-			onClick: (e) => (e.preventDefault(), changeFilter(listIndex, newFilter))
+			onClick: (e) => (e.preventDefault(), changeFilter(this.props.listIndex, newFilter))
 		};
 	}
 	
 	render() {
-		const {listIndex, clearCompleted, nbActiveItems = 0, nbCompletedItems = 0, connectDropTarget} = this.props;
+		const {clearCompleted, nbActiveItems = 0, nbCompletedItems = 0, connectDropTarget} = this.props;
 		
 		return connectDropTarget(
       <footer className="footer">
@@ -64,11 +66,15 @@ class TodoTools extends PureComponent {
             </a>
           </li>
         </ul>
-        {nbCompletedItems > 0 && <button className="clear-completed" onClick={() => clearCompleted(listIndex)}>
+        {nbCompletedItems > 0 && <button className="clear-completed" onClick={() => clearCompleted(this.props.listIndex)}>
           Clear completed
         </button>}
       </footer>
 		);
+	}
+	
+	shouldComponentUpdate(nextProps) {
+		return !sameExceptForListIndex(nextProps, this.props);
 	}
 	
 	componentDidUpdate(prevProps) {

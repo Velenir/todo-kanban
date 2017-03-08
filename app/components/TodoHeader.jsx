@@ -3,6 +3,8 @@ import React, {PureComponent} from 'react';
 import {TODO_ITEM} from '../helpers/itemTypes';
 import {DropTarget} from 'react-dnd';
 
+import {sameExceptForListIndex} from '../helpers/propsSameExcept';
+
 const todoHeaderTarget = {
 	canDrop() {
 		return false;
@@ -86,7 +88,7 @@ class TodoHeader extends PureComponent {
 						data-placeholder="name this list" tabIndex="0">
 						{title}
 					</h3>
-					<button type="button" onClick={() => removeList(listIndex)}>x</button>
+					<button type="button" onClick={() => removeList(this.props.listIndex)}>x</button>
 				</div>
 				{connectDropTarget(
 					<input className="new-todo"
@@ -98,6 +100,10 @@ class TodoHeader extends PureComponent {
 				)}
 			</header>
 		);
+	}
+	
+	shouldComponentUpdate(nextProps) {
+		return !sameExceptForListIndex(nextProps, this.props);
 	}
 	
 	componentDidUpdate(prevProps) {

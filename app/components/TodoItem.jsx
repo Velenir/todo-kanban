@@ -73,10 +73,18 @@ function collectTarget(connect) {
 const sameExceptForItemPath = sameExceptFor("itemPath");
 
 class TodoItem extends Component {
+	cancelEditing = (itemId) => {
+		const {itemPath: [listIndex], cancelEditing} = this.props;
+		cancelEditing(listIndex, itemId);
+	}
+	
+	doneEditing = (itemId, value) => {
+		const {itemPath: [listIndex], doneEditing} = this.props;
+		doneEditing(listIndex, itemId, value);
+	}
 
 	render() {
-		const {id, text, isCompleted: completed, isEditing: editing, selectText, deleteItem, editItem, selectEditItem, toggleComplete, cancelEditing, doneEditing, connectDragSource, isDragging, connectDropTarget, itemPath} = this.props;
-		const listIndex = itemPath[0];
+		const {id, text, isCompleted: completed, isEditing: editing, selectText, deleteItem, editItem, selectEditItem, toggleComplete, connectDragSource, isDragging, connectDropTarget} = this.props;
 		
 		const itemClass = classnames("todo", {completed, editing});
 		
@@ -85,16 +93,16 @@ class TodoItem extends Component {
 				<div className="view">
 					<input type="checkbox" className="toggle"
 						checked={completed}
-						onChange={() => toggleComplete(listIndex, id)}
+						onChange={() => toggleComplete(this.props.itemPath[0], id)}
 					/>
-					<label htmlFor="todo" onDoubleClick={() => editItem(listIndex, id)}>
-						<span onDoubleClick={(e) => (e.stopPropagation(), selectEditItem(listIndex, id))}>{text}</span>
+					<label htmlFor="todo" onDoubleClick={() => editItem(this.props.itemPath[0], id)}>
+						<span onDoubleClick={(e) => (e.stopPropagation(), selectEditItem(this.props.itemPath[0], id))}>{text}</span>
 					</label>
-					<button className="destroy" onClick={() => deleteItem(listIndex, id)}></button>
+					<button className="destroy" onClick={() => deleteItem(this.props.itemPath[0], id)}></button>
 				</div>
 				{editing && <TextInput
-					text={text} itemId={id} listIndex={listIndex}
-					cancelEditing={cancelEditing} doneEditing={doneEditing}
+					text={text} itemId={id}
+					cancelEditing={this.cancelEditing} doneEditing={this.doneEditing}
 					selectText={selectText}
 				/>}
 			</li>
