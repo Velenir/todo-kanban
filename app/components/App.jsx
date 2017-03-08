@@ -36,6 +36,15 @@ function collectSource(connect, monitor) {
 	};
 }
 
+function smallMovement(prev, cur) {
+	console.log("was:", prev, "now:", cur, typeof cur);
+	const dx = prev.x - cur.x;
+	const dy = prev.y - cur.y;
+	const deltaSquared = dx * dx + dy * dy;
+	console.log(deltaSquared < 900 ? "stop" : "proceed");
+	return deltaSquared < 900;
+}
+
 const appTarget = {
 	canDrop() {
 		return false;
@@ -47,6 +56,13 @@ const appTarget = {
 		const {listIndex: overListIndex} = props;
 		
 		if(currentListIndex !== overListIndex) {
+			const {lastOffset} = draggingItem;
+			const currentOffset = monitor.getClientOffset();
+			
+			if(lastOffset && currentOffset && smallMovement(lastOffset, currentOffset)) return;
+			
+			draggingItem.lastOffset = currentOffset;
+			
 			// keep track of last location
 			draggingItem.currentListIndex = overListIndex;
 			
