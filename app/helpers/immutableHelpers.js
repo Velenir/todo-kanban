@@ -41,7 +41,7 @@ export function filterTodos(todos, filter) {
 
 export const TodoRecord = Record({id: null, text: "", status: FILTER.ACTIVE, editing: false, selectText: false});
 
-export const ListRecord = Record({title: "", todos: List(), filter: FILTER.ALL, newlyAdded: false});
+export const ListRecord = Record({id: null, title: "", todos: List(), filter: FILTER.ALL, newlyAdded: false});
 
 let IndexAcessedList;
 if("Proxy" in window) {
