@@ -11,6 +11,10 @@ import {compose} from 'redux';
 const boardTarget = {
 	drop() {
 		console.log("DROPPED ON BOARD");
+	},
+	hover(props, monitor) {
+		// console.log("HOVERBOARD", monitor.isOver(), monitor.isOver({shallow: true}));
+		if(monitor.isOver({shallow: true})) monitor.getItem().wasLastOverId = null;
 	}
 };
 
@@ -28,7 +32,7 @@ class Board extends Component {
 		// }
 		
 		return connectDropTarget(
-			<div>
+			<div className="board">
 				{lists.map((list, i) => <App listIndex={i} key={list.id} id={list.id}/>)}
 				<AddApp addList={addList}/>
 			</div>

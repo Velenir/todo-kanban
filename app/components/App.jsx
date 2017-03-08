@@ -9,10 +9,13 @@ import {compose} from 'redux';
 
 
 const appSource = {
-	beginDrag({listIndex}) {
+	beginDrag({listIndex, id}) {
 		return {
+			id,
 			currentListIndex: listIndex,
-			originalListIndex: listIndex
+			originalListIndex: listIndex,
+			lastOffset: null,
+			wasLastOverId: null
 		};
 	},
 	endDrag(props, monitor) {
@@ -53,9 +56,14 @@ const appTarget = {
 		const draggingItem = monitor.getItem();
 		const {currentListIndex} = draggingItem;
 		
-		const {listIndex: overListIndex} = props;
+		const {listIndex: overListIndex, id: overId} = props;
 		
 		if(currentListIndex !== overListIndex) {
+			// console.log(draggingItem.id, "OVER", overId);
+			if(draggingItem.wasLastOverId === overId) return;
+			draggingItem.wasLastOverId = overId;
+			
+			
 			const {lastOffset} = draggingItem;
 			const currentOffset = monitor.getClientOffset();
 			
@@ -67,6 +75,9 @@ const appTarget = {
 			draggingItem.currentListIndex = overListIndex;
 			
 			props.moveList(overListIndex, currentListIndex);
+		} else {
+			// console.log("OVER ITSELF");
+			draggingItem.wasLastOverId = null;
 		}
 	}
 };
