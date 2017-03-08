@@ -11,7 +11,7 @@ import Board from '../components/Board';
 // });
 
 const mapStateToProps = ({lists}) => ({
-	listsNumber: lists.length
+	lists
 });
 
 // actions get wrapped in dispatch call

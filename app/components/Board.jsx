@@ -22,14 +22,14 @@ function collectTarget(connect) {
 
 class Board extends Component {
 	render() {
-		const {listsNumber, addList, connectDropTarget} = this.props, listApps = [];
-		for (let i = 0; i < listsNumber; ++i) {
-			listApps.push(<App listIndex={i} key={i}/>);
-		}
+		const {lists, addList, connectDropTarget} = this.props;
+		// for (let i = 0; i < listsNumber; ++i) {
+		// 	listApps.push(<App listIndex={i} key={i}/>);
+		// }
 		
 		return connectDropTarget(
 			<div>
-				{listApps}
+				{lists.map((list, i) => <App listIndex={i} key={list.id} id={list.id}/>)}
 				<AddApp addList={addList}/>
 			</div>
 		);
