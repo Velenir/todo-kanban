@@ -13,7 +13,7 @@ const boardTarget = {
 		console.log("DROPPED ON BOARD");
 	},
 	hover(props, monitor) {
-		// console.log("HOVERBOARD", monitor.isOver(), monitor.isOver({shallow: true}));
+		// reset wasLastOverId
 		if(monitor.isOver({shallow: true})) monitor.getItem().wasLastOverId = null;
 	}
 };
