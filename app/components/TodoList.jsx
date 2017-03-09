@@ -19,7 +19,7 @@ class TodoList extends PureComponent {
 	getItems() {
 		const {todos, connectDropTarget, listIndex, ...rest} = this.props;	//eslint-disable-line no-unused-vars
 		return todos.map((item, i) =>
-			item ? <TodoItem key={item.id}
+			item && <TodoItem key={item.id}
 				{...rest}
 				id={item.id}
 				text={item.text}
@@ -27,7 +27,7 @@ class TodoList extends PureComponent {
 				isEditing={item.editing}
 				selectText={item.selectText}
 				itemPath={[listIndex, i]}
-			/> : null
+			/>
 		);
 	}
 	

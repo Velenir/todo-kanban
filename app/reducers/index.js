@@ -34,28 +34,6 @@ export const todoReducer = combineReducers({
 	id: id => id
 });
 
-// function combineImmutableReducers(reducerObject, getDefaultState = Map) {
-// 	return function(state = getDefaultState(), action) {
-// 	// 	const toMerge = {};
-// 	// 	for (let key in reducerObject) {
-// 	// 		toMerge[key] = reducerObject[key](state.get(key), action);
-// 	// 	}
-// 	// 	return state.merge(Map(toMerge));
-// 	//
-// 		return state.withMutations(temp => {
-// 			for (let key in reducerObject) {
-// 				temp.set(key, reducerObject[key](state.get(key), action));
-// 			}
-//
-// 			return temp;
-// 		});
-// 	};
-// }
-
-// const todoIm = combineImmutableReducers({
-// 	todos,
-// 	filter
-// });
 
 function moveItem(lists, {fromItemPath: [fromListIndex, fromItemIndex], toItemPath: [toListIndex, toItemIndex]}) {
 	let fromList = lists[fromListIndex];

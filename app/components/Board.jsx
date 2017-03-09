@@ -27,9 +27,6 @@ function collectTarget(connect) {
 class Board extends Component {
 	render() {
 		const {lists, addList, connectDropTarget} = this.props;
-		// for (let i = 0; i < listsNumber; ++i) {
-		// 	listApps.push(<App listIndex={i} key={i}/>);
-		// }
 		
 		return connectDropTarget(
 			<div className="board">
@@ -51,8 +48,6 @@ class Board extends Component {
 		console.log(`Board UPDATED with`, updatedProps);
 	}
 }
-
-// export default DragDropContext(HTML5Backend)(Board);
 
 export default compose(
 	DragDropContext(HTML5Backend),

@@ -14,13 +14,6 @@ import './scss/style.scss';
 
 import Board from './containers/BoardContainer';
 
-// const initialState = {
-// 	todos: fromJS([
-// 		{id: 1, text: 'React'},
-// 		{id: 2, text: 'Redux'},
-// 		{id: 3, text: 'Immutable'},
-// 	])
-// };
 const initialState = {
 	lists: List.of(
 		ListRecord({
@@ -55,9 +48,6 @@ const store = createStore(reducer, initialState, process.env.NODE_ENV !== 'produ
 		refs: [require('./helpers/immutableHelpers').TodoRecord]
 	}
 }) : undefined);
-
-// console.log("STORE", store.getState().lists.toJS());
-
 
 render(
 	<Provider store={store}>
