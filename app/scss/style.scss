@@ -1,3 +1,5 @@
+/* todomvc-app-css/index.css FIXES */
+
 body {
 	min-width: initial;
 	max-width: initial;
@@ -12,6 +14,12 @@ body {
 .todoapp {
 	margin: 0;
 }
+
+.todo-list li.editing .edit {
+	width: calc(100% - 43px);
+}
+
+/* ^^ todomvc-app-css/index.css FIXES ^^ */
 
 $shadowTransition: box-shadow .2s;
 $buttonColor: #bf9a9a;
