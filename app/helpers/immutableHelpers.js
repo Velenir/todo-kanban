@@ -85,6 +85,25 @@ if("Proxy" in window) {
 				newAr.splice(index, 1);
 				return newAr;
 			}
+		},
+		"set": {
+			value(index, val) {
+				const newAr = this.slice();
+				newAr[index] = val;
+				return newAr;
+			}
+		},
+		"withMutations": {
+			value(cb) {
+				const tempAr = this.slice();
+				tempAr.set = function(index, val) {
+					this[index] = val;
+					return this;
+				};
+				const newAr = cb(newAr);
+				delete newAr.set;
+				return newAr;
+			}
 		}
 	});
 	
