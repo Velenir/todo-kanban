@@ -3,7 +3,7 @@ import React, {PureComponent} from 'react';
 class AddApp extends PureComponent {
 	render() {
 		return (
-			<div>
+			<div className="afterwrapper">
 				<section className="addapp">
 					<button type="button" onClick={this.props.addList}>+</button>
 				</section>
