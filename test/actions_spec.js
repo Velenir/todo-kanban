@@ -37,8 +37,8 @@ describe('action creator', () => {
 		},
 		moveItem(type) {
 			return {
-				input: [0, [1, {id: 1, text: "Todo text"}], 2],
-				output: {type, listIndex: 0, itemEntry: [1, {id: 1, text: "Todo text"}], toIndex: 2}
+				input: [[0,1], [1,0]],
+				output: {type, fromItemPath: [0, 1], toItemPath: [1, 0]}
 			};
 		},
 		changeTitle(type) {
@@ -56,6 +56,12 @@ describe('action creator', () => {
 			return {
 				input: [0],
 				output: {type, listIndex: 0}
+			};
+		},
+		moveList(type) {
+			return {
+				input: [0, 1],
+				output: {type, toListIndex: 0, fromListIndex: 1}
 			};
 		}
 	};
