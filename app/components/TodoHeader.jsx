@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 
 import {TODO_ITEM} from '../helpers/itemTypes';
 import {DropTarget} from 'react-dnd';
@@ -30,7 +30,7 @@ function collectTarget(connect) {
 }
 
 
-class TodoHeader extends PureComponent {
+class TodoHeader extends Component {
 	handleKeyPress = (e) => {
 		if(e.key === "Enter") {
 			const text = e.target.value.trim();

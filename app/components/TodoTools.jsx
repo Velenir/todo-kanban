@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import classnames from 'classnames';
 import * as FILTER from '../reducers/filterVars';
 
@@ -32,7 +32,7 @@ function collectTarget(connect) {
 }
  
 
-class TodoTools extends PureComponent {
+class TodoTools extends Component {
 	getAttributes(newFilter) {
 		const {filter, changeFilter} = this.props;
 		return {
