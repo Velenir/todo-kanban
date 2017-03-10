@@ -48,9 +48,10 @@ class TodoHeader extends PureComponent {
 			
 			console.log("TITLE#ENTER");
 			// save empty title when explicitly press Enter
-			if(e.target.textContent === "") {
+			const text = e.target.textContent.trim();
+			if(text === "") {
 				const {listIndex, changeTitle} = this.props;
-				changeTitle(listIndex, "");
+				changeTitle(listIndex, text);
 			}
 			e.target.blur();
 		} else if(e.key === "Escape") {
@@ -68,12 +69,12 @@ class TodoHeader extends PureComponent {
 		// do nothing if ultimately nothing changed
 		if(text === oldTitle) return;
 		// don't save empty title on blur
-		if(text !== "") {
-			const {listIndex, changeTitle} = this.props;
-			changeTitle(listIndex, text);
-		} else {
+		if(text === "" || text.trim() === oldTitle) {
 			// return display to previous title
 			e.target.textContent = oldTitle;
+		} else {
+			const {listIndex, changeTitle} = this.props;
+			changeTitle(listIndex, text.trim());
 		}
 	}
 	
