@@ -1,14 +1,19 @@
 import React from 'react';
 import {renderIntoDocument, findRenderedDOMComponentWithTag, Simulate} from 'react-addons-test-utils';
-import TodoHeader from '../../app/components/TodoHeader';
+import DragTodoHeader from '../../app/components/TodoHeader';
 import {expect} from 'chai';
+import TestBackend from 'react-dnd-test-backend';
+import { DragDropContext } from 'react-dnd';
 
 describe('TodoHeader', () => {
+	// Wrap DnD component in context with test backend
+	const TodoHeader = DragDropContext(TestBackend)(DragTodoHeader);
+	
 	it('should call a callback on input submit', () => {
-		let addedItem = '';
-		const addItem = (item) => addedItem = item;
+		let addedItem, toList;
+		const addItem = (listIndex, item) => (addedItem = item, toList = listIndex);
 		const component = renderIntoDocument(
-			<TodoHeader addItem={addItem} />
+			<TodoHeader listIndex={0} addItem={addItem} />
 		);
 		
 		const input = findRenderedDOMComponentWithTag(component, 'input');
@@ -16,6 +21,7 @@ describe('TodoHeader', () => {
 		Simulate.keyPress(input, {key: "Enter", keyCode: 13, which: 13});
 		
 		expect(addedItem).to.equal('This is a new item');
+		expect(toList).to.equal(0);
 		expect(input.value).to.equal('');
 	});
 	
@@ -30,11 +36,11 @@ describe('TodoHeader', () => {
 	});
 	
 	it('should call a callback when pressing Enter or losing focus on title', () => {
-		let title = 'Title';
-		const changeTitle = (newTitle) => title = newTitle;
+		let title = 'Title', list;
+		const changeTitle = (listIndex, newTitle) => (title = newTitle, list = listIndex);
 		
 		const component = renderIntoDocument(
-			<TodoHeader title={title} changeTitle={changeTitle}/>
+			<TodoHeader listIndex={0} title={title} changeTitle={changeTitle}/>
 		);
 		
 		const h3 = findRenderedDOMComponentWithTag(component, 'h3');
@@ -52,6 +58,7 @@ describe('TodoHeader', () => {
 		h3.textContent = "Newer title";
 		Simulate.blur(h3);
 		expect(title).to.equal("Newer title");
+		expect(list).to.equal(0);
 	});
 	
 	it('should not call a callback when losing focus on title when title hasn\'t changed', () => {
