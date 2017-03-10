@@ -32,8 +32,10 @@ function collectTarget(connect) {
 
 class TodoHeader extends PureComponent {
 	handleKeyPress = (e) => {
-		if(e.key === "Enter" && e.target.value !== "") {
-			const text = e.target.value;
+		if(e.key === "Enter") {
+			const text = e.target.value.trim();
+			if(text === "") return;
+			
 			e.target.value = "";
 			
 			const {listIndex, addItem} = this.props;
