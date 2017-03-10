@@ -27,7 +27,7 @@
     "chai": "^3.5.0",
     "chai-immutable": "^1.6.0",
     "clean-webpack-plugin": "^0.1.15",
-    "css-loader": "^0.26.2",
+    "css-loader": "^0.27.1",
     "eslint": "^3.17.1",
     "eslint-import-resolver-webpack": "^0.8.1",
     "eslint-loader": "^1.6.3",
