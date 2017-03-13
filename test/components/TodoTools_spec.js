@@ -1,10 +1,16 @@
 import React from 'react';
-import {renderIntoDocument, scryRenderedDOMComponentsWithTag, Simulate} from 'react-addons-test-utils';
-import TodoTools from '../../app/components/TodoTools';
+import {renderIntoDocument, scryRenderedDOMComponentsWithTag, findRenderedComponentWithType, Simulate} from 'react-addons-test-utils';
+import DropTodoTools from '../../app/components/TodoTools';
 import * as FILTER from '../../app/reducers/filterVars';
 import {expect} from 'chai';
+import TestBackend from 'react-dnd-test-backend';
+import { DragDropContext } from 'react-dnd';
+import DragTodoItem from '../../app/components/TodoItem';
 
-describe('TodoTools', () => {
+describe.only('TodoTools', () => {
+	// Wrap DnD component in context with test backend
+	const TodoTools = DragDropContext(TestBackend)(DropTodoTools);
+	
 	it('should display the number of items left', () => {
 		const nbActiveItems = 3;
 		const component = renderIntoDocument(
@@ -29,11 +35,21 @@ describe('TodoTools', () => {
 		expect(filters[2].classList.contains('selected')).to.equal(false);
 	});
 	
-	it('should call a callback when the user clicks on Clear Completed buttons', () => {
+	it('should not render a Clear Completed button when there are no completed items', () => {
+		const component = renderIntoDocument(
+			<TodoTools nbCompletedItems={0}/>
+		);
+		
+		const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
+		
+		expect(buttons.length).to.equal(0);
+	});
+	
+	it('should call a callback when the user clicks on the Clear Completed button', () => {
 		let cleared = false;
 		const clearCompleted = () => cleared = true;
 		const component = renderIntoDocument(
-			<TodoTools clearCompleted={clearCompleted} />
+			<TodoTools clearCompleted={clearCompleted} nbCompletedItems={3}/>
 		);
 		
 		const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
