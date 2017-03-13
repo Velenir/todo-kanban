@@ -65,7 +65,7 @@ describe('TodoItem', () => {
 		// mock deleteItem function
 		const deleteItem = () => deleted = true;
 		const component = renderIntoDocument(
-			<TodoItem text={text} deleteItem={deleteItem}/>
+			<TodoItem text={text} deleteItem={deleteItem} itemPath={[0, 0]}/>
 		);
 		
 		const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
@@ -81,7 +81,7 @@ describe('TodoItem', () => {
 		// mock toggleComplete function
 		const toggleComplete = () => isChecked = true;
 		const component = renderIntoDocument(
-			<TodoItem text={text} toggleComplete={toggleComplete}/>
+			<TodoItem text={text} toggleComplete={toggleComplete} itemPath={[0, 0]}/>
 		);
 		
 		const checkboxes = scryRenderedDOMComponentsWithTag(component, 'input');
@@ -90,13 +90,13 @@ describe('TodoItem', () => {
 		expect(isChecked).to.equal(true);
 	});
 	
-	it('should call a callback when label is double clicked', () => {
+	it('should invoke callback when label is double clicked', () => {
 		let text = 'React';
 		
 		// mock editItem function
 		const editItem = () => text = 'Redux';
 		const component = renderIntoDocument(
-			<TodoItem text={text} editItem={editItem}/>
+			<TodoItem text={text} editItem={editItem} itemPath={[0, 0]}/>
 		);
 		
 		const label = scryRenderedDOMComponentsWithTag(component, 'label');
@@ -105,7 +105,7 @@ describe('TodoItem', () => {
 		expect(text).to.equal('Redux');
 	});
 	
-	it('should call a callback when text is double clicked', () => {
+	it('should invoke callback when text is double clicked', () => {
 		let text = 'React';
 		
 		// mock editItem function
@@ -115,7 +115,7 @@ describe('TodoItem', () => {
 		// mock selectEditItem function
 		const selectEditItem = () => selected = true;
 		const component = renderIntoDocument(
-			<TodoItem text={text} editItem={editItem} selectEditItem={selectEditItem}/>
+			<TodoItem text={text} editItem={editItem} selectEditItem={selectEditItem} itemPath={[0, 0]}/>
 		);
 		
 		const span = scryRenderedDOMComponentsWithTag(component, 'span');
@@ -159,7 +159,7 @@ describe('TodoItem', () => {
 		const moveItem = () => {};
 		
 		const component = renderIntoDocument(
-			<TodoItem text={text} findItem={findItem} moveItem={moveItem}/>
+			<TodoItem text={text} findItem={findItem} moveItem={moveItem} itemPath={[0, 0]}/>
 		);
 		
 		const backend = component.getManager().getBackend();
