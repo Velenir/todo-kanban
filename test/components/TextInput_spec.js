@@ -16,7 +16,7 @@ describe('TextInput', () => {
 		const input = component.itemInput;
 		Simulate.keyDown(input, {key: "Enter", keyCode: 13, which: 13});
 		
-		expect(hasDoneEditing).to.equal(true);
+		expect(hasDoneEditing).to.be.true;
 	});
 	
 	it('should call a callback when pressing escape or losing focus', () => {
@@ -31,13 +31,13 @@ describe('TextInput', () => {
 		const input = component.itemInput;
 		Simulate.keyDown(input, {key: "Escape", keyCode: 27, which: 27});
 		
-		expect(hasCanceledEditing).to.equal(true);
+		expect(hasCanceledEditing).to.be.true;
 		
 		hasCanceledEditing = false;
 		
 		Simulate.blur(input);
 		
-		expect(hasCanceledEditing).to.equal(true);
+		expect(hasCanceledEditing).to.be.true;
 	});
 	
 	it('should select text when rendered with selectText = true property', () => {

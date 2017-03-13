@@ -197,7 +197,7 @@ describe('reducers:', () => {
 			
 			const nextState = todoReducer(initialState, {});
 			
-			expect(nextState).to.have.property("newlyAdded").that.equals(false);
+			expect(nextState).to.have.property("newlyAdded").that.is.false;
 		});
 	});
 	

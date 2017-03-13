@@ -16,7 +16,7 @@ describe('TodoItem', () => {
 		);
 		const todo = scryRenderedDOMComponentsWithTag(component, "li");
 		
-		expect(todo.length).to.equal(1);
+		expect(todo).to.have.length.of(1);
 		expect(todo[0].textContent).to.contain("React");
 	});
 	
@@ -27,7 +27,7 @@ describe('TodoItem', () => {
 		);
 		const todo = scryRenderedDOMComponentsWithTag(component, 'li');
 		
-		expect(todo[0].classList.contains('completed')).to.equal(true);
+		expect(todo[0].classList.contains('completed')).to.be.true;
 	});
 	
 	it('should look different when editing', () => {
@@ -37,7 +37,7 @@ describe('TodoItem', () => {
 		);
 		const todo = scryRenderedDOMComponentsWithTag(component, 'li');
 		
-		expect(todo[0].classList.contains('editing')).to.equal(true);
+		expect(todo[0].classList.contains('editing')).to.be.true;
 	});
 	
 	it('should be checked if the item is completed', () => {
@@ -54,8 +54,8 @@ describe('TodoItem', () => {
 		const input1 = scryRenderedDOMComponentsWithTag(component1, 'input');
 		const input2 = scryRenderedDOMComponentsWithTag(component2, 'input');
 		
-		expect(input1[0].checked).to.equal(true);
-		expect(input2[0].checked).to.equal(false);
+		expect(input1[0].checked).to.be.true;
+		expect(input2[0].checked).to.be.false;
 	});
 	
 	it('should invoke callback when the delete button is clicked', () => {
@@ -71,7 +71,7 @@ describe('TodoItem', () => {
 		const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
 		Simulate.click(buttons[0]);
 		
-		expect(deleted).to.equal(true);
+		expect(deleted).to.be.true;
 	});
 	
 	it('should invoke callback when checkbox is clicked', () => {
@@ -87,7 +87,7 @@ describe('TodoItem', () => {
 		const checkboxes = scryRenderedDOMComponentsWithTag(component, 'input');
 		Simulate.change(checkboxes[0]);
 		
-		expect(isChecked).to.equal(true);
+		expect(isChecked).to.be.true;
 	});
 	
 	it('should invoke callback when label is double clicked', () => {
@@ -121,7 +121,7 @@ describe('TodoItem', () => {
 		const span = scryRenderedDOMComponentsWithTag(component, 'span');
 		Simulate.doubleClick(span[0]);
 		
-		expect(selected).to.equal(true);
+		expect(selected).to.be.true;
 		expect(text).to.equal('React');
 	});
 	

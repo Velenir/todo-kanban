@@ -77,7 +77,7 @@ describe('TodoHeader', () => {
 		h3.textContent = title;
 		Simulate.blur(h3);
 		
-		expect(called).to.equal(false);
+		expect(called).to.be.false;
 	});
 	
 	it('should restore empty title when losing focus or pressing Escape', () => {
@@ -111,7 +111,7 @@ describe('TodoHeader', () => {
 		const button = findRenderedDOMComponentWithTag(component, 'button');
 		Simulate.click(button);
 		
-		expect(called).to.equal(true);
+		expect(called).to.be.true;
 	});
 	
 	it('should move item to top on hover when dragging across lists', () => {
@@ -169,7 +169,7 @@ describe('TodoHeader', () => {
 		// hover over DropTarget-wrapped instance
 		backend.simulateHover([todoHeader.getHandlerId()]);
 		
-		expect(moveArguments).to.deep.equal(null);
+		expect(moveArguments).to.be.null;
 		
 		backend.simulateEndDrag();
 	});

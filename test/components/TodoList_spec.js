@@ -28,7 +28,7 @@ describe('TodoList', () => {
 		
 		const items = scryRenderedDOMComponentsWithTag(component, "li");
 		
-		expect(items.length).to.equal(2);
+		expect(items).to.have.length.of(2);
 		expect(items[0].textContent).to.contain("React");
 		expect(items[1].textContent).to.contain("Redux");
 	});
@@ -48,7 +48,7 @@ describe('TodoList', () => {
 		);
 		const items = scryRenderedDOMComponentsWithTag(component, 'li');
 		
-		expect(items.length).to.equal(1);
+		expect(items).to.have.length.of(1);
 		expect(items[0].textContent).to.contain('Immutable');
 	});
 	
@@ -64,7 +64,7 @@ describe('TodoList', () => {
 		);
 		const items = scryRenderedDOMComponentsWithTag(component, 'li');
 		
-		expect(items.length).to.equal(3);
+		expect(items).to.have.length.of(3);
 		expect(items[0].textContent).to.contain('React');
 		expect(items[1].textContent).to.contain('Redux');
 		expect(items[2].textContent).to.contain('Immutable');

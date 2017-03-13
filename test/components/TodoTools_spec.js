@@ -30,9 +30,9 @@ describe('TodoTools', () => {
 		
 		const filters = scryRenderedDOMComponentsWithTag(component, 'a');
 		
-		expect(filters[0].classList.contains('selected')).to.equal(false);
-		expect(filters[1].classList.contains('selected')).to.equal(true);
-		expect(filters[2].classList.contains('selected')).to.equal(false);
+		expect(filters[0].classList.contains('selected')).to.be.false;
+		expect(filters[1].classList.contains('selected')).to.be.true;
+		expect(filters[2].classList.contains('selected')).to.be.false;
 	});
 	
 	it('should not render a Clear Completed button when there are no completed items', () => {
@@ -42,7 +42,7 @@ describe('TodoTools', () => {
 		
 		const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
 		
-		expect(buttons.length).to.equal(0);
+		expect(buttons).to.have.length.of(0);
 	});
 	
 	it('should call a callback when the user clicks on the Clear Completed button', () => {
@@ -55,7 +55,7 @@ describe('TodoTools', () => {
 		const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
 		Simulate.click(buttons[0]);
 		
-		expect(cleared).to.equal(true);
+		expect(cleared).to.be.true;
 	});
 	
 	it('should move item to bottom on hover when dragging across lists', () => {
@@ -113,7 +113,7 @@ describe('TodoTools', () => {
 		// hover over DropTarget-wrapped instance
 		backend.simulateHover([todoTools.getHandlerId()]);
 		
-		expect(moveArguments).to.deep.equal(null);
+		expect(moveArguments).to.deep.be.null;
 		
 		backend.simulateEndDrag();
 	});
