@@ -154,12 +154,8 @@ describe('TodoItem', () => {
 	
 	it('should lower opacity when dragged', () => {
 		const text = 'React';
-		// Stub findItem and moveItem functions
-		const findItem = () => [];
-		const moveItem = () => {};
-		
 		const component = renderIntoDocument(
-			<TodoItem text={text} findItem={findItem} moveItem={moveItem} itemPath={[0, 0]}/>
+			<TodoItem text={text} itemPath={[0, 0]}/>
 		);
 		
 		const backend = component.getManager().getBackend();
@@ -179,14 +175,9 @@ describe('TodoItem', () => {
 	});
 	
 	it('should not allow dragging while editing', () => {
-		// expect(() => backend.simulateDrop()).to.throw(Error);
 		const text = 'React';
-		// Stub findItem and moveItem functions
-		const findItem = () => [];
-		const moveItem = () => {};
-		
 		const component = renderIntoDocument(
-			<TodoItem text={text} findItem={findItem} moveItem={moveItem} isEditing/>
+			<TodoItem text={text} isEditing/>
 		);
 		
 		const backend = component.getManager().getBackend();

@@ -122,7 +122,3 @@ function fromJSWithRecords(obj, reviver = (k,v) => {
 }
 
 export {fromJSWithRecords as fromJS};
-
-export function findItemEntry(todos, itemId) {
-	return todos.findEntry(item => item.get("id") === itemId);
-}
