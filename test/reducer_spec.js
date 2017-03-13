@@ -1,4 +1,4 @@
-import {fromJS, findItemEntry, ListRecord, List} from '../app/helpers/immutableHelpers';
+import {fromJS, ListRecord, List} from '../app/helpers/immutableHelpers';
 import {expect} from 'chai';
 
 import listsReducer, {todoReducer} from '../app/reducers';
@@ -158,7 +158,7 @@ describe('reducers:', () => {
 			
 			expect(nextState).to.have.property("todos").that.equals(fromJS([
 				{id: 7, text: 'React', status: FILTER.ACTIVE},
-				{id: 8, text: 'Redux', status: FILTER.ACTIVE}
+				{id: nextState.todos[1].id, text: 'Redux', status: FILTER.ACTIVE}
 			]));
 		});
 		
@@ -174,23 +174,6 @@ describe('reducers:', () => {
 			const nextState = todoReducer(initialState, action);
 			
 			expect(nextState).to.have.property("todos").that.equals(fromJS([
-				{id: 1, text: 'React', status: FILTER.ACTIVE}
-			]));
-		});
-		
-		it('should handle MOVE_ITEM by moving the item to a new index', () => {
-			const initialState = new ListRecord({
-				todos: fromJS([
-					{id: 1, text: 'React', status: FILTER.ACTIVE},
-					{id: 2, text: 'Redux', status: FILTER.ACTIVE}
-				])
-			});
-			const action = moveItem(0, findItemEntry(initialState.todos, 2), 0);
-			
-			const nextState = todoReducer(initialState, action);
-			
-			expect(nextState).to.have.property("todos").that.equals(fromJS([
-				{id: 2, text: 'Redux', status: FILTER.ACTIVE},
 				{id: 1, text: 'React', status: FILTER.ACTIVE}
 			]));
 		});
@@ -217,11 +200,38 @@ describe('reducers:', () => {
 		});
 	});
 	
-	describe('combined todoReducer', () => {
+	describe('listsReducer', () => {
+		it('should handle MOVE_ITEM by moving the item to a new index', () => {
+			const initialState = {
+				lists: List.of(new ListRecord({
+					id: 1,
+					title: "Technologies used",
+					todos: fromJS([
+						{id: 1, text: 'React'},
+						{id: 2, text: 'Redux'}
+					])
+				}))
+			};
+			const action = moveItem([0,1], [0,0]);
+			
+			const nextState = listsReducer(initialState, action);
+			
+			expect(nextState).to.have.property("lists").that.equals(List.of(
+					new ListRecord({
+						id: 1,
+						title: "Technologies used",
+						todos: fromJS([
+							{id: 2, text: 'Redux'},
+							{id: 1, text: 'React'}
+						])
+					})
+			));
+		});
 		
 		it('should handle ADD_LIST by adding a new list', () => {
 			const initialState = {
 				lists: List.of(new ListRecord({
+					id: 1,
 					title: "Technologies used",
 					todos: fromJS([
 						{id: 1, text: 'React'},
@@ -236,6 +246,7 @@ describe('reducers:', () => {
 			
 			expect(nextState).to.have.property("lists").that.equals(List.of(
 					new ListRecord({
+						id: 1,
 						title: "Technologies used",
 						todos: fromJS([
 							{id: 1, text: 'React'},
@@ -243,7 +254,7 @@ describe('reducers:', () => {
 							{id: 3, text: 'Immutable'}
 						])
 					}),
-					new ListRecord({newlyAdded: true})
+					new ListRecord({id: nextState.lists[1].id, newlyAdded: true})
 			));
 		});
 		
@@ -251,6 +262,7 @@ describe('reducers:', () => {
 			const initialState = {
 				lists: List.of(
 					new ListRecord({
+						id: 1,
 						title: "Technologies used",
 						todos: fromJS([
 							{id: 1, text: 'React'},
@@ -259,6 +271,7 @@ describe('reducers:', () => {
 						])
 					}),
 					new ListRecord({
+						id: 2,
 						title: "List to delete"
 					})
 				)
@@ -269,6 +282,7 @@ describe('reducers:', () => {
 			
 			expect(nextState).to.have.property("lists").that.equals(List.of(
 					new ListRecord({
+						id: 1,
 						title: "Technologies used",
 						todos: fromJS([
 							{id: 1, text: 'React'},
