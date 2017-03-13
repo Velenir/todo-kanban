@@ -15,7 +15,8 @@ import {
 	moveItem,
 	changeTitle,
 	addList,
-	removeList
+	removeList,
+	moveList
 } from '../app/actions';
 import * as FILTER from '../app/reducers/filterVars';
 
@@ -281,6 +282,45 @@ describe('reducers:', () => {
 			const nextState = listsReducer(initialState, action);
 			
 			expect(nextState).to.have.property("lists").that.equals(List.of(
+					new ListRecord({
+						id: 1,
+						title: "Technologies used",
+						todos: fromJS([
+							{id: 1, text: 'React'},
+							{id: 2, text: 'Redux'},
+							{id: 3, text: 'Immutable'}
+						])
+					})
+			));
+		});
+		
+		it('should handle MOVE_LIST by moving the list', () => {
+			const initialState = {
+				lists: List.of(
+					new ListRecord({
+						id: 1,
+						title: "Technologies used",
+						todos: fromJS([
+							{id: 1, text: 'React'},
+							{id: 2, text: 'Redux'},
+							{id: 3, text: 'Immutable'}
+						])
+					}),
+					new ListRecord({
+						id: 2,
+						title: "List to move"
+					})
+				)
+			};
+			const action = moveList(0, 1);
+			
+			const nextState = listsReducer(initialState, action);
+			
+			expect(nextState).to.have.property("lists").that.equals(List.of(
+					new ListRecord({
+						id: 2,
+						title: "List to move"
+					}),
 					new ListRecord({
 						id: 1,
 						title: "Technologies used",
