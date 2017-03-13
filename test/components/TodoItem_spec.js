@@ -125,7 +125,7 @@ describe('TodoItem', () => {
 		expect(text).to.equal('React');
 	});
 	
-	it('should autofocus one of TextInput when updated with props.isEditing = true', (done) => {
+	it('should autofocus one of TextInputs when updated with props.isEditing = true', (done) => {
 		const text = 'React';
 		
 		class Com extends React.Component {
@@ -164,8 +164,8 @@ describe('TodoItem', () => {
 		
 		const backend = component.getManager().getBackend();
 
-		// Test that the opacity is 1
-		let li = findRenderedDOMComponentWithTag(component, 'li');
+		// Test that opacity is 1
+		const li = findRenderedDOMComponentWithTag(component, 'li');
 		expect(li.style.opacity).to.equal("1");
 		
 		// Find the drag source ID and use it to simulate the dragging operation
@@ -191,7 +191,7 @@ describe('TodoItem', () => {
 		
 		const backend = component.getManager().getBackend();
 
-		// Test that the opacity is 1
+		// Test that opacity is 1
 		let li = findRenderedDOMComponentWithTag(component, 'li');
 		expect(li.style.opacity).to.equal("1");
 		
