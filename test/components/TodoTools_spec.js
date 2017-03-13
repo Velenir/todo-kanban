@@ -7,7 +7,7 @@ import TestBackend from 'react-dnd-test-backend';
 import { DragDropContext } from 'react-dnd';
 import DragTodoItem from '../../app/components/TodoItem';
 
-describe.only('TodoTools', () => {
+describe('TodoTools', () => {
 	// Wrap DnD component in context with test backend
 	const TodoTools = DragDropContext(TestBackend)(DropTodoTools);
 	
@@ -56,5 +56,65 @@ describe.only('TodoTools', () => {
 		Simulate.click(buttons[0]);
 		
 		expect(cleared).to.equal(true);
+	});
+	
+	it('should move item to bottom on hover when dragging across lists', () => {
+		let moveArguments = null;
+		const moveItem = (...args) => moveArguments = args;
+		
+		const Wrapper = () => (
+			<div>
+				<DropTodoTools listIndex={1} moveItem={moveItem}/>
+				<DragTodoItem itemPath={[0, 0]} moveItem={() => {}}/>
+			</div>
+		);
+		
+		// Wrap DnD component in context with test backend
+		const DnDWrapper = DragDropContext(TestBackend)(Wrapper);
+		
+		const component = renderIntoDocument(<DnDWrapper/>);
+		
+		const backend = component.getManager().getBackend();
+		
+		const todoItem = findRenderedComponentWithType(component, DragTodoItem);
+		const todoTools = findRenderedComponentWithType(component, DropTodoTools);
+		
+		backend.simulateBeginDrag([todoItem.getHandlerId()]);
+		// hover over DropTarget-wrapped instance
+		backend.simulateHover([todoTools.getHandlerId()]);
+		
+		expect(moveArguments).to.deep.equal([[0,0], [1,-0]]);
+		
+		backend.simulateEndDrag();
+	});
+	
+	it('should not move item on hover when dragging within same list', () => {
+		let moveArguments = null;
+		const moveItem = (...args) => moveArguments = args;
+		
+		const Wrapper = () => (
+			<div>
+				<DropTodoTools listIndex={1} moveItem={moveItem}/>
+				<DragTodoItem itemPath={[1, 0]} moveItem={() => {}}/>
+			</div>
+		);
+		
+		// Wrap DnD component in context with test backend
+		const DnDWrapper = DragDropContext(TestBackend)(Wrapper);
+		
+		const component = renderIntoDocument(<DnDWrapper/>);
+		
+		const backend = component.getManager().getBackend();
+		
+		const todoItem = findRenderedComponentWithType(component, DragTodoItem);
+		const todoTools = findRenderedComponentWithType(component, DropTodoTools);
+		
+		backend.simulateBeginDrag([todoItem.getHandlerId()]);
+		// hover over DropTarget-wrapped instance
+		backend.simulateHover([todoTools.getHandlerId()]);
+		
+		expect(moveArguments).to.deep.equal(null);
+		
+		backend.simulateEndDrag();
 	});
 });
