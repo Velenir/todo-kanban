@@ -75,7 +75,7 @@ function collectTarget(connect) {
 class App extends PureComponent {
 	render() {
 		// eslint-disable-next-line no-unused-vars
-		const {removeList, changeFilter, changeTitle, clearCompleted, addItem, moveItem, activeItems, filter, listIndex, title, newlyAdded, connectDropTarget, connectDragSource, connectDragPreview, isDragging, todos, id, ...rest} = this.props;
+		const {removeList, changeFilter, changeTitle, clearCompleted, addItem, moveItem, activeItems, filter, listIndex, title, newlyAdded, connectDropTarget, connectDragSource, connectDragPreview, isDragging, todos, id, moveList, ...rest} = this.props;
 		
 		const totalItems = todos.length;
 		
