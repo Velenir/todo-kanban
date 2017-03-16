@@ -25,12 +25,17 @@ function collectTarget(connect) {
 }
 
 class Board extends Component {
+	getApps() {
+		console.log("CONNECTed getApps");
+		return this.props.lists.map((list, i) => <App listIndex={i} key={list.id} id={list.id}/>);
+	}
+	
 	render() {
-		const {lists, addList, connectDropTarget} = this.props;
+		const {addList, connectDropTarget} = this.props;
 		
 		return connectDropTarget(
 			<div className="board">
-				{lists.map((list, i) => <App listIndex={i} key={list.id} id={list.id}/>)}
+				{this.getApps()}
 				<AddApp addList={addList}/>
 			</div>
 		);
@@ -49,7 +54,10 @@ class Board extends Component {
 	}
 }
 
+export {Board as UndecoratedBoard};
+export const DropTargetWrapper = DropTarget(APP, boardTarget, collectTarget);
+
 export default compose(
 	DragDropContext(HTML5Backend),
-	DropTarget(APP, boardTarget, collectTarget)
+	DropTargetWrapper
 )(Board);
