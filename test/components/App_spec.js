@@ -50,6 +50,7 @@ describe('App', () => {
 		
 		// Find the drag source ID and use it to simulate the dragging operation
 		const app = findRenderedComponentWithType(component, DragApp);
+		// Drag DragSource-wrapped instance
 		backend.simulateBeginDrag([app.getDecoratedComponentInstance().getHandlerId()]);
 		
 		// Verify that the li changed its opacity

@@ -152,10 +152,11 @@ describe('TodoList', () => {
 		
 		// to index 0 on hover
 		expect(moveArguments).to.deep.equal([[1,2], [1,0]]);
+		moveArguments = null;
 		backend.simulateDrop();
 		
 		// stay at index 0 on endDrag
-		expect(moveArguments).to.deep.equal([[1,2], [1,0]]);
+		expect(moveArguments).to.be.null;
 		backend.simulateEndDrag();
 	});
 	
