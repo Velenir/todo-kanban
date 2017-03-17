@@ -8,8 +8,10 @@
     "dev-server": "webpack-dev-server --env development",
     "build": "webpack --env production",
     "deploy": "npm run build && gh-pages -d build",
-    "test": "BABEL_ENV=test mocha --compilers js:babel-core/register --require ./test/setup.js 'test/**/*.@(js|jsx)'",
-    "test:watch": "npm run test -- --watch --watch-extensions jsx",
+    "test": "npm run test:mocha && npm run test:mocha-wo-proxy",
+    "test:mocha": "BABEL_ENV=test mocha --compilers js:babel-core/register --require ./test/setup.js 'test/**/*_spec.@(js|jsx)'",
+    "test:mocha-wo-proxy": "npm run test:mocha -- --require ./test/setupSansProxy.js",
+    "test:watch": "npm run test:mocha -- --watch --watch-extensions jsx",
     "test:lint": "eslint . --ext .js --ext .jsx --ignore-path .gitignore --cache",
     "stats": "webpack --env production --profile --json > stats.json"
   },
