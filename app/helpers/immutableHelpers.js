@@ -44,7 +44,8 @@ export const TodoRecord = Record({id: null, text: "", status: FILTER.ACTIVE, edi
 export const ListRecord = Record({id: null, title: "", todos: List(), filter: FILTER.ALL, newlyAdded: false});
 
 let IndexAcessedList;
-if("Proxy" in window) {
+const hasProxySupport = !!window.Proxy;
+if(hasProxySupport) {
 	const indexedProto = new Proxy(Object.prototype, {
 		get(target, property, receiver) {
 			if(typeof property === "string") {
@@ -62,61 +63,14 @@ if("Proxy" in window) {
 	
 	IndexAcessedList = List;
 } else {
-	const originalPush = Array.prototype.push;
-	Object.defineProperties(Array.prototype, {
-		"update": {
-			value(index, cb) {
-				console.log("update", index);
-				const newAr = this.slice();
-				newAr[index] = cb(newAr[index]);
-				return newAr;
-			}
-		},
-		"push": {
-			value() {
-				const newAr = this.slice();
-				originalPush.apply(newAr, arguments);
-				return newAr;
-			}
-		},
-		"remove": {
-			value(index) {
-				const newAr = this.slice();
-				newAr.splice(index, 1);
-				return newAr;
-			}
-		},
-		"set": {
-			value(index, val) {
-				const newAr = this.slice();
-				newAr[index] = val;
-				return newAr;
-			}
-		},
-		"withMutations": {
-			value(cb) {
-				const tempAr = this.slice();
-				tempAr.set = function(index, val) {
-					this[index] = val;
-					return this;
-				};
-				const newAr = cb(newAr);
-				delete newAr.set;
-				return newAr;
-			}
-		}
-	});
-	
-	IndexAcessedList = ar => ar;
-	
-	IndexAcessedList.of = Array.of.bind(Array);
+	IndexAcessedList = require('./ImmutableArray').default;
 }
 
 export {IndexAcessedList as List};
 
 function fromJSWithRecords(obj, reviver = (k,v) => {
 	const isIndexed = Iterable.isIndexed(v);
-	return isIndexed ? v.toList() : new TodoRecord(v.toMap());
+	return isIndexed ? hasProxySupport ? v.toList() : IndexAcessedList.from(v) : new TodoRecord(v.toMap());
 }) {
 	return fromJS(obj, reviver);
 }
