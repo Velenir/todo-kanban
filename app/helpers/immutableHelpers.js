@@ -22,7 +22,9 @@ export function filterTodos(todos, filter) {
 			return status === filter ? item : null;
 		});
 	}	else {
-		activeItems = todos.filter(item => item.get("status") === FILTER.ACTIVE).size;
+		console.log("filter all", todos);
+		activeItems = todos.filter(item => item.get("status") === FILTER.ACTIVE).length;
+		console.log("filtered");
 	}
 	console.log("Filtered todos:", activeItems, todos, filter);
 	const filtered = {activeItems, todos, filter};

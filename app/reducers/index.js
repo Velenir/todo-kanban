@@ -38,7 +38,7 @@ export const todoReducer = combineReducers({
 function moveItem(lists, {fromItemPath: [fromListIndex, fromItemIndex], toItemPath: [toListIndex, toItemIndex]}) {
 	let fromList = lists[fromListIndex];
 	// consider -0 === last element index
-	if(Object.is(fromItemIndex, -0)) fromItemIndex = fromList.todos.size - 1;
+	if(Object.is(fromItemIndex, -0)) fromItemIndex = fromList.todos.length - 1;
 	const item = fromList.todos.get(fromItemIndex);
 	
 	fromList = fromList.deleteIn(["todos", fromItemIndex]);
@@ -47,7 +47,7 @@ function moveItem(lists, {fromItemPath: [fromListIndex, fromItemIndex], toItemPa
 	
 	let toList = sameList ? fromList : lists[toListIndex];
 		
-	toList = toList.update("todos", todos => todos.insert(Object.is(toItemIndex, -0) ? todos.size : toItemIndex, item));
+	toList = toList.update("todos", todos => todos.insert(Object.is(toItemIndex, -0) ? todos.length : toItemIndex, item));
 	
 	if(sameList) {
 		return lists.set(toListIndex, toList);

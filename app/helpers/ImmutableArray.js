@@ -72,10 +72,19 @@ class ImmutableArray extends Array {
 	
 	/* eslint-enable no-underscore-dangle*/
 	asMutable() {
-		return Array.from(this);
+		const copy = Array.from(this);
+		copy.set = function(index, val) {
+			this[index] = val;
+			return this;
+		};
+		copy.get = function(index) {
+			return this[index];
+		};
+		return copy;
 	}
 	
 	withMutations(cb) {
+		console.log("WITH MUT");
 		const mutated = cb(this.asMutable());
 		return ImmutableArray.from(mutated);
 	}
@@ -86,6 +95,11 @@ class ImmutableArray extends Array {
 	
 	insert(index, val) {
 		return this.splice(index, 0, val);
+	}
+	
+	update(index, cb) {
+		const mutated = cb(this[index]);
+		return this.set(index, mutated);
 	}
 }
 
