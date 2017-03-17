@@ -1,4 +1,5 @@
 import {fromJS, ListRecord, List} from '../app/helpers/immutableHelpers';
+import ImAr from '../app/helpers/ImmutableArray';
 import {expect} from 'chai';
 
 import listsReducer, {todoReducer} from '../app/reducers';
@@ -21,9 +22,16 @@ import {
 import * as FILTER from '../app/reducers/filterVars';
 
 describe('reducers:', () => {
+	function expectTodosToEqual(state, todos) {
+		todos = todos.map(item => fromJS(item));
+		expect(state.todos.length).to.equal(todos.length);
+		
+		for(let i = 0, len = todos.length; i < len; ++i) {
+			expect(state.todos[i]).to.equal(todos[i]);
+		}
+	}
 	
 	describe('combined todoReducer', () => {
-
 		it('should handle TOGGLE_COMPLETE by changing the status from active to completed', () => {
 			const initialState = new ListRecord({
 				todos: fromJS([
@@ -33,14 +41,16 @@ describe('reducers:', () => {
 				])
 			});
 			const action = toggleComplete(0, 1);
+			console.log(initialState.todos instanceof ImAr);
+			console.log("isFrozen", Object.isFrozen(initialState.todos));
 			
 			const nextState = todoReducer(initialState, action);
 			
-			expect(nextState).to.have.property("todos").that.equals(fromJS([
+			expectTodosToEqual(nextState, [
 				{id: 1, text: 'React', status: FILTER.COMPLETED},
 				{id: 2, text: 'Redux', status: FILTER.ACTIVE},
 				{id: 3, text: 'Immutable', status: FILTER.COMPLETED}
-			]));
+			]);
 		});
 		
 		it('should handle TOGGLE_COMPLETE by changing the status from completed to active', () => {
@@ -55,11 +65,11 @@ describe('reducers:', () => {
 			
 			const nextState = todoReducer(initialState, action);
 			
-			expect(nextState).to.have.property("todos").that.equals(fromJS([
+			expectTodosToEqual(nextState, [
 				{id: 1, text: 'React', status: FILTER.ACTIVE},
 				{id: 2, text: 'Redux', status: FILTER.ACTIVE},
 				{id: 3, text: 'Immutable', status: FILTER.ACTIVE}
-			]));
+			]);
 		});
 		
 		it('should handle CHANGE_FILTER by changing the filter', () => {
@@ -83,9 +93,9 @@ describe('reducers:', () => {
 			
 			const nextState = todoReducer(initialState, action);
 			
-			expect(nextState).to.have.property("todos").that.equals(fromJS([
+			expectTodosToEqual(nextState, [
 				{id: 1, text: 'React', status: FILTER.ACTIVE, editing: true, selectText: false}
-			]));
+			]);
 		});
 		
 		it('should handle SELECT_EDIT_ITEM by setting editing and selectText to true', () => {
@@ -98,9 +108,9 @@ describe('reducers:', () => {
 			
 			const nextState = todoReducer(initialState, action);
 			
-			expect(nextState).to.have.property("todos").that.equals(fromJS([
+			expectTodosToEqual(nextState, [
 				{id: 1, text: 'React', status: FILTER.ACTIVE, editing: true, selectText: true}
-			]));
+			]);
 		});
 		
 		it('should handle CANCEL_EDITING by setting editing to false', () => {
@@ -112,9 +122,9 @@ describe('reducers:', () => {
 			const action = cancelEditing(0, 1);
 			
 			const nextState = todoReducer(initialState, action);
-			expect(nextState).to.have.property("todos").that.equals(fromJS([
+			expectTodosToEqual(nextState, [
 				{id: 1, text: 'React', status: FILTER.ACTIVE, editing: false}
-			]));
+			]);
 		});
 		
 		it('should handle DONE_EDITING by updating the text', () => {
@@ -126,9 +136,9 @@ describe('reducers:', () => {
 			const action = doneEditing(0, 1, "Redux");
 			
 			const nextState = todoReducer(initialState, action);
-			expect(nextState).to.have.property("todos").that.equals(fromJS([
+			expectTodosToEqual(nextState, [
 				{id: 1, text: 'Redux', status: FILTER.ACTIVE, editing: false}
-			]));
+			]);
 		});
 		
 		it('should handle CLEAR_COMPLETED by removing all the completed items', () => {
@@ -142,25 +152,25 @@ describe('reducers:', () => {
 			
 			const nextState = todoReducer(initialState, action);
 			
-			expect(nextState).to.have.property("todos").that.equals(fromJS([
+			expectTodosToEqual(nextState, [
 				{id: 1, text: 'React', status: FILTER.ACTIVE}
-			]));
+			]);
 		});
 		
 		it('should handle ADD_ITEM by adding the item', () => {
 			const initialState = new ListRecord({
 				todos: fromJS([
-					{id: 7, text: 'React', status: FILTER.ACTIVE}
+					{id: 1, text: 'React', status: FILTER.ACTIVE}
 				])
 			});
 			const action = addItem(0, "Redux");
 			
 			const nextState = todoReducer(initialState, action);
 			
-			expect(nextState).to.have.property("todos").that.equals(fromJS([
-				{id: 7, text: 'React', status: FILTER.ACTIVE},
+			expectTodosToEqual(nextState, [
+				{id: 1, text: 'React', status: FILTER.ACTIVE},
 				{id: nextState.todos[1].id, text: 'Redux', status: FILTER.ACTIVE}
-			]));
+			]);
 		});
 		
 		it('should handle DELETE_ITEM by removing the item', () => {
@@ -174,9 +184,9 @@ describe('reducers:', () => {
 			
 			const nextState = todoReducer(initialState, action);
 			
-			expect(nextState).to.have.property("todos").that.equals(fromJS([
+			expectTodosToEqual(nextState, [
 				{id: 1, text: 'React', status: FILTER.ACTIVE}
-			]));
+			]);
 		});
 		
 		it('should handle CHANGE_TITLE by changing the title', () => {
@@ -202,6 +212,17 @@ describe('reducers:', () => {
 	});
 	
 	describe('listsReducer', () => {
+		function expectListsToEqual(state, lists) {
+			expect(state.lists.length).to.equal(lists.length);
+			
+			for(let i = 0, len = lists.length; i < len; ++i) {
+				const list = state.lists[i];
+				expect(list.id).to.equal(lists[i].id);
+				expect(list.title).to.equal(lists[i].title);
+				expectTodosToEqual(list, lists[i].todos);
+			}
+		}
+		
 		it('should handle MOVE_ITEM by moving the item to a new index', () => {
 			const initialState = {
 				lists: List.of(new ListRecord({
@@ -217,7 +238,7 @@ describe('reducers:', () => {
 			
 			const nextState = listsReducer(initialState, action);
 			
-			expect(nextState).to.have.property("lists").that.equals(List.of(
+			expectListsToEqual(nextState, List.of(
 					new ListRecord({
 						id: 1,
 						title: "Technologies used",
@@ -245,7 +266,7 @@ describe('reducers:', () => {
 			
 			const nextState = listsReducer(initialState, action);
 			
-			expect(nextState).to.have.property("lists").that.equals(List.of(
+			expectListsToEqual(nextState, List.of(
 					new ListRecord({
 						id: 1,
 						title: "Technologies used",
@@ -281,7 +302,7 @@ describe('reducers:', () => {
 			
 			const nextState = listsReducer(initialState, action);
 			
-			expect(nextState).to.have.property("lists").that.equals(List.of(
+			expectListsToEqual(nextState, List.of(
 					new ListRecord({
 						id: 1,
 						title: "Technologies used",
@@ -316,7 +337,7 @@ describe('reducers:', () => {
 			
 			const nextState = listsReducer(initialState, action);
 			
-			expect(nextState).to.have.property("lists").that.equals(List.of(
+			expectListsToEqual(nextState, List.of(
 					new ListRecord({
 						id: 2,
 						title: "List to move"
