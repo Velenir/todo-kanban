@@ -1,28 +1,19 @@
 class ImmutableArray extends Array {
 	constructor(...args) {
 		super(...args);
-		if(!ImmutableArray.dontFreeze) {
-			ImmutableArray.dontFreeze = false;
-			Object.freeze(this);
-		}
 	}
-		
+	
 	static of(...args) {
-		ImmutableArray.dontFreeze = true;
-		const ar = super.of(...args);
-		return Object.freeze(ar);
+		return super.of(...args);
 	}
 	
 	static from(...args) {
-		ImmutableArray.dontFreeze = true;
-		const ar = super.from(...args);
-		return Object.freeze(ar);
+		// console.log("FROM", ...args);
+		return super.from(...args);
 	}
 	
 	slice(...args) {
-		ImmutableArray.dontFreeze = true;
-		const ar = super.slice.apply(this, args);
-		return Object.freeze(ar);
+		return super.slice.apply(this, args);
 	}
 	
 	get(index) {
@@ -35,60 +26,51 @@ class ImmutableArray extends Array {
 		return copy;
 	}
 	
-	pop() {
+	_applySuperFunc(fn, args) {
 		const copy = super.slice();
-		super.pop.call(copy);
+		fn.apply(copy, args);
 		return copy;
 	}
 	
-	push(...args) {
-		const copy = super.slice();
-		super.push.apply(copy, args);
-		return copy;
+	/* eslint-disable no-underscore-dangle*/
+	pop() {
+		return this._applySuperFunc(super.pop);
+	}
+	
+	push() {
+		console.log("PUSHING");
+		return this._applySuperFunc(super.push, arguments);
 	}
 	
 	shift() {
-		const copy = super.slice();
-		super.shift.call(copy);
-		return copy;
+		return this._applySuperFunc(super.shift);
 	}
 	
-	unshift(...args) {
-		const copy = super.slice();
-		super.unshift.apply(copy, args);
-		return copy;
+	unshift() {
+		return this._applySuperFunc(super.unshift, arguments);
 	}
 	
-	fill(...args) {
-		const copy = super.slice();
-		super.fill.apply(copy, args);
-		return copy;
+	fill() {
+		return this._applySuperFunc(super.fill, arguments);
 	}
 	
-	sort(...args) {
-		const copy = super.slice();
-		super.sort.apply(copy, args);
-		return copy;
+	sort() {
+		return this._applySuperFunc(super.sort, arguments);
 	}
 	
-	splice(...args) {
-		const copy = super.slice();
-		super.splice.apply(copy, args);
-		return copy;
+	splice() {
+		return this._applySuperFunc(super.splice, arguments);
 	}
 	
 	reverse() {
-		const copy = super.slice();
-		super.reverse.call(copy);
-		return copy;
+		return this._applySuperFunc(super.reverse);
 	}
 	
-	copyWithin(...args) {
-		const copy = super.slice();
-		super.copyWithin.apply(copy, args);
-		return copy;
+	copyWithin() {
+		return this._applySuperFunc(super.copyWithin, arguments);
 	}
 	
+	/* eslint-enable no-underscore-dangle*/
 	asMutable() {
 		return Array.from(this);
 	}
@@ -96,6 +78,14 @@ class ImmutableArray extends Array {
 	withMutations(cb) {
 		const mutated = cb(this.asMutable());
 		return ImmutableArray.from(mutated);
+	}
+	
+	remove(index) {
+		return this.splice(index, 1);
+	}
+	
+	insert(index, val) {
+		return this.splice(index, 0, val);
 	}
 }
 

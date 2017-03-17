@@ -40,14 +40,14 @@ function changeItemMap(action) {
 	}
 }
 
-function deleteItemCondition(action) {
+function keepItemCondition(action) {
 	switch (action.type) {
 		case CLEAR_COMPLETED:
-			return item => item.get("status") === FILTER.COMPLETED;
+			return item => item.get("status") !== FILTER.COMPLETED;
 		case DELETE_ITEM:
-			return item => item.get("id") === action.itemId;
+			return item => item.get("id") !== action.itemId;
 		default:
-			return () => false;
+			return () => true;
 	}
 }
 
@@ -66,9 +66,13 @@ export default function (state = List(), action) {
 			return state.map(changeItemMap(action));
 		case CLEAR_COMPLETED:
 		case DELETE_ITEM:
-			return state.filterNot(deleteItemCondition(action));
+			return state.filter(keepItemCondition(action));
 		case ADD_ITEM:
-			return state.push(createNewItem(state, action));
+			console.log("ADDING");
+			console.log(state.constructor);
+			var item = createNewItem(state, action);
+			console.log(item);
+			return state.push(item);
 		default:
 			return state;
 	}
