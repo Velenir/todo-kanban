@@ -8,7 +8,7 @@ class ImmutableArray extends Array {
 	}
 	
 	static from(...args) {
-		// console.log("FROM", ...args);
+		
 		return super.from(...args);
 	}
 	
@@ -38,7 +38,7 @@ class ImmutableArray extends Array {
 	}
 	
 	push() {
-		console.log("PUSHING");
+		
 		return this._applySuperFunc(super.push, arguments);
 	}
 	
@@ -84,7 +84,7 @@ class ImmutableArray extends Array {
 	}
 	
 	withMutations(cb) {
-		console.log("WITH MUT");
+		
 		const mutated = cb(this.asMutable());
 		return ImmutableArray.from(mutated);
 	}

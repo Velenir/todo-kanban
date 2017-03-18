@@ -52,12 +52,12 @@ const todoItemTarget = {
 		const {id: draggedId, currentItemPath: lastItemPath} = draggingItem;
 		const {id: overId, itemPath: overItemPath} = props;
 		
-		// console.log("now over", overItemPath);
+		
 		
 		if(draggedId !== overId) {
 			// keep track of last location
 			draggingItem.currentItemPath = overItemPath;
-			// console.log("reassigned monitored to", monitor.getItem());
+			
 			
 			props.moveItem(lastItemPath, overItemPath);
 		}

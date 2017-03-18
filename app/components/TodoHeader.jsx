@@ -10,14 +10,14 @@ const todoHeaderTarget = {
 		return false;
 	},
 	hover(props, monitor) {
-		// console.log("OVER HEADER");
+		
 		const {listIndex: currentListIndex} = props;
 		const draggingItem = monitor.getItem();
 		const {currentItemPath: lastItemPath} = draggingItem;
 		
 		// resize current list only when adding items from another list
 		if(lastItemPath[0] === currentListIndex) return;
-		console.log("ADDING To List", currentListIndex);
+		
 		
 		props.moveItem(lastItemPath, draggingItem.currentItemPath = [currentListIndex, 0]);
 	}
@@ -48,7 +48,7 @@ class TodoHeader extends Component {
 		if(e.key === "Enter") {
 			e.preventDefault();
 			
-			console.log("TITLE#ENTER");
+			
 			// save empty title when explicitly press Enter
 			const text = e.target.textContent.trim();
 			if(text === "") {
@@ -67,7 +67,7 @@ class TodoHeader extends Component {
 	handleTitleBlur = (e) => {
 		const text = e.target.textContent,
 			{title: oldTitle} = this.props;
-		console.log("TITLE#BLUR");
+		
 		// do nothing if ultimately nothing changed
 		if(text === oldTitle) return;
 		// don't save empty title on blur

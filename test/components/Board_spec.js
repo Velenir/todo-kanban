@@ -11,7 +11,7 @@ import {ListRecord, List} from '../../app/helpers/immutableHelpers';
 describe('Board', () => {
 	class StoreLessBoard extends UndecoratedBoard {
 		getApps() {
-			console.log("REWRITE getApps");
+			
 			return this.props.lists.map((list, i) => <DragApp listIndex={i} key={list.id} id={list.id} moveList={this.props.moveList} todos={[]}/>);
 		}
 	}

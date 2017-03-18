@@ -1,4 +1,3 @@
-// import {combineReducers} from 'redux';
 import {combineReducers} from 'redux-immutable';
 import {ListRecord} from '../helpers/immutableHelpers';
 

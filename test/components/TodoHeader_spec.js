@@ -46,7 +46,6 @@ describe('TodoHeader', () => {
 		
 		const h3 = findRenderedDOMComponentWithTag(component, 'h3');
 		
-		h3.onblur=()=>console.log("BLURRED");
 		h3.textContent = "New title";
 		Simulate.keyDown(h3, {key: "Enter", keyCode: 13, which: 13});
 		

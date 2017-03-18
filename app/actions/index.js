@@ -88,10 +88,9 @@ export function addItem(listIndex, text) {
 }
 
 export function moveItem(fromItemPath, toItemPath) {
-	console.log("MOVING ITEM FROM", fromItemPath, "TO", toItemPath);
+	
 	return {
 		type: MOVE_ITEM,
-		// type: null,
 		fromItemPath,
 		toItemPath
 	};
@@ -119,7 +118,7 @@ export function removeList(listIndex) {
 }
 
 export function moveList(toListIndex, fromListIndex) {
-	console.log("MOVING LIST", fromListIndex, "to", toListIndex);
+	
 	return {
 		type: MOVE_LIST,
 		fromListIndex,

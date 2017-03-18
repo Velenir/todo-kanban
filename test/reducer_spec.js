@@ -41,8 +41,8 @@ describe('reducers:', () => {
 				])
 			});
 			const action = toggleComplete(0, 1);
-			console.log(initialState.todos instanceof ImAr);
-			console.log("isFrozen", Object.isFrozen(initialState.todos));
+			
+			
 			
 			const nextState = todoReducer(initialState, action);
 			

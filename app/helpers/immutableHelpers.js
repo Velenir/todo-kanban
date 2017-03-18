@@ -4,10 +4,10 @@ import * as FILTER from '../reducers/filterVars';
 const filteredCache = new WeakMap();
 
 export function filterTodos(todos, filter) {
-	console.log("FILTERING");
+	
 	const inCache = filteredCache.get(todos);
 	if(inCache && filter in inCache) {
-		console.log("Filtered from cache");
+		
 		return inCache[filter];
 	}
 	
@@ -22,18 +22,18 @@ export function filterTodos(todos, filter) {
 			return status === filter ? item : null;
 		});
 	}	else {
-		console.log("filter all", todos);
+		
 		activeItems = todos.filter(item => item.get("status") === FILTER.ACTIVE).length;
-		console.log("filtered");
+		
 	}
-	console.log("Filtered todos:", activeItems, todos, filter);
+	
 	const filtered = {activeItems, todos, filter};
 	if(inCache) {
-		console.log("ADDING to already in cache");
+		
 		inCache[filter] = filtered;
-		console.log(inCache);
+		
 	} else {
-		console.log("ADDING to new in cache");
+		
 		filteredCache.set(todos, {[filter]: filtered});
 	}
 	

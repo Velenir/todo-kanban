@@ -1,7 +1,6 @@
 import {createStore} from 'redux';
 import reducer from '../reducers';
 import {fromJS, ListRecord, List} from './immutableHelpers';
-// import {List} from 'immutable';
 
 import {v4 as uuid} from 'uuid';
 

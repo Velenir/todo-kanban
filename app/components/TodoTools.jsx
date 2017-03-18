@@ -12,14 +12,14 @@ const todoToolsTarget = {
 		return false;
 	},
 	hover(props, monitor) {
-		// console.log("OVER TOOLS");
+		
 		const {listIndex: currentListIndex} = props;
 		const draggingItem = monitor.getItem();
 		const {currentItemPath: lastItemPath} = draggingItem;
 		
 		// resize current list only when adding items from another list
 		if(lastItemPath[0] === currentListIndex) return;
-		console.log("ADDING To List", currentListIndex);
+		
 		
 		props.moveItem(lastItemPath, draggingItem.currentItemPath = [currentListIndex, -0]);
 	}

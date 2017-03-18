@@ -9,7 +9,7 @@ export default function sameExceptFor(...exceptProps) {
 			
 			for(let key of prevPropsKeys) {
 				if((!nextPropsKeys.hasOwnProperty(key) || nextProps[key] !== prevProps[key])) {
-					console.log("CH_PROP:", key);
+					
 					return false;
 				}
 			}

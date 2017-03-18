@@ -18,13 +18,13 @@ const appSource = {
 		};
 	},
 	endDrag(props, monitor) {
-		console.log("endDrag list", props.listIndex, props.title);
+		
 		if(!monitor.didDrop()) {
 			const {currentListIndex, originalListIndex} = monitor.getItem();
 			
 			// don't dispatch actions when there is no movement from last location
 			if(currentListIndex === originalListIndex) return;
-			console.log("RETURNING");
+			
 			props.moveList(originalListIndex, currentListIndex);
 		}
 	}

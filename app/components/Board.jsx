@@ -10,7 +10,7 @@ import {compose} from 'redux';
 
 const boardTarget = {
 	drop() {
-		console.log("DROPPED ON BOARD");
+		
 	},
 	hover(props, monitor) {
 		// reset wasLastOverId
@@ -26,7 +26,7 @@ function collectTarget(connect) {
 
 class Board extends Component {
 	getApps() {
-		console.log("CONNECTed getApps");
+		
 		return this.props.lists.map((list, i) => <App listIndex={i} key={list.id} id={list.id}/>);
 	}
 	

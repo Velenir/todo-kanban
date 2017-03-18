@@ -68,10 +68,10 @@ export default function (state = List(), action) {
 		case DELETE_ITEM:
 			return state.filter(keepItemCondition(action));
 		case ADD_ITEM:
-			console.log("ADDING");
-			console.log(state.constructor);
+			
+			
 			var item = createNewItem(state, action);
-			console.log(item);
+			
 			return state.push(item);
 		default:
 			return state;
