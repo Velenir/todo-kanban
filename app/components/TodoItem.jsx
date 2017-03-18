@@ -6,6 +6,7 @@ import {TODO_ITEM} from '../helpers/itemTypes';
 import {compose} from 'redux';
 
 import TextInput from './TextInput';
+import CheckBox from './Checkbox';
 
 import sameExceptFor from '../helpers/propsSameExcept';
 
@@ -91,7 +92,7 @@ class TodoItem extends Component {
 		return connectDragSource(connectDropTarget(
 			<li className={itemClass} style={{opacity: isDragging ? 0.05 : 1}}>
 				<div className="view">
-					<input type="checkbox" className="toggle"
+					<CheckBox className="custom-toggle"
 						checked={completed}
 						onChange={() => toggleComplete(this.props.itemPath[0], id)}
 					/>
