@@ -14,7 +14,7 @@ describe('TodoItem', () => {
 		const component = renderIntoDocument(
 			<TodoItem text={text} />
 		);
-		const todo = scryRenderedDOMComponentsWithTag(component, "li");
+		const todo = scryRenderedDOMComponentsWithTag(component, 'li');
 		
 		expect(todo).to.have.length.of(1);
 		expect(todo[0].textContent).to.contain("React");
@@ -100,7 +100,7 @@ describe('TodoItem', () => {
 		);
 		
 		const label = scryRenderedDOMComponentsWithTag(component, 'label');
-		Simulate.doubleClick(label[0]);
+		Simulate.doubleClick(label[1]);
 		
 		expect(text).to.equal('Redux');
 	});
