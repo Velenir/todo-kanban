@@ -19,6 +19,19 @@ body {
 	width: calc(100% - 43px);
 }
 
+.todo-list li .custom-toggle {
+	/* reset to initial */
+	all: initial;
+	all: revert;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto 0;
+	padding-left: 4px;
+	width: 35px;
+	height: 35px;
+}
+
 /* ^^ todomvc-app-css/index.css FIXES ^^ */
 
 $shadowTransition: box-shadow .2s;
