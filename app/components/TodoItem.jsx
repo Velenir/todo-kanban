@@ -83,9 +83,14 @@ class TodoItem extends Component {
 		const {itemPath: [listIndex], doneEditing} = this.props;
 		doneEditing(listIndex, itemId, value);
 	}
+	
+	toggleComplete = () => {
+		const {itemPath: [listIndex], id, toggleComplete} = this.props;
+		toggleComplete(listIndex, id);
+	}
 
 	render() {
-		const {id, text, isCompleted: completed, isEditing: editing, selectText, deleteItem, editItem, selectEditItem, toggleComplete, connectDragSource, isDragging, connectDropTarget} = this.props;
+		const {id, text, isCompleted: completed, isEditing: editing, selectText, deleteItem, editItem, selectEditItem, connectDragSource, isDragging, connectDropTarget} = this.props;
 		
 		const itemClass = classnames("todo", {completed, editing});
 		
@@ -94,7 +99,7 @@ class TodoItem extends Component {
 				<div className="view">
 					<CheckBox className="custom-toggle"
 						checked={completed}
-						onChange={() => toggleComplete(this.props.itemPath[0], id)}
+						onChange={this.toggleComplete}
 					/>
 					<label htmlFor="todo" onDoubleClick={() => editItem(this.props.itemPath[0], id)}>
 						<span onDoubleClick={(e) => (e.stopPropagation(), selectEditItem(this.props.itemPath[0], id))}>{text}</span>
