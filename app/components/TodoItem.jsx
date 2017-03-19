@@ -74,14 +74,14 @@ function collectTarget(connect) {
 const sameExceptForItemPath = sameExceptFor("itemPath");
 
 class TodoItem extends Component {
-	cancelEditing = (itemId) => {
-		const {itemPath: [listIndex], cancelEditing} = this.props;
-		cancelEditing(listIndex, itemId);
+	cancelEditing = () => {
+		const {itemPath: [listIndex], cancelEditing, id} = this.props;
+		cancelEditing(listIndex, id);
 	}
 	
-	doneEditing = (itemId, value) => {
-		const {itemPath: [listIndex], doneEditing} = this.props;
-		doneEditing(listIndex, itemId, value);
+	doneEditing = (value) => {
+		const {itemPath: [listIndex], doneEditing, id} = this.props;
+		doneEditing(listIndex, id, value);
 	}
 	
 	toggleComplete = () => {
@@ -107,7 +107,7 @@ class TodoItem extends Component {
 					<button className="destroy" onClick={() => deleteItem(this.props.itemPath[0], id)}></button>
 				</div>
 				{editing && <TextInput
-					text={text} itemId={id}
+					text={text}
 					cancelEditing={this.cancelEditing} doneEditing={this.doneEditing}
 					selectText={selectText}
 				/>}
