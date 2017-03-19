@@ -38,7 +38,10 @@ export default function createMyStore(initialState = getDefaultInitialState()) {
 				symbol: true
 			},
 			immutable: require('immutable'),
-			refs: [require('./immutableHelpers').TodoRecord]
+			refs: [
+				require('./immutableHelpers').TodoRecord,
+				require('./immutableHelpers').ListRecord
+			]
 		}
 	}) : undefined);
 }
