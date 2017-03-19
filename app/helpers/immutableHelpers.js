@@ -12,22 +12,22 @@ export function filterTodos(todos, filter) {
 	}
 	
 	
-	let activeItems = 0;
+	let activeItems = 0, filteredTodos;
 		
 	if(filter !== FILTER.ALL) {
 		
-		todos = todos.map(item => {
+		filteredTodos = todos.map(item => {
 			const status = item.get("status");
 			if(status === FILTER.ACTIVE) ++activeItems;
 			return status === filter ? item : null;
 		});
 	}	else {
-		
+		filteredTodos = todos;
 		activeItems = todos.filter(item => item.get("status") === FILTER.ACTIVE).length;
 		
 	}
 	
-	const filtered = {activeItems, todos, filter};
+	const filtered = {activeItems, todos: filteredTodos, filter};
 	if(inCache) {
 		
 		inCache[filter] = filtered;
