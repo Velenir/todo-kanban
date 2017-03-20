@@ -7,10 +7,7 @@ const parts = require('./webpack.parts');
 const PATHS = {
 	app: path.join(__dirname, 'app'),
 	build: path.join(__dirname, 'build'),
-	style: [
-		path.join(__dirname, 'node_modules', 'todomvc-app-css'),
-		path.join(__dirname, 'app', 'scss')
-	],
+	style: path.join(__dirname, 'app', 'styles'),
 	images: path.join(__dirname, 'app', 'images')
 };
 
