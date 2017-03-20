@@ -4,7 +4,7 @@ import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import createMyStore from './helpers/createStore';
 
-import 'todomvc-app-css/index.css';
+import './scss/todomvc-app.css';
 import './scss/style.scss';
 
 import Board from './containers/BoardContainer';
