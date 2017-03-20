@@ -101,7 +101,7 @@ class TodoItem extends Component {
 						checked={completed}
 						onChange={this.toggleComplete}
 					/>
-					<label htmlFor="todo" onDoubleClick={() => editItem(this.props.itemPath[0], id)}>
+					<label className="todo-label" onDoubleClick={() => editItem(this.props.itemPath[0], id)}>
 						<span onDoubleClick={(e) => (e.stopPropagation(), selectEditItem(this.props.itemPath[0], id))}>{text}</span>
 					</label>
 					<button className="destroy" onClick={() => deleteItem(this.props.itemPath[0], id)}></button>
