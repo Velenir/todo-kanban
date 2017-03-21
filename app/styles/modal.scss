@@ -1,0 +1,50 @@
+.modal {
+	$close-button-size: 35px;
+
+	&--overlay {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background-color: rgba(0, 0, 0, 0.25);
+		z-index: 999;
+		overflow-y: auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&--contents {
+		background-color: wheat;
+		max-width: 98%;
+		padding: 17px 20px 20px;
+		position: relative;
+		min-width: 350px;
+		min-height: 450px;
+
+		> * {
+			outline: 1px dotted;
+		}
+	}
+
+	&--close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		font-size: $close-button-size + 5;
+		color: #cc9a9a;
+		transition: color 0.2s ease-out;
+		outline: 1px solid;
+		width: $close-button-size;
+		height: $close-button-size;
+		line-height: $close-button-size;
+		text-align: center;
+		cursor: pointer;
+		z-index: 5;
+
+		&:hover {
+			color: #af5b5e;
+		}
+	}
+}
