@@ -6,9 +6,9 @@ class Modal extends PureComponent {
 		if(!this.props.open) return null;
 		
 		return (
-			<div className="modal modal--overlay">
-				<div className="modal modal--contents">
-					<button className="modal modal--close">×</button>
+			<div className="modal__overlay">
+				<div className="modal__contents">
+					<button className="modal__close" type="button">×</button>
 					{this.props.children}
 				</div>
 			</div>

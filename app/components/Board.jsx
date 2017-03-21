@@ -8,6 +8,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import {compose} from 'redux';
 
 import Modal from './Modal';
+import Description from './Description';
 
 const boardTarget = {
 	drop() {
@@ -39,7 +40,7 @@ class Board extends Component {
 				{this.getApps()}
 				<AddApp addList={addList}/>
 				<Modal open>
-					<h2>Some Heading</h2>
+					<Description item="Sample item"/>
 				</Modal>
 			</div>
 		);
