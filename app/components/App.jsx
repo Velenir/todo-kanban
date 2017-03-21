@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import TodoList from '../components/TodoList';
 import TodoTools from '../components/TodoTools';
 import TodoHeader from '../components/TodoHeader';
@@ -72,7 +72,7 @@ function collectTarget(connect) {
 }
 
  
-class App extends PureComponent {
+class App extends Component {
 	render() {
 		// eslint-disable-next-line no-unused-vars
 		const {removeList, changeFilter, changeTitle, clearCompleted, addItem, moveItem, activeItems, filter, listIndex, title, newlyAdded, connectDropTarget, connectDragSource, connectDragPreview, isDragging, todos, id, moveList, ...rest} = this.props;
