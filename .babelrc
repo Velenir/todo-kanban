@@ -24,6 +24,9 @@
 			"plugins": [
         ["babel-plugin-transform-builtin-extend", {
             "globals": ["Array"]
+        }],
+        ["babel-plugin-transform-require-ignore", {
+            "extensions": [".css", ".scss"]
         }]
     	]
     }
