@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 
 class TextArea extends Component {
-	onChange = (e) => {
+	resize() {
 		const textarea = this.textarea;
 		const style = textarea.style;
 		style.height = "auto";
 		style.height = textarea.scrollHeight + this.heightOffset + "px";
+	}
+	onChange = (e) => {
+		this.resize();
 		
 		this.props.onChange && this.props.onChange(e);
 	}
@@ -19,6 +22,7 @@ class TextArea extends Component {
 	}
 	
 	render() {
+		console.log("TextArea rendering with", this.props.value);
 		return (
 			<textarea {...this.props} onChange={this.onChange} ref={c => this.textarea = c}/>
 		);
@@ -37,6 +41,7 @@ class TextArea extends Component {
 		
 		// TODO: consider making heaightOffset static
 		this.heightOffset = heightOffset;
+		this.resize();
 	}
 }
 
