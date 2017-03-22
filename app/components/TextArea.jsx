@@ -1,13 +1,21 @@
 import React, {Component} from 'react';
 
 class TextArea extends Component {
-	onChange = () => {
+	onChange = (e) => {
 		const textarea = this.textarea;
 		const style = textarea.style;
 		style.height = "auto";
 		style.height = textarea.scrollHeight + this.heightOffset + "px";
 		
-		this.props.onChange && this.props.onChange(textarea.value);
+		this.props.onChange && this.props.onChange(e);
+	}
+	
+	get value() {
+		return this.textarea.value;
+	}
+	
+	set value(val) {
+		this.textarea.value = val;
 	}
 	
 	render() {
