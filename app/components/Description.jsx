@@ -74,29 +74,31 @@ class Description extends Component {
 				<h3 className="description__title">Description for {item}</h3>
 				<div>
 					{showPreview && <Preview text={previewText} onClick={this.onPreviewClick}/>}
-					{!showPreview && [
-						<TextArea rows="5" cols="50" autoFocus className="description__editor"
-							placeholder="Add a description. &#10;Supports markdown."
-							onChange={this.onDescriptionChange}
-							onBlur={this.onDescriptionBlur}
-							ref={c => this.textarea = c}
-							value={text}
-						/>,
-						<button
-							type="button"
-							className="description__controls description__controls--save"
-							onClick={this.saveInput}
-							ref={c => this.saveButton = c}>
-							Save
-						</button>,
-						<button
-							type="button"
-							className="description__controls description__controls--cancel"
-							onClick={this.cancelInput}
-							ref={c => this.cancelButton = c}>
-							Cancel
-						</button>
-					]}
+					{!showPreview &&
+						<div>
+							<TextArea rows="5" cols="50" autoFocus className="description__editor"
+								placeholder="Add a description. &#10;Supports markdown."
+								onChange={this.onDescriptionChange}
+								onBlur={this.onDescriptionBlur}
+								ref={c => this.textarea = c}
+								value={text}
+							/>
+							<button
+								type="button"
+								className="description__controls description__controls--save"
+								onClick={this.saveInput}
+								ref={c => this.saveButton = c}>
+								Save
+							</button>
+							<button
+								type="button"
+								className="description__controls description__controls--cancel"
+								onClick={this.cancelInput}
+								ref={c => this.cancelButton = c}>
+								Cancel
+							</button>
+						</div>
+					}
 				</div>
 			</div>
 		);
