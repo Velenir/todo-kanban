@@ -10,10 +10,10 @@ function renderMarkdown(text) {
 }
 
 class Preview extends Component {
-	lastRendered = {}
+	static lastRendered = {}
 	
 	cacheRender(text) {
-		const lastRendered = this.lastRendered;
+		const lastRendered = Preview.lastRendered;
 		
 		return text === lastRendered.input ? lastRendered.output :
 		(lastRendered.input = text, lastRendered.output = renderMarkdown(text));
