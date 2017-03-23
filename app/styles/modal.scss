@@ -115,6 +115,10 @@
 			box-shadow: none;
 		}
 
+		&:disabled {
+			cursor: not-allowed;
+		}
+
 		&--save {
 			$background-color: #58bf58;
 
@@ -122,6 +126,10 @@
 
 			&:hover {
 				background-color: lighten($background-color, 7%);
+			}
+
+			&:disabled {
+				background-color: lighten($background-color, 17%);
 			}
 		}
 
@@ -132,6 +140,10 @@
 
 			&:hover {
 				background-color: lighten($background-color, 7%);
+			}
+
+			&:disabled {
+				background-color: lighten($background-color, 17%);
 			}
 		}
 	}
