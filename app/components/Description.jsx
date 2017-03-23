@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import TextArea from './TextArea';
-import Preview from './Preview';
+
+import sameExceptFor from '../helpers/propsSameExcept';
+const sameExceptForPreview = sameExceptFor("Preview");
 
 class Description extends Component {
+	static Preview = null
+	
 	constructor(props) {
 		super(props);
 		
@@ -10,8 +14,17 @@ class Description extends Component {
 		this.state = {
 			text: description,
 			previewText: description,
-			showPreview: !!description
+			showPreview: !!description,
+			Preview: Description.Preview
 		};
+	}
+	
+	componentWillMount() {
+		if(!Description.Preview) {
+			import("./Preview")
+				.then(module => module.default)
+				.then(Preview => this.setState({Preview: Description.Preview = Preview}));
+		}
 	}
 	
 	onDescriptionChange = ({target: {value: text}}) => {
@@ -67,13 +80,13 @@ class Description extends Component {
 	
 	render() {
 		const {item} = this.props;
-		const {text, previewText, showPreview} = this.state;
+		const {text, previewText, showPreview, Preview} = this.state;
 		
 		return (
 			<div className="description">
 				<h3 className="description__title">Description for {item}</h3>
 				<div>
-					{showPreview && <Preview text={previewText} onClick={this.onPreviewClick}/>}
+					{showPreview && Preview && <Preview text={previewText} onClick={this.onPreviewClick}/>}
 					{!showPreview &&
 						<div>
 							<TextArea rows="5" cols="50" autoFocus className="description__editor"
@@ -102,6 +115,39 @@ class Description extends Component {
 				</div>
 			</div>
 		);
+	}
+	
+	componentDidUpdate(prevProps, prevState) {
+		const updatedProps = {};
+		for(let prop in prevProps) {
+			const prevProp = prevProps[prop];
+			const currentProp = this.props[prop];
+			if(prevProp !== currentProp) {
+				updatedProps[prop] = `${String(prevProp)} -> ${String(currentProp)}`;
+			}
+		}
+		console.log(`Description props UPDATED with`, updatedProps);
+		
+		const updatedState = {};
+		for(let prop in prevState) {
+			const prevProp = prevState[prop];
+			const currentProp = this.state[prop];
+			if(prevProp !== currentProp) {
+				updatedState[prop] = `${String(prevProp)} -> ${String(currentProp)}`;
+			}
+		}
+		console.log(`Description State UPDATED with`, updatedState);
+	}
+	
+	shouldComponentUpdate(nextProps, nextState) {
+		// wrapped by react-redux connect Description is already pure props-wise
+		// only change when state.Preview is updated and must be shown immediately
+		if(sameExceptForPreview(nextState, this.state)) {
+			// if showPreview is false? don't update
+			return nextState.showPreview;
+		}
+		
+		return true;
 	}
 }
 
