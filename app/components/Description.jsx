@@ -68,8 +68,8 @@ class Description extends Component {
 		const {description} = this.props;
 		
 		this.setState({
-			showPreview: !!description,
-			previewText: description
+			showPreview: !!description
+			// previewText: description
 		});
 	}
 	
