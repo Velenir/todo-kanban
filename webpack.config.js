@@ -27,7 +27,7 @@ const common = merge([
 		output: {
 			path: PATHS.build,
 			filename: 'js/[name].js',
-			chunkFilename: 'scripts/[name].js'
+			chunkFilename: 'js/[name].async.js'
 		},
 		resolve: {
 			extensions: ['.js', '.jsx']
@@ -44,7 +44,7 @@ module.exports = function(env) {
 			common,
 			{
 				output: {
-					chunkFilename: 'scripts/[chunkhash].js',
+					chunkFilename: 'js/[chunkhash].js',
 					filename: 'js/[name].[chunkhash].js',
 					// Tweak this to match your GitHub project name
 					// publicPath: '/webpack-project/'
