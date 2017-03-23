@@ -50,8 +50,41 @@
 }
 
 .description {
+	line-height: normal;
+
+	&__display {
+		min-width: 400px;
+
+		&--editor {
+			/* outline: 2px dotted; */
+		}
+
+		&__preview {
+			/* outline: 2px dotted; */
+		}
+	}
+
+	&__editor, &__preview {
+		min-width: 450px;
+		min-height: 150px;
+	}
+
+	&__preview {
+		padding: 6px 6px 3px;
+		border-radius: 5px;
+		box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.29);
+		background-color: #e3e4e4;
+		border: 1px solid darkgrey;
+
+		> p {
+			margin: 0;
+		}
+	}
+
 	&__editor {
 		display: block;
+		font-size: 1em;
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 		/* overflow: hidden; */
 		word-wrap: break-word;

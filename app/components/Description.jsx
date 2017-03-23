@@ -49,6 +49,7 @@ class Description extends Component {
 		
 		this.setState({
 			text: description,
+			previewText: description,
 			showPreview: !!description
 		});
 	}
@@ -79,40 +80,40 @@ class Description extends Component {
 	}
 	
 	render() {
-		const {item} = this.props;
+		const {item, description} = this.props;
 		const {text, previewText, showPreview, Preview} = this.state;
 		
 		return (
 			<div className="description">
 				<h3 className="description__title">Description for {item}</h3>
-				<div>
-					{showPreview && Preview && <Preview text={previewText} onClick={this.onPreviewClick}/>}
-					{!showPreview &&
-						<div>
-							<TextArea rows="5" cols="50" autoFocus className="description__editor"
-								placeholder="Add a description. &#10;Supports markdown."
-								onChange={this.onDescriptionChange}
-								onBlur={this.onDescriptionBlur}
-								ref={c => this.textarea = c}
-								value={text}
-							/>
-							<button
-								type="button"
-								className="description__controls description__controls--save"
-								onClick={this.saveInput}
-								ref={c => this.saveButton = c}>
-								Save
-							</button>
-							<button
-								type="button"
-								className="description__controls description__controls--cancel"
-								onClick={this.cancelInput}
-								ref={c => this.cancelButton = c}>
-								Cancel
-							</button>
-						</div>
-					}
-				</div>
+				{showPreview && Preview && <Preview text={previewText} onClick={this.onPreviewClick} className="description__preview"/>}
+				{!showPreview &&
+					<div className="description__display description__display--editor">
+						<TextArea rows="5" autoFocus className="description__editor"
+							placeholder="Add a description. &#10;Supports markdown."
+							onChange={this.onDescriptionChange}
+							onBlur={this.onDescriptionBlur}
+							ref={c => this.textarea = c}
+							value={text}
+						/>
+						<button
+							type="button"
+							className="description__controls description__controls--save"
+							onClick={this.saveInput}
+							ref={c => this.saveButton = c}
+							disabled={!text && !description}>
+							Save
+						</button>
+						<button
+							type="button"
+							className="description__controls description__controls--cancel"
+							onClick={this.cancelInput}
+							ref={c => this.cancelButton = c}
+							disabled={!text && !description}>
+							Cancel
+						</button>
+					</div>
+				}
 			</div>
 		);
 	}
