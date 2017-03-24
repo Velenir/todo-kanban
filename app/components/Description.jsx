@@ -69,6 +69,15 @@ class Description extends Component {
 		});
 	}
 	
+	onDescriptionKeyDown = (e) => {
+		if(e.key === "Escape") {
+			e.preventDefault();
+			this.setState({
+				showPreview: !!this.props.description
+			});
+		}
+	}
+	
 	render() {
 		const {item, description} = this.props;
 		const {text, previewText, showPreview, Preview} = this.state;
@@ -84,6 +93,7 @@ class Description extends Component {
 							onChange={this.onDescriptionChange}
 							onBlur={this.onEditorBlur}
 							ref={c => this.textarea = c}
+							onKeyDown={this.onDescriptionKeyDown}
 							value={text}
 						/>
 						<button
