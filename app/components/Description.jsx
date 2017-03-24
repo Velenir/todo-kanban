@@ -28,7 +28,7 @@ class Description extends Component {
 	}
 	
 	onDescriptionChange = ({target: {value: text}}) => {
-		console.log(text);
+		// console.log(text);
 		this.setState({text});
 	}
 	
@@ -54,22 +54,12 @@ class Description extends Component {
 		});
 	}
 	
-	onDescriptionBlur = (e) => {
-		console.log(e.relatedTarget);
+	onEditorBlur = (e) => {
 		const {relatedTarget} = e;
-		if(relatedTarget === this.saveButton) {
-			this.saveInput();
-			return;
-		} else if(relatedTarget === this.cancelButton) {
-			this.cancelInput();
-			return;
-		}
-		
-		const {description} = this.props;
+		if(relatedTarget === this.saveButton || relatedTarget === this.cancelButton || relatedTarget === this.textarea.textarea) return;
 		
 		this.setState({
-			showPreview: !!description
-			// previewText: description
+			showPreview: !!this.props.description
 		});
 	}
 	
@@ -92,7 +82,7 @@ class Description extends Component {
 						<TextArea rows="5" autoFocus className="description__editor"
 							placeholder="Add a description. &#10;Supports markdown."
 							onChange={this.onDescriptionChange}
-							onBlur={this.onDescriptionBlur}
+							onBlur={this.onEditorBlur}
 							ref={c => this.textarea = c}
 							value={text}
 						/>
@@ -101,7 +91,8 @@ class Description extends Component {
 							className="description__controls description__controls--save"
 							onClick={this.saveInput}
 							ref={c => this.saveButton = c}
-							disabled={!text && !description}>
+							disabled={!text && !description}
+							onBlur={this.onEditorBlur}>
 							Save
 						</button>
 						<button
@@ -109,7 +100,8 @@ class Description extends Component {
 							className="description__controls description__controls--cancel"
 							onClick={this.cancelInput}
 							ref={c => this.cancelButton = c}
-							disabled={!text && !description}>
+							disabled={!text && !description}
+							onBlur={this.onEditorBlur}>
 							Cancel
 						</button>
 					</div>
