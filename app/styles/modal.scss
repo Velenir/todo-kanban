@@ -16,16 +16,12 @@
 	}
 
 	&__contents {
-		background-color: wheat;
+		background-color: #dce2fd;
 		max-width: 98%;
 		padding: 17px 20px 20px;
 		position: relative;
 		min-width: 350px;
 		min-height: 450px;
-
-		> * {
-			outline: 1px dotted;
-		}
 	}
 
 	&__close {
@@ -35,7 +31,6 @@
 		font-size: $close-button-size + 5;
 		color: #cc9a9a;
 		transition: color 0.2s ease-out;
-		outline: 1px solid;
 		width: $close-button-size;
 		height: $close-button-size;
 		line-height: $close-button-size;
@@ -54,18 +49,13 @@
 
 	&__display {
 		min-width: 400px;
+	}
 
-		&--editor {
-			/* outline: 2px dotted; */
-		}
-
-		&__preview {
-			/* outline: 2px dotted; */
-		}
+	&__title, &__editor, &__preview {
+		width: 450px;
 	}
 
 	&__editor, &__preview {
-		width: 450px;
 		min-height: 150px;
 	}
 
@@ -94,6 +84,7 @@
 		border-radius: 5px;
 		box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.29);
 		background-color: #f0f8ff;
+		margin-bottom: 1em;
 	}
 
 	&__controls {
@@ -106,6 +97,11 @@
 		transition: box-shadow .2s;
 		color: white;
 		cursor: pointer;
+
+		&:focus {
+			outline: 2px solid rgba(255, 255, 255, .5);
+			outline-offset: 1px;
+		}
 
 		&:hover {
 			background-color: lightblue;

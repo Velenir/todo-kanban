@@ -84,7 +84,7 @@ class Description extends Component {
 		
 		return (
 			<div className="description">
-				<h3 className="description__title">Description for {item}</h3>
+				<h3 className="description__title">{item}</h3>
 				{showPreview && Preview && <Preview text={previewText} onClick={this.onPreviewClick} className="description__preview"/>}
 				{!showPreview &&
 					<div className="description__display description__display--editor">
