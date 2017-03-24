@@ -22,6 +22,8 @@
         "stage-2"
       ],
 			"plugins": [
+        "syntax-dynamic-import",
+        "dynamic-import-node",
         ["babel-plugin-transform-builtin-extend", {
             "globals": ["Array"]
         }],
