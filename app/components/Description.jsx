@@ -143,11 +143,15 @@ class Description extends Component {
 	}
 	
 	shouldComponentUpdate(nextProps, nextState) {
+		// FIX: expect not to update on props change
+		
+		console.log("props same", nextProps === this.state.props);
+		console.log("states same", nextState === this.state.state);
 		// wrapped by react-redux connect Description is already pure props-wise
 		// only change when state.Preview is updated and must be shown immediately
 		if(sameExceptForPreview(nextState, this.state)) {
-			// if showPreview is false? don't update
-			return nextState.showPreview;
+			// i.e. if showPreview is false, don't update
+			return nextState.Preview !== this.state.Preview && nextState.showPreview;
 		}
 		
 		return true;
