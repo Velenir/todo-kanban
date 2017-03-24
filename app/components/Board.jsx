@@ -39,7 +39,7 @@ class Board extends Component {
 			<div className="board">
 				{this.getApps()}
 				<AddApp addList={addList}/>
-				<Modal open>
+				<Modal open={false}>
 					<Description item="Sample item" description="**Sample** *item* description"/>
 				</Modal>
 			</div>

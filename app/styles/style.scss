@@ -151,10 +151,35 @@ $buttonShadow: $shadow, 0 0 2px rgba(156, 156, 156, 0.14);
 	width: 525px;
 }
 
+.todo-list li .open-modal {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 46px;
+	bottom: 0;
+	width: 40px;
+	height: 40px;
+	margin: auto 0;
+	padding-bottom: 3px;
+	font-size: 28px;
+	color: #cc9a9a;
+	transition: color 0.2s ease-out;
+
+	&:hover {
+		color: #af5b5e;
+	}
+}
+
+.todo-list li:hover .open-modal {
+	display: block;
+}
+
 /* show :hover states on touch devices */
 @media (any-hover: on-demand), (any-hover: none) {
-	.todo-list li .destroy {
-		display: block;
+	.todo-list li {
+		.destroy, .open-modal {
+			display: block;
+		}
 	}
 
 	.appwrapper .todohandle {
