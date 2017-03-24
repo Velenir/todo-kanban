@@ -104,7 +104,7 @@ class TodoItem extends Component {
 					<label className="todo-label" onDoubleClick={() => editItem(this.props.itemPath[0], id)}>
 						<span onDoubleClick={(e) => (e.stopPropagation(), selectEditItem(this.props.itemPath[0], id))}>{text}</span>
 					</label>
-					<button className="destroy" onClick={() => deleteItem(this.props.itemPath[0], id)}></button>
+					<button type="button" className="destroy" onClick={() => deleteItem(this.props.itemPath[0], id)}></button>
 				</div>
 				{editing && <TextInput
 					text={text}

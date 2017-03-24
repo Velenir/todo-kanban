@@ -66,7 +66,7 @@ class TodoTools extends Component {
             </a>
           </li>
         </ul>
-        {nbCompletedItems > 0 && <button className="clear-completed" onClick={() => clearCompleted(this.props.listIndex)}>
+        {nbCompletedItems > 0 && <button type="button" className="clear-completed" onClick={() => clearCompleted(this.props.listIndex)}>
           Clear completed
         </button>}
       </footer>
