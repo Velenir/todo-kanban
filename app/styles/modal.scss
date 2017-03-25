@@ -65,6 +65,8 @@
 		box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.29);
 		background-color: #e3e4e4;
 		border: 1px solid darkgrey;
+		max-height: 382px;
+		overflow-y: auto;
 
 		> p {
 			margin: 0;
