@@ -7,13 +7,11 @@ import {APP} from '../helpers/itemTypes';
 import HTML5Backend from 'react-dnd-html5-backend';
 import {compose} from 'redux';
 
-import Modal from './Modal';
+import Modal from '../containers/ModalContainer';
 import Description from './Description';
 
 const boardTarget = {
-	drop() {
-		
-	},
+	drop() {},
 	hover(props, monitor) {
 		// reset wasLastOverId
 		if(monitor.isOver({shallow: true})) monitor.getItem().wasLastOverId = null;
@@ -39,7 +37,7 @@ class Board extends Component {
 			<div className="board">
 				{this.getApps()}
 				<AddApp addList={addList}/>
-				<Modal open={false}>
+				<Modal>
 					<Description item="Sample item" description="**Sample** *item* description"/>
 				</Modal>
 			</div>

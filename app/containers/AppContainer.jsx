@@ -16,7 +16,7 @@ const mapStateToProps = ({lists}, {listIndex}) => {
 };
 
 
-const appActionKeys = Object.assign({}, actions, {addList: undefined});
+const appActionKeys = Object.assign({}, actions, {addList: undefined, closeModal: undefined});
 
 // actions get wrapped in dispatch call
 export default connect(mapStateToProps, appActionKeys)(App);

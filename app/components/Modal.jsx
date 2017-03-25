@@ -1,14 +1,14 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import '../styles/modal.scss';
 
-class Modal extends PureComponent {
+class Modal extends Component {
 	render() {
 		if(!this.props.open) return null;
 		
 		return (
 			<div className="modal__overlay">
 				<div className="modal__contents">
-					<button className="modal__close" type="button">×</button>
+					<button className="modal__close" type="button" onClick={this.props.closeModal}>×</button>
 					{this.props.children}
 				</div>
 			</div>
