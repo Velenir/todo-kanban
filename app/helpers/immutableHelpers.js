@@ -45,6 +45,8 @@ export const TodoRecord = Record({id: null, text: "", status: FILTER.ACTIVE, edi
 
 export const ListRecord = Record({id: null, title: "", todos: List(), filter: FILTER.ALL, newlyAdded: false});
 
+export const ModalRecord = Record({open: false, id: null, item: ""});
+
 let IndexAcessedList;
 const hasProxySupport = !!window.Proxy;
 if(hasProxySupport) {
