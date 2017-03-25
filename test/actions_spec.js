@@ -63,6 +63,17 @@ describe('action creator', () => {
 				input: [0, 1],
 				output: {type, toListIndex: 0, fromListIndex: 1}
 			};
+		},
+		openModal(type) {
+			return {
+				input: ["item", 1],
+				output: {type, item: "item", itemId: 1}
+			};
+		},
+		closeModal(type) {
+			return {
+				output: {type}
+			};
 		}
 	};
 	
