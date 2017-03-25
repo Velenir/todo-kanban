@@ -12,7 +12,9 @@ import {
 	CHANGE_TITLE,
 	ADD_LIST,
 	REMOVE_LIST,
-	MOVE_LIST
+	MOVE_LIST,
+	OPEN_MODAL,
+	CLOSE_MODAL
 } from './actionTypes';
 
 export function toggleComplete(listIndex, itemId) {
@@ -118,10 +120,23 @@ export function removeList(listIndex) {
 }
 
 export function moveList(toListIndex, fromListIndex) {
-	
 	return {
 		type: MOVE_LIST,
 		fromListIndex,
 		toListIndex
+	};
+}
+
+export function openModal(item, itemId) {
+	return {
+		type: OPEN_MODAL,
+		item,
+		itemId
+	};
+}
+
+export function closeModal() {
+	return {
+		type: CLOSE_MODAL
 	};
 }
