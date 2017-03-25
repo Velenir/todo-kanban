@@ -88,6 +88,11 @@ class TodoItem extends Component {
 		const {itemPath: [listIndex], id, toggleComplete} = this.props;
 		toggleComplete(listIndex, id);
 	}
+	
+	openModal = () => {
+		const {id, text, openModal} = this.props;
+		openModal(text, id);
+	}
 
 	render() {
 		const {id, text, isCompleted: completed, isEditing: editing, selectText, deleteItem, editItem, selectEditItem, connectDragSource, isDragging, connectDropTarget} = this.props;
@@ -104,7 +109,7 @@ class TodoItem extends Component {
 					<label className="todo-label" onDoubleClick={() => editItem(this.props.itemPath[0], id)}>
 						<span onDoubleClick={(e) => (e.stopPropagation(), selectEditItem(this.props.itemPath[0], id))}>{text}</span>
 					</label>
-					<button type="button" className="open-modal" >⏍</button>
+					<button type="button" className="open-modal" onClick={this.openModal}>⏍</button>
 					<button type="button" className="destroy" onClick={() => deleteItem(this.props.itemPath[0], id)}></button>
 				</div>
 				{editing && <TextInput
