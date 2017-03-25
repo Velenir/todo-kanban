@@ -74,19 +74,33 @@ function collectTarget(connect) {
 const sameExceptForItemPath = sameExceptFor("itemPath");
 
 class TodoItem extends Component {
+	callPropsFuncWithLIndAndId(fname, extra) {
+		const {itemPath: [listIndex], [fname]: fn, id} = this.props;
+		fn(listIndex, id, extra);
+	}
 	cancelEditing = () => {
-		const {itemPath: [listIndex], cancelEditing, id} = this.props;
-		cancelEditing(listIndex, id);
+		this.callPropsFuncWithLIndAndId("cancelEditing");
 	}
 	
 	doneEditing = (value) => {
-		const {itemPath: [listIndex], doneEditing, id} = this.props;
-		doneEditing(listIndex, id, value);
+		this.callPropsFuncWithLIndAndId("doneEditing", value);
 	}
 	
 	toggleComplete = () => {
-		const {itemPath: [listIndex], id, toggleComplete} = this.props;
-		toggleComplete(listIndex, id);
+		this.callPropsFuncWithLIndAndId("toggleComplete");
+	}
+	
+	editItem = () => {
+		this.callPropsFuncWithLIndAndId("editItem");
+	}
+	
+	selectEditItem = (e) => {
+		e.stopPropagation();
+		this.callPropsFuncWithLIndAndId("selectEditItem");
+	}
+	
+	deleteItem = () => {
+		this.callPropsFuncWithLIndAndId("deleteItem");
 	}
 	
 	openModal = () => {
@@ -95,7 +109,7 @@ class TodoItem extends Component {
 	}
 
 	render() {
-		const {id, text, isCompleted: completed, isEditing: editing, selectText, deleteItem, editItem, selectEditItem, connectDragSource, isDragging, connectDropTarget} = this.props;
+		const {text, isCompleted: completed, isEditing: editing, selectText, connectDragSource, isDragging, connectDropTarget} = this.props;
 		
 		const itemClass = classnames("todo", {completed, editing});
 		
@@ -106,11 +120,11 @@ class TodoItem extends Component {
 						checked={completed}
 						onChange={this.toggleComplete}
 					/>
-					<label className="todo-label" onDoubleClick={() => editItem(this.props.itemPath[0], id)}>
-						<span onDoubleClick={(e) => (e.stopPropagation(), selectEditItem(this.props.itemPath[0], id))}>{text}</span>
+					<label className="todo-label" onDoubleClick={this.editItem}>
+						<span onDoubleClick={this.selectEditItem}>{text}</span>
 					</label>
 					<button type="button" className="open-modal" onClick={this.openModal}>⏍</button>
-					<button type="button" className="destroy" onClick={() => deleteItem(this.props.itemPath[0], id)}></button>
+					<button type="button" className="destroy" onClick={this.deleteItem}></button>
 				</div>
 				{editing && <TextInput
 					text={text}

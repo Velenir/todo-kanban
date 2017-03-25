@@ -80,8 +80,13 @@ class TodoHeader extends Component {
 		}
 	}
 	
+	removeList = () => {
+		const {listIndex, removeList} = this.props;
+		removeList(listIndex);
+	}
+	
 	render() {
-		const {title, listIndex, removeList, connectDropTarget} = this.props;
+		const {title, listIndex, connectDropTarget} = this.props;
 		return (
 			<header className="header">
 				<div className="titlespace">
@@ -92,7 +97,7 @@ class TodoHeader extends Component {
 						data-placeholder="name this list" tabIndex="0">
 						{title}
 					</h3>
-					<button type="button" onClick={() => removeList(this.props.listIndex)}>x</button>
+					<button type="button" onClick={this.removeList}>x</button>
 				</div>
 				{connectDropTarget(
 					<input className="new-todo"
