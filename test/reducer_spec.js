@@ -1,8 +1,7 @@
 import {fromJS, ListRecord, List} from '../app/helpers/immutableHelpers';
-import ImAr from '../app/helpers/ImmutableArray';
 import {expect} from 'chai';
 
-import listsReducer, {todoReducer} from '../app/reducers';
+import listsReducer, {todoReducer} from '../app/reducers/listsReducer';
 import {
 	toggleComplete,
 	changeFilter,
