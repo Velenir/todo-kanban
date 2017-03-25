@@ -69,7 +69,7 @@ describe('TodoItem', () => {
 		);
 		
 		const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
-		Simulate.click(buttons[0]);
+		Simulate.click(buttons[1]);
 		
 		expect(deleted).to.be.true;
 	});
