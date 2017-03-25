@@ -212,10 +212,10 @@ describe('reducers:', () => {
 	
 	describe('listsReducer', () => {
 		function expectListsToEqual(state, lists) {
-			expect(state.lists.length).to.equal(lists.length);
+			expect(state.length).to.equal(lists.length);
 			
 			for(let i = 0, len = lists.length; i < len; ++i) {
-				const list = state.lists[i];
+				const list = state[i];
 				expect(list.id).to.equal(lists[i].id);
 				expect(list.title).to.equal(lists[i].title);
 				expectTodosToEqual(list, lists[i].todos);
@@ -223,16 +223,14 @@ describe('reducers:', () => {
 		}
 		
 		it('should handle MOVE_ITEM by moving the item to a new index', () => {
-			const initialState = {
-				lists: List.of(new ListRecord({
-					id: 1,
-					title: "Technologies used",
-					todos: fromJS([
-						{id: 1, text: 'React'},
-						{id: 2, text: 'Redux'}
-					])
-				}))
-			};
+			const initialState = List.of(new ListRecord({
+				id: 1,
+				title: "Technologies used",
+				todos: fromJS([
+					{id: 1, text: 'React'},
+					{id: 2, text: 'Redux'}
+				])
+			}));
 			const action = moveItem([0,1], [0,0]);
 			
 			const nextState = listsReducer(initialState, action);
@@ -250,17 +248,15 @@ describe('reducers:', () => {
 		});
 		
 		it('should handle ADD_LIST by adding a new list', () => {
-			const initialState = {
-				lists: List.of(new ListRecord({
-					id: 1,
-					title: "Technologies used",
-					todos: fromJS([
-						{id: 1, text: 'React'},
-						{id: 2, text: 'Redux'},
-						{id: 3, text: 'Immutable'}
-					])
-				}))
-			};
+			const initialState = List.of(new ListRecord({
+				id: 1,
+				title: "Technologies used",
+				todos: fromJS([
+					{id: 1, text: 'React'},
+					{id: 2, text: 'Redux'},
+					{id: 3, text: 'Immutable'}
+				])
+			}));
 			const action = addList();
 			
 			const nextState = listsReducer(initialState, action);
@@ -275,28 +271,26 @@ describe('reducers:', () => {
 							{id: 3, text: 'Immutable'}
 						])
 					}),
-					new ListRecord({id: nextState.lists[1].id, newlyAdded: true})
+					new ListRecord({id: nextState[1].id, newlyAdded: true})
 			));
 		});
 		
 		it('should handle REMOVE_LIST by deleting the list', () => {
-			const initialState = {
-				lists: List.of(
-					new ListRecord({
-						id: 1,
-						title: "Technologies used",
-						todos: fromJS([
-							{id: 1, text: 'React'},
-							{id: 2, text: 'Redux'},
-							{id: 3, text: 'Immutable'}
-						])
-					}),
-					new ListRecord({
-						id: 2,
-						title: "List to delete"
-					})
-				)
-			};
+			const initialState = List.of(
+				new ListRecord({
+					id: 1,
+					title: "Technologies used",
+					todos: fromJS([
+						{id: 1, text: 'React'},
+						{id: 2, text: 'Redux'},
+						{id: 3, text: 'Immutable'}
+					])
+				}),
+				new ListRecord({
+					id: 2,
+					title: "List to delete"
+				})
+			);
 			const action = removeList(1);
 			
 			const nextState = listsReducer(initialState, action);
@@ -315,23 +309,21 @@ describe('reducers:', () => {
 		});
 		
 		it('should handle MOVE_LIST by moving the list', () => {
-			const initialState = {
-				lists: List.of(
-					new ListRecord({
-						id: 1,
-						title: "Technologies used",
-						todos: fromJS([
-							{id: 1, text: 'React'},
-							{id: 2, text: 'Redux'},
-							{id: 3, text: 'Immutable'}
-						])
-					}),
-					new ListRecord({
-						id: 2,
-						title: "List to move"
-					})
-				)
-			};
+			const initialState = List.of(
+				new ListRecord({
+					id: 1,
+					title: "Technologies used",
+					todos: fromJS([
+						{id: 1, text: 'React'},
+						{id: 2, text: 'Redux'},
+						{id: 3, text: 'Immutable'}
+					])
+				}),
+				new ListRecord({
+					id: 2,
+					title: "List to move"
+				})
+			);
 			const action = moveList(0, 1);
 			
 			const nextState = listsReducer(initialState, action);
