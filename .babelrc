@@ -29,7 +29,12 @@
         }],
         ["babel-plugin-transform-require-ignore", {
             "extensions": [".css", ".scss"]
-        }]
+        }],
+				["module-resolver", {
+					"alias": {
+						"react-redux": "./test/connectNoop"
+					}
+				}]
     	]
     }
   }
