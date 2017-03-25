@@ -74,15 +74,15 @@ export default function listsReducer(state = List(), action) {
 		case ADD_ITEM:
 		case CHANGE_FILTER:
 		case CHANGE_TITLE:
-			return state.lists.update(action.listIndex, list => todoReducer(list, action));
+			return state.update(action.listIndex, list => todoReducer(list, action));
 		case MOVE_ITEM:
-			return moveItem(state.lists, action);
+			return moveItem(state, action);
 		case ADD_LIST:
-			return state.lists.push(new ListRecord({id: uuid(), newlyAdded: true}));
+			return state.push(new ListRecord({id: uuid(), newlyAdded: true}));
 		case REMOVE_LIST:
-			return state.lists.remove(action.listIndex);
+			return state.remove(action.listIndex);
 		case MOVE_LIST:
-			return  moveList(state.lists, action);
+			return  moveList(state, action);
 		default:
 			return state;
 	}
