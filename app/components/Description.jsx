@@ -35,6 +35,7 @@ class Description extends Component {
 	
 	saveInput = () => {
 		const newText = this.state.text.trim();
+		if(newText === this.props.description) return;
 		console.log("SAVING", newText);
 		// TODO: dispatch action updating props.description here
 		// update state in componentWillReceiveProps
