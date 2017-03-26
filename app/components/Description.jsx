@@ -14,7 +14,6 @@ class Description extends Component {
 		const {description} = props;
 		this.state = {
 			text: description,
-			previewText: description,
 			showPreview: !!description,
 			Preview: Description.Preview
 		};
@@ -28,23 +27,18 @@ class Description extends Component {
 		}
 	}
 	
-	onDescriptionChange = ({target: {value: text}}) => {
-		// console.log(text);
-		this.setState({text});
+	onDescriptionChange = ({target}) => {
+		this.setState({text: target.value});
 	}
 	
 	saveInput = () => {
 		const newText = this.state.text.trim();
+		
+		this.setState({
+			showPreview: !!newText
+		});
+		
 		if(newText === this.props.description) return;
-		console.log("SAVING", newText);
-		// TODO: dispatch action updating props.description here
-		// update state in componentWillReceiveProps
-
-		// this.setState({
-		// 	// text: newText,
-		// 	previewText: newText,
-		// 	showPreview: !!newText
-		// });
 		
 		const {id, changeDescription} = this.props;
 		changeDescription(id, newText);
@@ -55,7 +49,6 @@ class Description extends Component {
 		
 		this.setState({
 			text: description,
-			previewText: description,
 			showPreview: !!description
 		});
 	}
@@ -86,12 +79,12 @@ class Description extends Component {
 	
 	render() {
 		const {item, description} = this.props;
-		const {text, previewText, showPreview, Preview} = this.state;
+		const {text, showPreview, Preview} = this.state;
 		
 		return (
 			<div className="description">
 				<h3 className="description__title">{item}</h3>
-				{showPreview && Preview && <Preview text={previewText} onClick={this.onPreviewClick} className="description__preview"/>}
+				{showPreview && Preview && <Preview text={description} onClick={this.onPreviewClick} className="description__preview"/>}
 				{!showPreview &&
 					<div className="description__display description__display--editor">
 						<TextArea rows="5" autoFocus className="description__editor"
