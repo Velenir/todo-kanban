@@ -3,6 +3,7 @@ import TextArea from './TextArea';
 
 import sameExceptFor from '../helpers/propsSameExcept';
 const sameExceptForPreview = sameExceptFor("Preview");
+const sameProps = sameExceptFor();
 
 class Description extends Component {
 	static Preview = null
@@ -147,10 +148,8 @@ class Description extends Component {
 	}
 	
 	shouldComponentUpdate(nextProps, nextState) {
-		// FIX: expect not to update on props change
-		
-		console.log("props same", nextProps === this.state.props);
-		console.log("states same", nextState === this.state.state);
+		if(!sameProps(nextProps, this.props)) return true;
+
 		// wrapped by react-redux connect Description is already pure props-wise
 		// only change when state.Preview is updated and must be shown immediately
 		if(sameExceptForPreview(nextState, this.state)) {
