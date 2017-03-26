@@ -1,4 +1,5 @@
 import {fromJS, ListRecord, List, ModalRecord} from '../app/helpers/immutableHelpers';
+import {Map} from 'immutable';
 import {expect} from 'chai';
 
 import listsReducer, {todoReducer} from '../app/reducers/listsReducer';
@@ -351,7 +352,7 @@ describe('reducers:', () => {
 		});
 	});
 	
-	describe.only('modalReducer', () => {
+	describe('modalReducer', () => {
 		it('should handle OPEN_MODAL by setting appropriate modal properties', () => {
 			const initialState = new ModalRecord();
 			const action = openModal("item", 1);
@@ -368,6 +369,17 @@ describe('reducers:', () => {
 			const nextState = modalReducer(initialState, action);
 			
 			expect(nextState).to.equal(new ModalRecord());
+		});
+	});
+	
+	describe('descriptionsReducer', () => {
+		it('should handle CHANGE_DESCRIPTION by setting description at given id', () => {
+			const initialState = Map();
+			const action = changeDescription(1, "item 1 description");
+			
+			const nextState = descriptionsReducer(initialState, action);
+			
+			expect(nextState).to.equal(Map([[1, "item 1 description"]]));
 		});
 	});
 });
