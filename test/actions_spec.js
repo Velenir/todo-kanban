@@ -74,6 +74,12 @@ describe('action creator', () => {
 			return {
 				output: {type}
 			};
+		},
+		changeDescription(type) {
+			return {
+				input: [1, "Item description"],
+				output: {type, itemId: 1, description: "Item description"}
+			};
 		}
 	};
 	
