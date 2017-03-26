@@ -37,11 +37,15 @@ class Description extends Component {
 		console.log("SAVING", newText);
 		// TODO: dispatch action updating props.description here
 		// update state in componentWillReceiveProps
-		this.setState({
-			// text: newText,
-			previewText: newText,
-			showPreview: !!newText
-		});
+
+		// this.setState({
+		// 	// text: newText,
+		// 	previewText: newText,
+		// 	showPreview: !!newText
+		// });
+		
+		const {id, changeDescription} = this.props;
+		changeDescription(id, newText);
 	}
 	
 	cancelInput = () => {
