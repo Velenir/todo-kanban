@@ -1,8 +1,15 @@
 import React, {Component} from 'react';
 import markdown from 'markdown-it';
+import markdownLinkAttributes from 'markdown-it-link-attributes';
+
 const md = markdown({
 	linkify: true,
 	breaks: true
+});
+
+md.use(markdownLinkAttributes, {
+	target: '_blank',
+	rel: 'noopener noreferrer'
 });
 
 function renderMarkdown(text) {

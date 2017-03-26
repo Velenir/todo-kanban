@@ -64,6 +64,7 @@
     "classnames": "^2.2.5",
     "immutable": "^3.8.1",
     "markdown-it": "^8.3.1",
+    "markdown-it-link-attributes": "^1.0.0",
     "react": "^15.4.2",
     "react-dnd": "^2.2.4",
     "react-dnd-html5-backend": "^2.2.4",
