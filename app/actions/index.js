@@ -14,7 +14,8 @@ import {
 	REMOVE_LIST,
 	MOVE_LIST,
 	OPEN_MODAL,
-	CLOSE_MODAL
+	CLOSE_MODAL,
+	CHANGE_DESCRIPTION
 } from './actionTypes';
 
 export function toggleComplete(listIndex, itemId) {
@@ -138,5 +139,13 @@ export function openModal(item, itemId) {
 export function closeModal() {
 	return {
 		type: CLOSE_MODAL
+	};
+}
+
+export function changeDescription(itemId, description) {
+	return {
+		type: CHANGE_DESCRIPTION,
+		itemId,
+		description
 	};
 }

@@ -14,3 +14,4 @@ export const REMOVE_LIST = Symbol.for("REMOVE_LIST");
 export const MOVE_LIST = Symbol.for("MOVE_LIST");
 export const OPEN_MODAL = Symbol.for("OPEN_MODAL");
 export const CLOSE_MODAL = Symbol.for("CLOSE_MODAL");
+export const CHANGE_DESCRIPTION = Symbol.for("CHANGE_DESCRIPTION");
