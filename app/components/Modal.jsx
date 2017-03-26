@@ -19,6 +19,26 @@ class Modal extends Component {
 		);
 	}
 	
+	preventDefault(e) {
+		e.preventDefault();
+	}
+	
+	static scrollDisabled = false;
+	
+	disablePageScroll() {
+		if(!Modal.scrollDisabled) {
+			Modal.scrollDisabled = true;
+			document.body.classList.add("modal-open");
+		}
+	}
+	
+	enablePageScroll() {
+		if(Modal.scrollDisabled) {
+			Modal.scrollDisabled = false;
+			document.body.classList.remove("modal-open");
+		}
+	}
+	
 	componentDidUpdate(prevProps) {
 		const updatedProps = {};
 		for(let prop in prevProps) {
@@ -29,6 +49,19 @@ class Modal extends Component {
 			}
 		}
 		console.log(`Modal UPDATED with`, updatedProps);
+		
+		if(prevProps.open !== this.props.open) {
+			this.props.open ? this.disablePageScroll() : this.enablePageScroll();
+		}
+	}
+	
+	componentDidMount() {
+		this.props.open && this.disablePageScroll();
+	}
+	
+	componentWillUnmount() {
+		console.log("MODAL WILL UNMOUNT");
+		this.props.open && this.enablePageScroll();
 	}
 }
 

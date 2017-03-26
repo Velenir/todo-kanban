@@ -42,6 +42,10 @@
 			color: #af5b5e;
 		}
 	}
+
+	@at-root body.modal-open {
+		overflow: hidden;
+	}
 }
 
 .description {
