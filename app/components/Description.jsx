@@ -62,7 +62,10 @@ class Description extends Component {
 		});
 	}
 	
-	onPreviewClick = () => {
+	onPreviewClick = (e) => {
+		// don't hide Preview on link click
+		if(e.target.tagName === "A") return;
+		
 		this.setState({
 			showPreview: false
 		});
