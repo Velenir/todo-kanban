@@ -1,7 +1,9 @@
-import {fromJS, ListRecord, List} from '../app/helpers/immutableHelpers';
+import {fromJS, ListRecord, List, ModalRecord} from '../app/helpers/immutableHelpers';
 import {expect} from 'chai';
 
 import listsReducer, {todoReducer} from '../app/reducers/listsReducer';
+import modalReducer from '../app/reducers/modalReducer';
+import descriptionsReducer from '../app/reducers/descriptionsReducer';
 import {
 	toggleComplete,
 	changeFilter,
@@ -16,7 +18,10 @@ import {
 	changeTitle,
 	addList,
 	removeList,
-	moveList
+	moveList,
+	openModal,
+	closeModal,
+	changeDescription
 } from '../app/actions';
 import * as FILTER from '../app/reducers/filterVars';
 
@@ -343,6 +348,26 @@ describe('reducers:', () => {
 						])
 					})
 			));
+		});
+	});
+	
+	describe.only('modalReducer', () => {
+		it('should handle OPEN_MODAL by setting appropriate modal properties', () => {
+			const initialState = new ModalRecord();
+			const action = openModal("item", 1);
+			
+			const nextState = modalReducer(initialState, action);
+			
+			expect(nextState).to.equal(new ModalRecord({open: true, item: "item", id: 1}));
+		});
+		
+		it('should handle CLOSE_MODAL by resetting appropriate modal', () => {
+			const initialState = new ModalRecord({open: true, item: "item", id: 1});
+			const action = closeModal();
+			
+			const nextState = modalReducer(initialState, action);
+			
+			expect(nextState).to.equal(new ModalRecord());
 		});
 	});
 });
