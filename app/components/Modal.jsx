@@ -19,10 +19,6 @@ class Modal extends Component {
 		);
 	}
 	
-	preventDefault(e) {
-		e.preventDefault();
-	}
-	
 	static scrollDisabled = false;
 	
 	disablePageScroll() {
