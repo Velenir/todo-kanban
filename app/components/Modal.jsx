@@ -18,21 +18,13 @@ class Modal extends Component {
 			</div>
 		);
 	}
-	
-	static scrollDisabled = false;
-	
+		
 	disablePageScroll() {
-		if(!Modal.scrollDisabled) {
-			Modal.scrollDisabled = true;
-			document.body.classList.add("modal-open");
-		}
+		document.body.classList.add("modal-open");
 	}
 	
 	enablePageScroll() {
-		if(Modal.scrollDisabled) {
-			Modal.scrollDisabled = false;
-			document.body.classList.remove("modal-open");
-		}
+		document.body.classList.remove("modal-open");
 	}
 	
 	componentDidUpdate(prevProps) {
