@@ -9,7 +9,7 @@ class CheckBox extends PureComponent {
 		const {onChange, checked} = this.props;
 		
 		// if CheckBox isn't controlled
-		if(checked !== undefined) {
+		if(checked === undefined) {
 			this.setState({
 				checked: e.target.checked
 			});
