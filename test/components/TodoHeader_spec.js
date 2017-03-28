@@ -61,7 +61,7 @@ describe('TodoHeader', () => {
 		expect(list).to.equal(0);
 	});
 	
-	it('should not call a callback when losing focus on title when title hasn\'t changed', () => {
+	it('should not call a callback when losing focus on title if title hasn\'t changed', () => {
 		const title = 'Title';
 		let called = false;
 		const changeTitle = () => called = true;
