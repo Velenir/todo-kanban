@@ -28,7 +28,6 @@ class Preview extends Component {
 	
 	render() {
 		const {text, ...props} = this.props;
-		console.log("Preview rendering with", text);
 		return (
 			<div {...props} dangerouslySetInnerHTML={this.cacheRender(text)}/>
 		);

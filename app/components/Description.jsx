@@ -122,28 +122,6 @@ class Description extends Component {
 		);
 	}
 	
-	componentDidUpdate(prevProps, prevState) {
-		const updatedProps = {};
-		for(let prop in prevProps) {
-			const prevProp = prevProps[prop];
-			const currentProp = this.props[prop];
-			if(prevProp !== currentProp) {
-				updatedProps[prop] = `${String(prevProp)} -> ${String(currentProp)}`;
-			}
-		}
-		console.log(`Description props UPDATED with`, updatedProps);
-		
-		const updatedState = {};
-		for(let prop in prevState) {
-			const prevProp = prevState[prop];
-			const currentProp = this.state[prop];
-			if(prevProp !== currentProp) {
-				updatedState[prop] = `${String(prevProp)} -> ${String(currentProp)}`;
-			}
-		}
-		console.log(`Description State UPDATED with`, updatedState);
-	}
-	
 	shouldComponentUpdate(nextProps, nextState) {
 		if(!sameProps(nextProps, this.props)) return true;
 

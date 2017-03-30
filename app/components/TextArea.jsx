@@ -25,14 +25,12 @@ class TextArea extends Component {
 	}
 	
 	render() {
-		console.log("TextArea rendering with", this.props.value);
 		return (
 			<textarea {...this.props} onChange={this.onChange} ref={c => this.textarea = c}/>
 		);
 	}
 	
 	componentDidMount() {
-		console.log("TextArea MOUNTED");
 		if(TextArea.heightOffset === null) {
 			const {paddingBottom, paddingTop, boxSizing, borderTopWidth, borderBottomWidth} = window.getComputedStyle(this.textarea);
 			
@@ -44,7 +42,6 @@ class TextArea extends Component {
 			}
 			
 			TextArea.heightOffset = heightOffset;
-			console.log("Calculated heightOffset =", heightOffset);
 		}
 		
 		this.resize();

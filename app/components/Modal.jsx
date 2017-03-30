@@ -48,7 +48,6 @@ class Modal extends Component {
 	}
 	
 	componentWillUnmount() {
-		console.log("MODAL WILL UNMOUNT");
 		this.props.open && this.enablePageScroll();
 	}
 }
