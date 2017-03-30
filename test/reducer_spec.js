@@ -381,5 +381,14 @@ describe('reducers:', () => {
 			
 			expect(nextState).to.equal(Map([[1, "item 1 description"]]));
 		});
+		
+		it('should handle DELETE_ITEM by removing description at given id', () => {
+			const initialState = Map([[1, "item 1 description"]]);
+			const action = deleteItem(0, 1);
+			
+			const nextState = descriptionsReducer(initialState, action);
+			
+			expect(nextState).to.equal(Map());
+		});
 	});
 });
