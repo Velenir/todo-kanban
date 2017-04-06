@@ -1,0 +1,13 @@
+.main-header {
+	height: 10vh;
+	background-color: #cfd2d6;
+	display: flex;
+	justify-content: flex-end;
+	background-image: linear-gradient(to bottom, rgba(0,0,0,0) 88%, white 98%, #e4dfdf);
+	box-shadow: 0 2px 5px #e4dfdf;
+
+	.layout-radio {
+		font-size: 10vh;
+		line-height: 10vh;
+	}
+}
