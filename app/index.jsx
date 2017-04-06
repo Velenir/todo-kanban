@@ -7,13 +7,13 @@ import createMyStore from './helpers/createStore';
 import './styles/todomvc-app.css';
 import './styles/style.scss';
 
-import Board from './containers/BoardContainer';
+import Main from './components/Main';
 
 const store = createMyStore();
 
 render(
 	<Provider store={store}>
-		<Board/>
+		<Main/>
 	</Provider>,
 	document.getElementById("app")
 );
