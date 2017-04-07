@@ -1,5 +1,6 @@
 .main-header {
-	height: 10vh;
+	/* height: 7vh; */
+	padding: 5px 5px 10px;
 	background-color: #cfd2d6;
 	display: flex;
 	justify-content: flex-end;
@@ -7,7 +8,28 @@
 	box-shadow: 0 2px 5px #e4dfdf;
 
 	.layout-radio {
-		font-size: 10vh;
-		line-height: 10vh;
+		width: 3rem;
+		height: 3rem;
+		border: 1px solid rgba(128, 128, 128, 0.17);
+		border-radius: 7px;
+		padding: 7px;
+		margin: 3px 5px;
+		color: rgba(128, 128, 128, 0.5);
+		box-shadow: 0 0 5px 1px #a57979, inset 0 0 0;
+		background-color: #e4e7ea;
+		transition: all .2s;
+		
+
+		&.checked {
+			color: #fff2f2;
+			box-shadow: 0 0 0, inset 0 0 6px 1px grey;
+			background-color: transparent;
+		}
+
+		> svg {
+			height: 100%;
+
+			/* width: 1em; */
+		}
 	}
 }
