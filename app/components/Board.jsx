@@ -44,13 +44,13 @@ class Board extends Component {
 		const {addList, connectDropTarget, layout} = this.props;
 		
 		return connectDropTarget(
-			<div className={"board " + layoutClasses[layout]}>
+			<main className={"board " + layoutClasses[layout]}>
 				{this.getApps()}
 				<AddApp addList={addList}/>
 				<Modal>
 					{this.getDescription}
 				</Modal>
-			</div>
+			</main>
 		);
 	}
 	

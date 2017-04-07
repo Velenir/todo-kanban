@@ -46,7 +46,7 @@ class Header extends Component {
 	
 	render() {
 		return (
-			<header className="main-header" onChange={this.onChange}>
+			<header className="contents__header" onChange={this.onChange}>
 				{this.getRadios()}
 			</header>
 		);

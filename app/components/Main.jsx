@@ -3,7 +3,7 @@ import Board from '../containers/BoardContainer';
 import Header from '../containers/HeaderContainer';
  
 const Main = () => (
-	<div>
+	<div className="contents">
 		<Header/>
 		<Board/>
 	</div>

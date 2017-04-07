@@ -1,7 +1,42 @@
-.board {
+html, body, body > div, .contents {
+	height: 100%;
+}
+
+.contents {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+
+	&__header {
+		flex: 0 0 auto;
+	}
+}
+
+.board {
+	flex: 1 0 auto;
+	padding: 25px;
+
+	&--column {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&--column-wrap {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		flex-basis: 0;
+		overflow: auto;
+		align-content: flex-start;
+	}
+
+	&--row {
+		display: flex;
+		flex-direction: row;
+		overflow: auto;
+		flex: 1 0 auto;
+	}
 }
 
 .todo-list li .custom-toggle {
@@ -129,10 +164,6 @@ $buttonShadow: $shadow, 0 0 2px rgba(156, 156, 156, 0.14);
 	max-width: 550px;
 	min-width: 435px;
 	padding: 45px;
-
-	&:first-child {
-		margin-top: 25px;
-	}
 }
 
 .todoapp > *:last-child::before {
@@ -149,6 +180,7 @@ $buttonShadow: $shadow, 0 0 2px rgba(156, 156, 156, 0.14);
 
 .afterwrapper {
 	width: 525px;
+	padding-right: 25px;
 }
 
 .todo-list li .open-modal {
