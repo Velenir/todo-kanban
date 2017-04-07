@@ -59,6 +59,10 @@
 		width: 450px;
 	}
 
+	&__title {
+		margin: 0 0 2px;
+	}
+
 	&__editor, &__preview {
 		min-height: 150px;
 	}
