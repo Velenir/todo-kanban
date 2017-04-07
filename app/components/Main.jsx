@@ -1,6 +1,6 @@
 import React from 'react';
 import Board from '../containers/BoardContainer';
-import Header from './Header';
+import Header from '../containers/HeaderContainer';
  
 const Main = () => (
 	<div>
