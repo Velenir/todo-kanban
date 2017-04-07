@@ -15,7 +15,8 @@ import {
 	MOVE_LIST,
 	OPEN_MODAL,
 	CLOSE_MODAL,
-	CHANGE_DESCRIPTION
+	CHANGE_DESCRIPTION,
+	CHANGE_LAYOUT
 } from './actionTypes';
 
 export function toggleComplete(listIndex, itemId) {
@@ -147,5 +148,12 @@ export function changeDescription(itemId, description) {
 		type: CHANGE_DESCRIPTION,
 		itemId,
 		description
+	};
+}
+
+export function changeLayout(layout) {
+	return {
+		type: CHANGE_LAYOUT,
+		layout
 	};
 }
