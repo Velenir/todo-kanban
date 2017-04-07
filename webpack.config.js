@@ -18,6 +18,27 @@ const templateConfig = {
 	appMountId: 'app'
 };
 
+const SVGtoReact = {
+	module: {
+		rules: [{
+			test: /\.svg$/,
+			use: [
+				{
+					loader: 'babel-loader',
+					options: {cacheDirectory: true}
+				},
+				{
+					loader: 'react-svg-loader',
+					options: {
+						svgo: {floatPrecision: 2}
+					}
+				}
+			],
+			include: PATHS.images,
+		}]
+	}
+};
+
 
 const common = merge([
 	{
@@ -35,7 +56,8 @@ const common = merge([
 	},
 	parts.loadJavaScript(PATHS.app),
 	parts.lintCSS(),
-	parts.copySVG(PATHS.images)
+	// parts.copySVG(PATHS.images)
+	SVGtoReact
 ]);
 
 module.exports = function(env) {
