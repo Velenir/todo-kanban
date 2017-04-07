@@ -12,9 +12,9 @@ import Description from '../containers/DescriptionContainer';
 
 import * as LAYOUT from '../reducers/layoutVars';
 const layoutClasses = {
-	[LAYOUT.COLUMN]: "column",
-	[LAYOUT.COLUMN_WRAP]: "column-wrap",
-	[LAYOUT.ROW]: "row"
+	[LAYOUT.COLUMN]: "board--column",
+	[LAYOUT.COLUMN_WRAP]: "board--column-wrap",
+	[LAYOUT.ROW]: "board--row"
 };
 
 const boardTarget = {
