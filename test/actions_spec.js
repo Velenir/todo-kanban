@@ -2,6 +2,7 @@ import * as actionTypes from '../app/actions/actionTypes';
 import * as actions from '../app/actions';
 import {expect} from 'chai';
 import * as FILTER from '../app/reducers/filterVars';
+import * as LAYOUT from '../app/reducers/layoutVars';
 
 describe('action creator', () => {
 	const results = {
@@ -79,6 +80,12 @@ describe('action creator', () => {
 			return {
 				input: [1, "Item description"],
 				output: {type, itemId: 1, description: "Item description"}
+			};
+		},
+		changeLayout(type) {
+			return {
+				input: [LAYOUT.COLUMN],
+				output: {type, layout: LAYOUT.COLUMN}
 			};
 		}
 	};
