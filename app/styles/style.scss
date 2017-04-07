@@ -19,6 +19,11 @@ html, body, body > div, .contents {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		
+
+		.afterwrapper {
+			width: 525px;
+		}
 	}
 
 	&--column-wrap {
@@ -36,6 +41,12 @@ html, body, body > div, .contents {
 		flex-direction: row;
 		overflow: auto;
 		flex: 1 0 auto;
+	}
+
+	&--column-wrap, &--row {
+		.afterwrapper {
+			padding-right: 25px;
+		}
 	}
 }
 
@@ -176,11 +187,6 @@ $buttonShadow: $shadow, 0 0 2px rgba(156, 156, 156, 0.14);
 	overflow: hidden;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);
 	pointer-events: none;
-}
-
-.afterwrapper {
-	width: 525px;
-	padding-right: 25px;
 }
 
 .todo-list li .open-modal {
