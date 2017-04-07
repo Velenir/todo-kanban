@@ -3,8 +3,8 @@ import {addList} from '../actions';
 
 import Board from '../components/Board';
 
-const mapStateToProps = ({lists}) => ({
-	lists
+const mapStateToProps = ({lists, layout}) => ({
+	lists, layout
 });
 
 // actions get wrapped in dispatch call

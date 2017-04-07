@@ -31,20 +31,20 @@ const layoutRadios = [
 ];
 
 class Header extends Component {
-	state = {checked: -1}
+	// state = {checked: -1}
 	
 	onChange = ({target: {value}}) => {
 		console.log(value);
-		this.setState({
-			checked: +value
-		});
+		// this.setState({
+		// 	checked: +value
+		// });
 		
 		this.props.changeLayout(layoutRadios[value].layoutVal);
 	}
 	
 	getRadios() {
 		return layoutRadios.map(({icon, title, layoutVal}, i) => (
-			<Radio checked={this.state.checked === i} type="radio" name="layout"
+			<Radio checked={this.props.layout === layoutVal} type="radio" name="layout"
 				whenChecked={icon} whenUnchecked={icon} value={i}
 				className="layout-radio" title={title} key={i}
 			/>

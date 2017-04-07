@@ -3,8 +3,8 @@ import {changeLayout} from '../actions';
 
 import Header from '../components/Header';
 
-const mapStateToProps = () => ({
-	
+const mapStateToProps = ({layout}) => ({
+	layout
 });
 
 export default connect(mapStateToProps, {changeLayout})(Header);

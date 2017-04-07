@@ -10,6 +10,13 @@ import {compose} from 'redux';
 import Modal from '../containers/ModalContainer';
 import Description from '../containers/DescriptionContainer';
 
+import * as LAYOUT from '../reducers/layoutVars';
+const layoutClasses = {
+	[LAYOUT.COLUMN]: "column",
+	[LAYOUT.COLUMN_WRAP]: "column-wrap",
+	[LAYOUT.ROW]: "row"
+};
+
 const boardTarget = {
 	drop() {},
 	hover(props, monitor) {
@@ -31,10 +38,10 @@ class Board extends Component {
 	}
 	
 	render() {
-		const {addList, connectDropTarget} = this.props;
+		const {addList, connectDropTarget, layout} = this.props;
 		
 		return connectDropTarget(
-			<div className="board">
+			<div className={"board " + layoutClasses[layout]}>
 				{this.getApps()}
 				<AddApp addList={addList}/>
 				<Modal>
@@ -50,7 +57,7 @@ class Board extends Component {
 			const prevProp = prevProps[prop];
 			const currentProp = this.props[prop];
 			if(prevProp !== currentProp) {
-				updatedProps[prop] = `${prevProp} -> ${currentProp}`;
+				updatedProps[prop] = `${String(prevProp)} -> ${String(currentProp)}`;
 			}
 		}
 		console.log(`Board UPDATED with`, updatedProps);
