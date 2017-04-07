@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.458333 26.458334" height="100" width="100">
+  <g fill="currentColor" stroke="currentColor" stroke-width=".5">
+    <path d="M4.525-3.123c-.554 0-1 .446-1 1v8c0 .554.446 1 1 1h6.058V1.571l2.646 2.59 2.646-2.59v5.306h6.059c.554 0 1-.446 1-1v-8c0-.554-.446-1-1-1zm0 22.704c-.554 0-1 .446-1 1v8c0 .554.446 1 1 1h17.409c.554 0 1-.446 1-1v-8c0-.554-.446-1-1-1h-6.059v2.716l-2.646 2.59-2.646-2.59V19.58z" stroke-width=".503"/>
+    <rect ry="1" y="9.229" x="4" height="8" width="18.459" fill="none"/>
+  </g>
+  <path d="M10.844 1.571l2.385 2.59 2.385-2.59v20.726l-2.385 2.59-2.385-2.59z" opacity=".7" fill="currentColor"/>
+</svg>
