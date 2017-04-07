@@ -1,4 +1,4 @@
-class ImmutableArray extends Array {
+export default class ImmutableArray extends Array {
 	constructor(...args) {
 		super(...args);
 	}
@@ -102,5 +102,3 @@ class ImmutableArray extends Array {
 		return this.set(index, mutated);
 	}
 }
-
-export default ImmutableArray;

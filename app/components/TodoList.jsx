@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import TodoItem from './TodoItem';
-import * as FILTER from '../reducers/filterVars';
+import {COMPLETED} from '../reducers/filterVars';
 
 import {TODO_ITEM} from '../helpers/itemTypes';
 import {DropTarget} from 'react-dnd';
@@ -23,7 +23,7 @@ class TodoList extends PureComponent {
 				{...rest}
 				id={item.id}
 				text={item.text}
-				isCompleted={item.status === FILTER.COMPLETED}
+				isCompleted={item.status === COMPLETED}
 				isEditing={item.editing}
 				selectText={item.selectText}
 				itemPath={[listIndex, i]}

@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
 
-
 export default class TextInput extends PureComponent {
 	state = {
 		value: this.props.text
