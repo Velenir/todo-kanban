@@ -10,6 +10,15 @@ describe('Description', () => {
 		Description.Preview = Preview;
 	});
 	
+	it('should render description__title with item provided', () => {
+		const component = renderIntoDocument(
+			<Description item="Item Name"/>
+		);
+		
+		const titles = scryRenderedDOMComponentsWithClass(component, "description__title");
+		expect(titles[0].textContent).to.equal("Item Name");
+	});
+	
 	it('should render description__preview and not description__display when provided a truthy description prop', () => {
 		const component = renderIntoDocument(
 			<Description description="description"/>
