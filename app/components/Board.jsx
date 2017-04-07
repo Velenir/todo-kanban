@@ -33,8 +33,11 @@ function collectTarget(connect) {
 
 class Board extends Component {
 	getApps() {
-		
 		return this.props.lists.map((list, i) => <App listIndex={i} key={list.id} id={list.id}/>);
+	}
+	
+	getDescription() {
+		return <Description/>;
 	}
 	
 	render() {
@@ -45,7 +48,7 @@ class Board extends Component {
 				{this.getApps()}
 				<AddApp addList={addList}/>
 				<Modal>
-					<Description/>
+					{this.getDescription}
 				</Modal>
 			</div>
 		);

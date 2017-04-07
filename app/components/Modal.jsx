@@ -9,11 +9,13 @@ class Modal extends Component {
 	render() {
 		if(!this.props.open) return null;
 		
+		const {closeModal, children} = this.props;
+		
 		return (
 			<div className="modal__overlay" onClick={this.onOverlayClicked}>
 				<div className="modal__contents">
-					<button className="modal__close" type="button" onClick={this.props.closeModal}>×</button>
-					{this.props.children}
+					<button className="modal__close" type="button" onClick={closeModal}>×</button>
+					{typeof children === "function" ? children() : children}
 				</div>
 			</div>
 		);
