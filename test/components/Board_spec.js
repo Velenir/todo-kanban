@@ -1,5 +1,5 @@
 import React from 'react';
-import {renderIntoDocument, scryRenderedComponentsWithType} from 'react-addons-test-utils';
+import {renderIntoDocument, scryRenderedComponentsWithType} from 'react-dom/test-utils';
 import {UndecoratedBoard, DropTargetWrapper} from '../../app/components/Board';
 import DragApp from '../../app/components/App';
 import TestBackend from 'react-dnd-test-backend';

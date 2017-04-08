@@ -1,5 +1,5 @@
 import React from 'react';
-import {renderIntoDocument, scryRenderedDOMComponentsWithTag} from 'react-addons-test-utils';
+import {renderIntoDocument, scryRenderedDOMComponentsWithTag} from 'react-dom/test-utils';
 import Preview from '../../app/components/Preview';
 import {expect} from 'chai';
 

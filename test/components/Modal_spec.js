@@ -1,5 +1,5 @@
 import React from 'react';
-import {renderIntoDocument, scryRenderedDOMComponentsWithTag, Simulate} from 'react-addons-test-utils';
+import {renderIntoDocument, scryRenderedDOMComponentsWithTag, Simulate} from 'react-dom/test-utils';
 import Modal from '../../app/components/Modal';
 import {expect} from 'chai';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {renderIntoDocument, findRenderedDOMComponentWithTag, findRenderedComponentWithType, Simulate} from 'react-addons-test-utils';
+import {renderIntoDocument, findRenderedDOMComponentWithTag, findRenderedComponentWithType, Simulate} from 'react-dom/test-utils';
 import DropTodoHeader from '../../app/components/TodoHeader';
 import {expect} from 'chai';
 import TestBackend from 'react-dnd-test-backend';

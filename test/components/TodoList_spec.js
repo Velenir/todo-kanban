@@ -1,5 +1,5 @@
 import React from 'react';
-import {renderIntoDocument, scryRenderedDOMComponentsWithTag, scryRenderedComponentsWithType} from 'react-addons-test-utils';
+import {renderIntoDocument, scryRenderedDOMComponentsWithTag, scryRenderedComponentsWithType} from 'react-dom/test-utils';
 import DropTodoList from '../../app/components/TodoList';
 import DragTodoItem from '../../app/components/TodoItem';
 import TestBackend from 'react-dnd-test-backend';

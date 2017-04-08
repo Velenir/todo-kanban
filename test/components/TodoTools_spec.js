@@ -1,5 +1,5 @@
 import React from 'react';
-import {renderIntoDocument, scryRenderedDOMComponentsWithTag, findRenderedComponentWithType, Simulate} from 'react-addons-test-utils';
+import {renderIntoDocument, scryRenderedDOMComponentsWithTag, findRenderedComponentWithType, Simulate} from 'react-dom/test-utils';
 import DropTodoTools from '../../app/components/TodoTools';
 import * as FILTER from '../../app/reducers/filterVars';
 import {expect} from 'chai';

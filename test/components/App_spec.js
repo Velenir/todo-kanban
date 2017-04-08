@@ -1,5 +1,5 @@
 import React from 'react';
-import {renderIntoDocument, findRenderedComponentWithType, scryRenderedComponentsWithType, scryRenderedDOMComponentsWithTag} from 'react-addons-test-utils';
+import {renderIntoDocument, findRenderedComponentWithType, scryRenderedComponentsWithType, scryRenderedDOMComponentsWithTag} from 'react-dom/test-utils';
 import DragApp from '../../app/components/App';
 import TodoTools from '../../app/components/TodoTools';
 import {expect} from 'chai';
