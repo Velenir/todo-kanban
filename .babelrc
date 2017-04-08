@@ -34,7 +34,10 @@
 					"alias": {
 						"react-redux": "./test/connectNoop"
 					}
-				}]
+				}],
+        ["import-rename", {
+          "^.*/images/.+\\.svg$": "../../test/svg2react"
+        }]
     	]
     }
   }
