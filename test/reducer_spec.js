@@ -5,6 +5,7 @@ import {expect} from 'chai';
 import listsReducer, {todoReducer} from '../app/reducers/listsReducer';
 import modalReducer from '../app/reducers/modalReducer';
 import descriptionsReducer from '../app/reducers/descriptionsReducer';
+import layoutReducer from '../app/reducers/layoutReducer';
 import {
 	toggleComplete,
 	changeFilter,
@@ -22,9 +23,11 @@ import {
 	moveList,
 	openModal,
 	closeModal,
-	changeDescription
+	changeDescription,
+	changeLayout
 } from '../app/actions';
 import * as FILTER from '../app/reducers/filterVars';
+import * as LAYOUT from '../app/reducers/layoutVars';
 
 describe('reducers:', () => {
 	function expectTodosToEqual(state, todos) {
@@ -362,7 +365,7 @@ describe('reducers:', () => {
 			expect(nextState).to.equal(new ModalRecord({open: true, item: "item", id: 1}));
 		});
 		
-		it('should handle CLOSE_MODAL by resetting appropriate modal', () => {
+		it('should handle CLOSE_MODAL by resetting appropriate modal properties', () => {
 			const initialState = new ModalRecord({open: true, item: "item", id: 1});
 			const action = closeModal();
 			
@@ -389,6 +392,16 @@ describe('reducers:', () => {
 			const nextState = descriptionsReducer(initialState, action);
 			
 			expect(nextState).to.equal(Map());
+		});
+	});
+	
+	describe('layoutReducer', () => {
+		it('should handle CHANGE_LAYOUT by setting layout to provided value', () => {
+			const action = changeLayout(LAYOUT.ROW);
+			
+			const nextState = layoutReducer(undefined, action);
+			
+			expect(nextState).to.equal(LAYOUT.ROW);
 		});
 	});
 });
