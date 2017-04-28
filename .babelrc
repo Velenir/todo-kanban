@@ -27,16 +27,12 @@
         ["babel-plugin-transform-builtin-extend", {
             "globals": ["Array"]
         }],
-        ["babel-plugin-transform-require-ignore", {
-            "extensions": [".css", ".scss"]
-        }],
-				["module-resolver", {
-					"alias": {
-						"react-redux": "./test/connectNoop"
-					}
-				}],
-        ["import-rename", {
-          "^.*/images/.+\\.svg$": "../../test/svg2react"
+        ["import-redirect", {
+            "redirect": {
+              "\\.s?css$": false,
+              "/node_modules/react-redux": "./test/connectNoop",
+              "/images/.+\\.svg$": "./test/svg2react"
+            }
         }]
     	]
     }
