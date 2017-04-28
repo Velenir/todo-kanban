@@ -1,14 +1,13 @@
-import jsdom from 'jsdom';
+import {JSDOM} from 'jsdom';
 import chai from 'chai';
 import chaiImmutable from 'chai-immutable';
 
-const doc = jsdom.jsdom(`
+const {window: win, window: {document: doc}} = new JSDOM(`
 	<!doctype html>
 	<html>
 		<body></body>
 	</html>
 `);
-const win = doc.defaultView;
 
 // React TestUtils renderer needs global window and document for anything but shallow rendering
 global.document = doc;
